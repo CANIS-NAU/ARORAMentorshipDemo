@@ -6,7 +6,7 @@ import { Text, View } from "../components/Themed";
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home Screen</Text>
+      <Text style={styles.title}>ARORA Home Screen</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
