@@ -1,9 +1,10 @@
-import { StyleSheet } from "react-native";
-
+import { StyleSheet, Button } from "react-native";
 import EditScreenInfo from "../components/EditScreenInfo";
+import { createStackNavigator } from "@react-navigation/stack";
 import { Text, View } from "../components/Themed";
+import HomeScreen from "../screens/HomeScreen";
 
-export default function TabTwoScreen() {
+export default function QuestionScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Questions Screen</Text>
@@ -13,6 +14,12 @@ export default function TabTwoScreen() {
         darkColor="rgba(255,255,255,0.1)"
       />
       <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+      <Button
+        onPress={TabOneNavigator}
+        title="Mock Question"
+        color="#841584"
+        accessibilityLabel="Question 1"
+      />
     </View>
   );
 }
@@ -33,3 +40,15 @@ const styles = StyleSheet.create({
     width: "80%",
   },
 });
+const TabOneStack = createStackNavigator();
+function TabOneNavigator() {
+  return (
+    <TabOneStack.Navigator>
+      <TabOneStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ headerTitle: "Tab One Title" }}
+      />
+    </TabOneStack.Navigator>
+  );
+}
