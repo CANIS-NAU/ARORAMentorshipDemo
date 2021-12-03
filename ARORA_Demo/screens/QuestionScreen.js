@@ -1,4 +1,4 @@
-import { StyleSheet, Button } from "react-native";
+import { StyleSheet, Button, Alert } from "react-native";
 import EditScreenInfo from "../components/EditScreenInfo";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Text, View } from "../components/Themed";
@@ -15,7 +15,8 @@ export default function QuestionScreen() {
       />
       <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
       <Button
-        onPress={TabOneNavigator}
+        //onPress={TabOneNavigator}
+        onPress={() => Alert.alert('Simple Button pressed')}
         title="Mock Question"
         color="#841584"
         accessibilityLabel="Question 1"
