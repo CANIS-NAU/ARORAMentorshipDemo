@@ -8,19 +8,20 @@ export default function QuestionScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Questions Screen</Text>
+      <Button
+        onPress={() => alert("Success")}
+        //onPress={() => TabOneNavigator()}
+        title="Mock Question"
+        color="#841584"
+        accessibilityLabel="Question 1"
+      />
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
       <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
-      <Button
-        //onPress={TabOneNavigator}
-        onPress={() => Alert.alert('Simple Button pressed')}
-        title="Mock Question"
-        color="#841584"
-        accessibilityLabel="Question 1"
-      />
+
     </View>
   );
 }
