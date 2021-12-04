@@ -9,7 +9,7 @@ export default function QuestionScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Questions Screen</Text>
       <Button
-        onPress={() => alert("Success")}
+        onPress={() => alert("This is an alert")}
         //onPress={() => TabOneNavigator()}
         title="Mock Question"
         color="#841584"
