@@ -31,17 +31,16 @@ cd to project folder (may have to reopen PS not as admin)
 
 create-react-native-app MyReactNativeApp
 
-npm run android
 
-##If the above fails once browser runs (prob bc no android emu) then##
+
+##Following must be run once per time PowerShell is opened:##
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+##Getting the app to run:##
 
 expo start
 
 ##Browser will open, choose to run in mobile emulator (if connected) or in browser##
 
 npm install --g @react-navigation/native
-
-
-!!! Run every time !!!
-
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
