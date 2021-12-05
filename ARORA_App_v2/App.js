@@ -19,21 +19,49 @@ function HomeScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
+        title="Go to Questions"
+        onPress={() => navigation.navigate('Questions')}
+      />
+    </View>
+  );
+}
+
+function QuestionsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Questions Screen</Text>
+      <Button
+        title="Mock Question 1"
+        onPress={() => navigation.navigate('Mock Question')}
+      />
+      <Button
+        title="Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+function MockQScreen( {navigation} ) {
+  return (
+    <View style ={{ flex: 1, alignItems: 'center', justifyContent: 'center '}}>
+      <Text>This is what a mock question looks like</Text>
+      <Button
+        title="Return to Questions"
+        onPress={() => navigation.navigate('Questions')}
       />
     </View>
   );
 }
 
 const Stack = createNativeStackNavigator();
-
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Questions" component={QuestionsScreen} />
+        <Stack.Screen name="Mock Question" component ={MockQScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -48,12 +76,5 @@ const styles = StyleSheet.create({
   },
 });
 
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
 
 export default App;
