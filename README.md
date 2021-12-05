@@ -1,6 +1,3 @@
-# ARORAMentorshipDemo
-Team Shining Sky's Demo for ARORA Mentorship APP
-
 React-Native Setup Instructions (That I can remember):
 
 Install chocolatey, node js
@@ -21,8 +18,11 @@ npm install --g react-navigation
 
 npm install @react-navigation/native-stack
 
-npm install react-native-screens react-native-safe-area-context
+npm install react-native-screens react-native-safe-area-context   (not sure if works)
+
+expo install react-native-screens react-native-safe-area-context
 ##
+
 
 
 ##Creating and running the project##
@@ -40,3 +40,8 @@ expo start
 ##Browser will open, choose to run in mobile emulator (if connected) or in browser##
 
 npm install --g @react-navigation/native
+
+
+!!! Run every time !!!
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
