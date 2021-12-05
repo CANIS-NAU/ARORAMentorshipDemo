@@ -35,6 +35,10 @@ function QuestionsScreen({ navigation }) {
         onPress={() => navigation.navigate('Mock Question')}
       />
       <Button
+        title="Mock Question 2"
+        onPress={() => navigation.navigate('Mock Question 2')}
+      />
+      <Button
         title="Home"
         onPress={() => navigation.navigate('Home')}
       />
@@ -54,6 +58,18 @@ function MockQScreen( {navigation} ) {
   );
 }
 
+function MockQScreen2( {navigation} ) {
+  return (
+    <View style ={{ flex: 1, alignItems: 'center', justifyContent: 'center '}}>
+      <Text>This is another mock question</Text>
+      <Button
+        title="Return to Questions"
+        onPress={() => navigation.navigate('Questions')}
+      />
+    </View>
+  );
+}
+
 const Stack = createNativeStackNavigator();
 function App() {
   return (
@@ -62,6 +78,7 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Questions" component={QuestionsScreen} />
         <Stack.Screen name="Mock Question" component ={MockQScreen} />
+        <Stack.Screen name="Mock Question 2" component ={MockQScreen2} />
       </Stack.Navigator>
     </NavigationContainer>
   );
