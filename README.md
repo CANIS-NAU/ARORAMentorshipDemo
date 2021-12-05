@@ -12,9 +12,9 @@ npm install --global expo-cli
 
 npm install --force
 
-npm install --g @react-navigation/native
+npm install --global @react-navigation/native
 
-npm install --g react-navigation
+npm install --global react-navigation
 
 npm install @react-navigation/native-stack
 
@@ -43,4 +43,4 @@ expo start
 
 ##Browser will open, choose to run in mobile emulator (if connected) or in browser##
 
-npm install --g @react-navigation/native
+npm install --global @react-navigation/native
