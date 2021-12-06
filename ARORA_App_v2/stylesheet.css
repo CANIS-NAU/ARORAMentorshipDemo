@@ -1,0 +1,5 @@
+navigationbar {
+  flex : 1,
+  flexDirection: row,
+  backgroundColor: red,
+}
