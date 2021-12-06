@@ -116,9 +116,18 @@ const styles = StyleSheet.create({
 
   menteecurrentrisk: {
     flexDirection: "row",
-    jusifyContent: "center",
+    justifyContent: "center",
     alignItems: "center",
   },
+
+  question: {
+    padding: 10,
+    marginBottom: 10,
+    flexDirection: "column",
+    justifyContent: "left",
+    alignItems: "center",
+    backgroundColor: "#dddddd"
+  }
 
 })
 

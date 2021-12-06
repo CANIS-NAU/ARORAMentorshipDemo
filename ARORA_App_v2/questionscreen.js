@@ -8,24 +8,45 @@ export function QuestionScreen({ navigation }) {
     <View style={styles.screen}>
 
       <View style={styles.screencontent}>
-        <View style={styles.questionscreen}>
+        <View style={{margin: 10}}>
 
           <View>
-            <Text>Search</Text>
+            <TextInput
+              multiline={false}
+              style={{ textAlignVertical: 'top', backgroundColor: "#ffffff", justifyContent: "stretch", marginBottom: 20}}
+            />
           </View>
 
           <View style={styles.questionslist}>
 
             <View style={styles.question}>
-              <Text>Question 1</Text>
+              <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</Text>
+              <TextInput
+                  multiline={true}
+                  numberOfLines={2}
+                  style={{height:100, width:150, textAlignVertical: 'top', backgroundColor: "#ffffff"}}
+              />
+              <Button title="Submit"/>
             </View>
 
             <View style={styles.question}>
-              <Text>Question 2</Text>
+              <Text>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</Text>
+              <TextInput
+                  multiline={true}
+                  numberOfLines={2}
+                  style={{height:100, width:150, textAlignVertical: 'top', backgroundColor: "#ffffff"}}
+              />
+              <Button title="Submit"/>
             </View>
 
             <View style={styles.question}>
-              <Text>Question 3</Text>
+              <Text>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat?</Text>
+              <TextInput
+                  multiline={true}
+                  numberOfLines={2}
+                  style={{height:100, width:150, textAlignVertical: 'top', backgroundColor: "#ffffff"}}
+              />
+              <Button title="Submit"/>
             </View>
 
           </View>
