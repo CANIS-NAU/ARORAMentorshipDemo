@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {styles} from './stylesheet';
 import {NavigationBar} from './navigationbar';
-import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Slider} from 'react-native';
 
 export function JohnSmithScreen( {navigation} )
 {
+  var currentRisk = "green";
   return (
     <View style={styles.menteescreen}>
 
@@ -25,20 +26,17 @@ export function JohnSmithScreen( {navigation} )
         </View>
 
         <View style={styles.menteebuttonsection}>
-          <Pressable style={styles.menteebutton}
-                              onPress={() => navigation.navigate('Calendar')}>
+          <Pressable style={styles.menteebutton}>
             <Image style={styles.menteeicons} source={require('./assets/greenbutterflybuttonicon.png')}/>
             <Text style={styles.menteeicontext}>Low</Text>
-            </Pressable>
+          </Pressable>
 
-          <Pressable style={styles.menteebutton}
-                                onPress={() => navigation.navigate('Calendar')}>
+          <Pressable style={styles.menteebutton}>
             <Image style={styles.menteeicons} source={require('./assets/yellowbutterflybuttonicon.png')}/>
             <Text style={styles.menteeicontext}>Medium</Text>
           </Pressable>
 
-          <Pressable style={styles.menteebutton}
-                                onPress={() => navigation.navigate('Calendar')}>
+          <Pressable style={styles.menteebutton}>
             <Image style={styles.menteeicons} source={require('./assets/redbutterflybuttonicon.png')}/>
             <Text style={styles.menteeicontext}>High</Text>
           </Pressable>
@@ -53,15 +51,18 @@ export function JohnSmithScreen( {navigation} )
       <View style={styles.moodreportlist}>
 
         <View style={styles.moodreport}>
-          <Text>Mood Report</Text>
+          <Text >Mood: Happy</Text>
+          <Text >Stress Level: Neutral</Text>
         </View>
 
         <View style={styles.moodreport}>
-          <Text >Mood Report</Text>
+          <Text >Mood: Neutral</Text>
+          <Text >Stress Level: Slightly</Text>
         </View>
 
         <View style={styles.moodreport}>
-          <Text >Mood Report</Text>
+          <Text >Mood: Neutral</Text>
+          <Text >Stress Level: Slightly</Text>
         </View>
 
       </View>

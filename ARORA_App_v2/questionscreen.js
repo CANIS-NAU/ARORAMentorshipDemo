@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {styles} from './stylesheet';
 import {NavigationBar} from './navigationbar';
-import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Text, Button, Pressable, Image, TextInput} from 'react-native';
 
 export function QuestionScreen({ navigation }) {
   return (
@@ -10,8 +10,8 @@ export function QuestionScreen({ navigation }) {
       <View style={styles.screencontent}>
         <View style={styles.questionscreen}>
 
-          <View style={styles.searchbar}>
-            <Text>SearchBar</Text>
+          <View>
+            <Text>Search</Text>
           </View>
 
           <View style={styles.questionslist}>

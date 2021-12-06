@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {styles} from './stylesheet';
 import {NavigationBar} from './navigationbar';
-import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 
 export function HomeScreen ({navigation}) {
   return(
@@ -10,6 +10,8 @@ export function HomeScreen ({navigation}) {
         <View style={styles.homescreen}>
 
           <Image style={{width: 40, height: 40}} source={require('./assets/teamshiningskyicon.png')}/>
+          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Welcome, Y/N</Text>
+
 
           <Text>Your Mentee's</Text>
 

@@ -8,8 +8,6 @@ const styles = StyleSheet.create({
   },
   screencontent: {
     flex: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 
   navigationbar: {
@@ -20,7 +18,7 @@ const styles = StyleSheet.create({
   },
 
   navigationbutton: {
-    margin: 10,
+    margin: 3,
     alignSelf: "center",
     width: "auto",
     height: "auto",
@@ -29,11 +27,6 @@ const styles = StyleSheet.create({
   navigationbuttonicon: {
     width: 30,
     height: 30,
-  },
-
-  navbuttontext: {
-    fontSize: "100%",
-    alignSelf: "center",
   },
 
   loginoptions: {
@@ -59,8 +52,9 @@ const styles = StyleSheet.create({
   },
 
   homescreen: {
-    justifyContent: "center",
-    alignitems: "center",
+    margin: 20,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
 
   homescreenmentee: {
@@ -97,8 +91,8 @@ const styles = StyleSheet.create({
   },
 
   menteeicons: {
-    width: 50,
-    height: 50,
+    width: 30,
+    height: 30,
   },
 
   menteescreenbuttons: {
@@ -109,7 +103,7 @@ const styles = StyleSheet.create({
   menteebuttonsection:
   {
     flexDirection: "row",
-    alignItems: "left",
+    alignItems: "flex-start",
   },
 
   menteebutton: {

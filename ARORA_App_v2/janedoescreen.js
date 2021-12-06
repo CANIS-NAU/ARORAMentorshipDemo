@@ -25,20 +25,17 @@ export function JaneDoeScreen( {navigation} )
         </View>
 
         <View style={styles.menteebuttonsection}>
-          <Pressable style={styles.menteebutton}
-                              onPress={() => navigation.navigate('Calendar')}>
+          <Pressable style={styles.menteebutton}>
             <Image style={styles.menteeicons} source={require('./assets/greenbutterflybuttonicon.png')}/>
             <Text style={styles.menteeicontext}>Low</Text>
             </Pressable>
 
-          <Pressable style={styles.menteebutton}
-                                onPress={() => navigation.navigate('Calendar')}>
+          <Pressable style={styles.menteebutton}>
             <Image style={styles.menteeicons} source={require('./assets/yellowbutterflybuttonicon.png')}/>
             <Text style={styles.menteeicontext}>Medium</Text>
           </Pressable>
 
-          <Pressable style={styles.menteebutton}
-                                onPress={() => navigation.navigate('Calendar')}>
+          <Pressable style={styles.menteebutton}>
             <Image style={styles.menteeicons} source={require('./assets/redbutterflybuttonicon.png')}/>
             <Text style={styles.menteeicontext}>High</Text>
           </Pressable>
@@ -52,17 +49,20 @@ export function JaneDoeScreen( {navigation} )
 
       <View style={styles.moodreportlist}>
 
-        <View style={styles.moodreport}>
-          <Text>Mood Report</Text>
-        </View>
+      <View style={styles.moodreport}>
+        <Text >Mood: Sad</Text>
+        <Text >Stress Level: Neutral</Text>
+      </View>
 
-        <View style={styles.moodreport}>
-          <Text >Mood Report</Text>
-        </View>
+      <View style={styles.moodreport}>
+        <Text >Mood: Neutral</Text>
+        <Text >Stress Level: Very Stressed</Text>
+      </View>
 
-        <View style={styles.moodreport}>
-          <Text >Mood Report</Text>
-        </View>
+      <View style={styles.moodreport}>
+        <Text >Mood: Sad</Text>
+        <Text >Stress Level: Slightly Stressed</Text>
+      </View>
 
       </View>
 
