@@ -3,8 +3,9 @@ import {styles} from './stylesheet';
 import {NavigationBar} from './navigationbar';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
 
-export function JaneDoeScreen( {navigation} )
+export function MenteeScreen( {route, navigation} )
 {
+  const {menteename, mentee} = route.params;
   return (
     <View style={styles.menteescreen}>
 
@@ -44,26 +45,15 @@ export function JaneDoeScreen( {navigation} )
 
       <View style={styles.menteecurrentrisk}>
         <Text>Current Risk:</Text>
-        <Image style={styles.menteeicons} source={require('./assets/yellowbutterflybuttonicon.png')}/>
+        <Image style={styles.menteeicons} source={require('./assets/' + mentee.risk + 'butterflybuttonicon.png')}/>
       </View>
 
       <View style={styles.moodreportlist}>
-
-      <View style={styles.moodreport}>
-        <Text >Mood: Sad</Text>
-        <Text >Stress Level: Neutral</Text>
-      </View>
-
-      <View style={styles.moodreport}>
-        <Text >Mood: Neutral</Text>
-        <Text >Stress Level: Very Stressed</Text>
-      </View>
-
-      <View style={styles.moodreport}>
-        <Text >Mood: Sad</Text>
-        <Text >Stress Level: Slightly Stressed</Text>
-      </View>
-
+        {mentee.moodreports.map(moodreport =>
+            (<View style={styles.moodreport}>
+              <Text >Mood: {moodreport.mood}</Text>
+              <Text >Stress Level: {moodreport.stresslevel}</Text>
+            </View>))}
       </View>
 
     </View>

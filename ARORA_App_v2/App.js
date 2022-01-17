@@ -15,7 +15,7 @@ import {ChatScreen} from './chatscreen';
 import {CalendarScreen} from './calendarscreen';
 import {QuestionScreen} from './questionscreen';
 import {JohnSmithScreen} from './johnsmithscreen';
-import {JaneDoeScreen} from './janedoescreen';
+import {MenteeScreen} from './menteescreen';
 import {styles} from './stylesheet';
 
 import { StatusBar } from 'expo-status-bar';
@@ -79,8 +79,8 @@ function App() {
         <Stack.Screen name="Questions" component={QuestionScreen} />
         <Stack.Screen name="Mock Question" component ={MockQScreen} />
         <Stack.Screen name="Mock Question 2" component ={MockQScreen2} />
-        <Stack.Screen name="John Smith" component ={JohnSmithScreen} />
-        <Stack.Screen name="Jane Doe" component ={JaneDoeScreen} />
+        <Stack.Screen name="Mentee Screen" component ={MenteeScreen}
+                  options={({route}) => ({ title: route.params.screenname})}/>
         <Stack.Screen name="Chat" component = {ChatScreen} />
         <Stack.Screen name="Calendar" component ={CalendarScreen} />
       </Stack.Navigator>

@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
 
   navigationbar: {
     flex: 1,
+    bottom: 0,
+    width: "100%",
+    position: "fixed",
     flexDirection: "row",
     backgroundColor: "grey",
     justifyContent: "space-evenly",
