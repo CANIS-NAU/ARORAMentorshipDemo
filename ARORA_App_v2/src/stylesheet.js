@@ -10,8 +10,9 @@ const styles = StyleSheet.create({
     flex: 8,
   },
   navbaricons: {
-    width: 10,
-    height: 10,
+    paddingTop: 10,
+    width: 20,
+    height: 20,
   },
 
   loginoptions: {

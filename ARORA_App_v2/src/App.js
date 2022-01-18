@@ -70,18 +70,19 @@ export {ProfileScreenStack};
 const Tab = createBottomTabNavigator();
 function NavigationBar() {
   return(
-        <Tab.Navigator
+        <Tab.Navigator initialRouteName="Home"
           tabBarOptions = {{
-            labelStyle: {padding: 10, fontsize: 10},
-            style: {padding: 10, height: 70}
+            tabStyle: {justifyContent: 'center'},
+            labelStyle: {marginBottom: 5, fontsize: 8},
+            style: {padding: 5, height: 70}
           }}
         >
           <Tab.Screen name="Profile" component={ProfileScreenStack}
               options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
-              return (<Image style={styles.navbaricon} source={require('../assets/profilebuttonicon.png')}/>)}}}/>
+              return (<Image style={styles.navbaricons} source={require('../assets/profilebuttonicon.png')}/>)}}}/>
 
           <Tab.Screen name="Questions" component={QuestionScreen}
-              options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+              options={{ tabBarIcon: ({size, focused, color}) => {
               return (<Image style={styles.navbaricons} source={require('../assets/questionbuttonicon.png')}/>)}}}/>
 
           <Tab.Screen name="Home" component={HomeScreenStack} options={{ headerShown: false }}
@@ -89,11 +90,11 @@ function NavigationBar() {
               return (<Image style={styles.navbaricons} source={require('../assets/homebuttonicon.png')}/>)}}}/>
 
           <Tab.Screen name="Chat" component = {ChatScreen}
-              options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+              options={{ tabBarIcon: ({size, focused, color}) => {
               return (<Image style={styles.navbaricons} source={require('../assets/chatbuttonicon.png')}/>)}}}/>
 
           <Tab.Screen name="Calendar" component ={CalendarScreen}
-              options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+              options={{ tabBarIcon: ({size, focused, color}) => {
               return (<Image style={styles.navbaricons} source={require('../assets/calendarbuttonicon.png')}/>)}}}/>
 
         </Tab.Navigator>
