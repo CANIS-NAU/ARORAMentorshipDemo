@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {styles} from '../stylesheet';
-import {NavigationBar} from '../components/navigationbar';
 import MenteeList from '../components/menteelist';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 
@@ -19,8 +18,6 @@ export function HomeScreen ( {navigation} ) {
         </View>
 
       </View>
-
-      <NavigationBar navigation={navigation}/>
 
     </View>
   );

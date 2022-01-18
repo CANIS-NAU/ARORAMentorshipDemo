@@ -9,27 +9,9 @@ const styles = StyleSheet.create({
   screencontent: {
     flex: 8,
   },
-
-  navigationbar: {
-    flex: 1,
-    bottom: 0,
-    width: "100%",
-    position: "fixed",
-    flexDirection: "row",
-    backgroundColor: "grey",
-    justifyContent: "space-evenly",
-  },
-
-  navigationbutton: {
-    margin: 3,
-    alignSelf: "center",
-    width: "auto",
-    height: "auto",
-  },
-
-  navigationbuttonicon: {
-    width: 30,
-    height: 30,
+  navbaricons: {
+    width: 10,
+    height: 10,
   },
 
   loginoptions: {

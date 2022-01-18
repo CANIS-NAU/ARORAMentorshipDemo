@@ -63,8 +63,6 @@ export function QuestionScreen({ navigation }) {
         </View>
       </View>
 
-      <NavigationBar navigation={navigation}/>
-
     </View>
   );
 }

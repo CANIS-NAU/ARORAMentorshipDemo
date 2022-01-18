@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {styles} from '../stylesheet';
-import {NavigationBar} from '../components/navigationbar';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
 
 export function CalendarScreen( {navigation} )
@@ -11,8 +10,6 @@ export function CalendarScreen( {navigation} )
       <View style={styles.screencontent}>
         <Text>Google Calendar</Text>
       </View>
-
-      <NavigationBar navigation={navigation}/>
 
     </View>
   );

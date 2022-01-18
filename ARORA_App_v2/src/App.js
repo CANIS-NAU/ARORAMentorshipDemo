@@ -44,48 +44,68 @@ const images = {
   'redbutterflyicon.png':     require("../assets/redbutterflyicon.png"),
 };
 
-function MockQScreen( {navigation} ) {
-  return (
-    <View style ={{ flex: 1, alignItems: 'center', justifyContent: 'center '}}>
-      <Text>This is what a mock question looks like</Text>
-      <Button
-        title="Return to Questions"
-        onPress={() => navigation.navigate('Questions')}
-      />
-    </View>
-  );
-}
-
-function MockQScreen2( {navigation} ) {
-  return (
-    <View style ={{ flex: 1, alignItems: 'center', justifyContent: 'center '}}>
-      <Text>This is another mock question</Text>
-      <Button
-        title="Return to Questions"
-        onPress={() => navigation.navigate('Questions')}
-      />
-    </View>
-  );
-}
-
 const Stack = createNativeStackNavigator();
-function App() {
+function HomeScreenStack() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Questions" component={QuestionScreen} />
-        <Stack.Screen name="Mock Question" component ={MockQScreen} />
-        <Stack.Screen name="Mock Question 2" component ={MockQScreen2} />
         <Stack.Screen name="Mentee Screen" component ={MenteeScreen}
                   options={({route}) => ({ title: route.params.screenname})}/>
         <Stack.Screen name="Chat" component = {ChatScreen} />
         <Stack.Screen name="Calendar" component ={CalendarScreen} />
       </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+  )};
+export {HomeScreenStack};
 
-export default App;
+function ProfileScreenStack() {
+  return (
+      <Stack.Navigator>
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Login" component ={LoginScreen}
+                  options={({route}) => ({ title: route.params.screenname})}/>
+      </Stack.Navigator>
+  )};
+
+export {ProfileScreenStack};
+const Tab = createBottomTabNavigator();
+function NavigationBar() {
+  return(
+        <Tab.Navigator
+          tabBarOptions = {{
+            labelStyle: {padding: 10, fontsize: 10},
+            style: {padding: 10, height: 70}
+          }}
+        >
+          <Tab.Screen name="Profile" component={ProfileScreenStack}
+              options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+              return (<Image style={styles.navbaricon} source={require('../assets/profilebuttonicon.png')}/>)}}}/>
+
+          <Tab.Screen name="Questions" component={QuestionScreen}
+              options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+              return (<Image style={styles.navbaricons} source={require('../assets/questionbuttonicon.png')}/>)}}}/>
+
+          <Tab.Screen name="Home" component={HomeScreenStack} options={{ headerShown: false }}
+              options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+              return (<Image style={styles.navbaricons} source={require('../assets/homebuttonicon.png')}/>)}}}/>
+
+          <Tab.Screen name="Chat" component = {ChatScreen}
+              options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+              return (<Image style={styles.navbaricons} source={require('../assets/chatbuttonicon.png')}/>)}}}/>
+
+          <Tab.Screen name="Calendar" component ={CalendarScreen}
+              options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+              return (<Image style={styles.navbaricons} source={require('../assets/calendarbuttonicon.png')}/>)}}}/>
+
+        </Tab.Navigator>
+  )};
+export {NavigationBar};
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initalRouteName = "Login">
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Home" component={NavigationBar} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )};
