@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {styles} from './stylesheet';
-import {NavigationBar} from './navigationbar';
+import {styles} from '../stylesheet';
+import {NavigationBar} from '../components/navigationbar';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput} from 'react-native';
 
 export function QuestionScreen({ navigation }) {
@@ -22,7 +22,7 @@ export function QuestionScreen({ navigation }) {
             <View style={styles.question}>
               <View style={{flexDirection: "row"}}>
                 <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</Text>
-                <Image style={{width: 20, height: 20}} source={require('./assets/redbutterflybuttonicon.png')}/>
+                <Image style={{width: 20, height: 20}} source={require('../../assets/redbutterflybuttonicon.png')}/>
               </View>
               <TextInput
                   multiline={true}
@@ -35,7 +35,7 @@ export function QuestionScreen({ navigation }) {
             <View style={styles.question}>
               <View style={{flexDirection: "row"}}>
                 <Text>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</Text>
-                <Image style={{width: 20, height: 20}} source={require('./assets/redbutterflybuttonicon.png')}/>
+                <Image style={{width: 20, height: 20}} source={require('../../assets/redbutterflybuttonicon.png')}/>
               </View>
               <TextInput
                   multiline={true}
@@ -48,7 +48,7 @@ export function QuestionScreen({ navigation }) {
             <View style={styles.question}>
               <View style={{flexDirection: "row"}}>
                 <Text>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat?</Text>
-                <Image style={{width: 20, height: 20}} source={require('./assets/redbutterflybuttonicon.png')}/>
+                <Image style={{width: 20, height: 20}} source={require('../../assets/redbutterflybuttonicon.png')}/>
               </View>
               <TextInput
                   multiline={true}

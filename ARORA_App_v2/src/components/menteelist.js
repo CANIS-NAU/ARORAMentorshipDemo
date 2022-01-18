@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {styles} from './stylesheet';
+import {styles} from '../stylesheet';
 import {NavigationBar} from './navigationbar';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 
@@ -29,7 +29,7 @@ export default function MenteeList( {navigation} ) {
                   (<Pressable style={styles.homescreenmentee}
                                       onPress={() => navigation.navigate("Mentee Screen", {screenname: mentee.name, mentee: mentee})}>
                     <View style={styles.homescreenmentee}>
-                      <Image style={styles.homescreenmenteeicons} source={require('./assets/' + mentee.risk + 'butterflyicon.png')}/>
+                      <Image style={styles.homescreenmenteeicons} source={require('../../assets/' + mentee.risk + 'butterflyicon.png')}/>
                       <Text>{mentee.name}</Text>
                     </View>
                   </Pressable>))}

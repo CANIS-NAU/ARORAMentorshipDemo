@@ -8,14 +8,13 @@
 }
 */
 
-import {HomeScreen} from './homescreen';
-import {LoginScreen} from './loginscreen';
-import {ProfileScreen} from './profilescreen';
-import {ChatScreen} from './chatscreen';
-import {CalendarScreen} from './calendarscreen';
-import {QuestionScreen} from './questionscreen';
-import {JohnSmithScreen} from './johnsmithscreen';
-import {MenteeScreen} from './menteescreen';
+import {HomeScreen} from './screens/homescreen';
+import {LoginScreen} from './screens/loginscreen';
+import {ProfileScreen} from './screens/profilescreen';
+import {ChatScreen} from './screens/chatscreen';
+import {CalendarScreen} from './screens/calendarscreen';
+import {QuestionScreen} from './screens/questionscreen';
+import {MenteeScreen} from './screens/menteescreen';
 import {styles} from './stylesheet';
 
 import { StatusBar } from 'expo-status-bar';
@@ -23,25 +22,26 @@ import * as React from 'react';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const images = {
-  'calendarbuttonicon.png': require("./assets/calendarbuttonicon.png"),
-  'homebuttonicon.png':     require("./assets/homebuttonicon.png"),
-  'chatbuttonicon.png':     require("./assets/chatbuttonicon.png"),
-  'profilebuttonicon.png':  require("./assets/profilebuttonicon.png"),
-  'questionbuttonicon.png': require("./assets/questionbuttonicon.png"),
+  'calendarbuttonicon.png': require("../assets/calendarbuttonicon.png"),
+  'homebuttonicon.png':     require("../assets/homebuttonicon.png"),
+  'chatbuttonicon.png':     require("../assets/chatbuttonicon.png"),
+  'profilebuttonicon.png':  require("../assets/profilebuttonicon.png"),
+  'questionbuttonicon.png': require("../assets/questionbuttonicon.png"),
 
-  'calendaricon.png':       require("./assets/calendaricon.png"),
-  'chaticon.png':           require("./assets/chaticon.png"),
+  'calendaricon.png':       require("../assets/calendaricon.png"),
+  'chaticon.png':           require("../assets/chaticon.png"),
 
 
-  'greenbutterflybuttonicon.png':   require("./assets/greenbutterflybuttonicon.png"),
-  'yellowbutterflybuttonicon.png':  require("./assets/yellowbutterflybuttonicon.png"),
-  'redbutterflybuttonicon.png':     require("./assets/redbutterflybuttonicon.png"),
+  'greenbutterflybuttonicon.png':   require("../assets/greenbutterflybuttonicon.png"),
+  'yellowbutterflybuttonicon.png':  require("../assets/yellowbutterflybuttonicon.png"),
+  'redbutterflybuttonicon.png':     require("../assets/redbutterflybuttonicon.png"),
 
-  'greenbutterflyicon.png':   require("./assets/greenbutterflyicon.png"),
-  'yellowbutterflyicon.png':  require("./assets/yellowbutterflyicon.png"),
-  'redbutterflyicon.png':     require("./assets/redbutterflyicon.png"),
+  'greenbutterflyicon.png':   require("../assets/greenbutterflyicon.png"),
+  'yellowbutterflyicon.png':  require("../assets/yellowbutterflyicon.png"),
+  'redbutterflyicon.png':     require("../assets/redbutterflyicon.png"),
 };
 
 function MockQScreen( {navigation} ) {

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {styles} from './stylesheet';
-import {NavigationBar} from './navigationbar';
-import MenteeList from './menteelist';
+import {styles} from '../stylesheet';
+import {NavigationBar} from '../components/navigationbar';
+import MenteeList from '../components/menteelist';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 
 export function HomeScreen ( {navigation} ) {
@@ -10,7 +10,7 @@ export function HomeScreen ( {navigation} ) {
       <View style={styles.screencontent}>
         <View style={styles.homescreen}>
 
-          <Image style={{width: 40, height: 40}} source={require('./assets/teamshiningskyicon.png')}/>
+          <Image style={{width: 40, height: 40}} source={require('../../assets/teamshiningskyicon.png')}/>
           <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Welcome, Y/N</Text>
 
           <Text>Your Mentees</Text>
