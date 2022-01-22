@@ -2,25 +2,26 @@ import * as React from 'react';
 import {styles} from '../stylesheet';
 import {NavigationBar} from './navigationbar';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
+import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
 
 export default function MenteeList( {navigation} ) {
   const mentees = [{
                     name: 'John Smith',
-                    risk: 'yellow',
                     moodreports: [
-                                  {date: '08/24/2001', mood: 'Happy', stresslevel: 'Neutral'},
-                                  {date: '08/25/2001', mood: 'Neutral', stresslevel: 'Slightly Stressed'},
-                                  {date: '08/26/2001', mood: 'Neutral', stresslevel: 'Neutral'},
-                                 ]
+                                  {date: '08/24/2001', mood: 'Happy', stresslevel: 'Low'},
+                                  {date: '08/25/2001', mood: 'Neutral', stresslevel: 'Medium'},
+                                  {date: '08/26/2001', mood: 'Neutral', stresslevel: 'Low'},
+                                 ],
+                   risk: 'yellow'
                   },
                   {
                     name: 'Jane Doe',
-                    risk: 'red',
                     moodreports: [
-                                  {date: '08/24/2001',mood: 'Sad',stresslevel: 'Neutral'},
-                                  {date: '08/25/2001',mood: 'Neutral',stresslevel: 'Very Stressed'},
-                                  {date: '08/26/2001',mood: 'Sad',stresslevel: 'Slightly Stressed'},
-                                 ]
+                                  {date: '08/24/2001',mood: 'Sad',stresslevel: 'Low'},
+                                  {date: '08/25/2001',mood: 'Neutral',stresslevel: 'High'},
+                                  {date: '08/26/2001',mood: 'Sad',stresslevel: 'Medium'},
+                                 ],
+                   risk: 'yellow'
                   }
                   ]
 

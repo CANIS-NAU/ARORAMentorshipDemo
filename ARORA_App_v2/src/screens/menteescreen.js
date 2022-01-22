@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
+import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
 
 export function MenteeScreen( {route, navigation} )
 {
