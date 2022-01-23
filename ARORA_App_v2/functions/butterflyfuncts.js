@@ -1,4 +1,4 @@
-function FindMRButterfly( mood, stress ) {
+export function FindMRButterfly( mood, stress ) {
   var moodDict = {'Happy' : 1,
                   'Neutral' : 2,
                   'Sad' : 3}
@@ -9,10 +9,10 @@ function FindMRButterfly( mood, stress ) {
 
   var risk = ( moodDict[ mood ] + stressDict[ stress ] ) / 2;
 
-  return butterflyArr[ risk ];
+  return butterflyArr[ risk-1 ];
 }
 
-function FindAVGHelper( mood1, str1, mood2, str2, mood3, str3 ) {
+export function FindAVGHelper( mood1, str1, mood2, str2, mood3, str3 ) {
   var flyDict = {'green' : 1,
                  'yellow' : 2,
                  'red' : 3}
@@ -24,16 +24,16 @@ function FindAVGHelper( mood1, str1, mood2, str2, mood3, str3 ) {
 
   var risk = ( flyDict[flyOne] + flyDict[flyTwo] + flyDict[flyThree] ) / 3;
 
-  return butterflyArr[ risk ];
+  return butterflyArr[ risk-1 ];
 }
 
-function FindAVGButterfly( mentee ) {
-   mood1 = mentee.moodreports[0].mood;
-   mood2 = mentee.moodreports[1].mood;
-   mood3 = mentee.moodreports[2].mood;
-   str1 = mentee.moodreports[0].stresslevel;
-   str2 = mentee.moodreports[1].stresslevel;
-   str3 = mentee.moodreports[2].stresslevel;
+export function FindAVGButterfly( mentee ) {
+   var mood1 = mentee.moodreports[0].mood;
+   var mood2 = mentee.moodreports[1].mood;
+   var mood3 = mentee.moodreports[2].mood;
+   var str1 = mentee.moodreports[0].stresslevel;
+   var str2 = mentee.moodreports[1].stresslevel;
+   var str3 = mentee.moodreports[2].stresslevel;
 
    return FindAVGHelper( mood1, str1, mood2, str2, mood3, str3 );
 }
