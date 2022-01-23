@@ -27,18 +27,8 @@ export function MenteeScreen( {route, navigation} )
 
         <View style={styles.menteebuttonsection}>
           <Pressable style={styles.menteebutton}>
-            <Image style={styles.menteeicons} source={require('../../assets/greenbutterflybuttonicon.png')}/>
-            <Text style={styles.menteeicontext}>Low</Text>
-            </Pressable>
-
-          <Pressable style={styles.menteebutton}>
-            <Image style={styles.menteeicons} source={require('../../assets/yellowbutterflybuttonicon.png')}/>
-            <Text style={styles.menteeicontext}>Medium</Text>
-          </Pressable>
-
-          <Pressable style={styles.menteebutton}>
-            <Image style={styles.menteeicons} source={require('../../assets/redbutterflybuttonicon.png')}/>
-            <Text style={styles.menteeicontext}>High</Text>
+            <Image style={styles.menteeicons} source={require('../../assets/flag.png')}/>
+            <Text style={styles.menteeicontext}>Add Flag</Text>
           </Pressable>
         </View>
       </View>
