@@ -26,7 +26,8 @@ export function MenteeScreen( {route, navigation} )
         </View>
 
         <View style={styles.menteebuttonsection}>
-          <Pressable style={styles.menteebutton}>
+          <Pressable style={styles.menteebutton}
+                                  onPress={() => mentee.isFlagged = true}>
             <Image style={styles.menteeicons} source={require('../../assets/flag.png')}/>
             <Text style={styles.menteeicontext}>Add Flag</Text>
           </Pressable>
