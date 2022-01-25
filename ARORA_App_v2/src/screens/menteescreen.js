@@ -6,6 +6,10 @@ import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../function
 export function MenteeScreen( {route, navigation} )
 {
   const {menteename, mentee} = route.params;
+  var isIncluded = {'Happy' : true,
+                      'Neutral' : true,
+                      'Sad' : true };
+  const filteredList = mentee.moodreports.filter(moodreport => isIncluded[moodreport.mood]);
   return (
     <View style={styles.menteescreen}>
 
@@ -28,7 +32,7 @@ export function MenteeScreen( {route, navigation} )
         <View style={styles.menteebuttonsection}>
           <Pressable style={styles.menteebutton}
                                   onPress={() => mentee.isFlagged = true}>
-            <Image style={styles.menteeicons} source={require('../../assets/flag.png')}/>
+            <Image style={styles.menteeicons} source={require('../../assets/flagoff.png')}/>
             <Text style={styles.menteeicontext}>Add Flag</Text>
           </Pressable>
         </View>
@@ -40,7 +44,7 @@ export function MenteeScreen( {route, navigation} )
       </View>
 
       <View style={styles.moodreportlist}>
-        {mentee.moodreports.map(moodreport =>
+        {filteredList.map(moodreport =>
             (<View style={styles.moodreport}>
               <Text >Mood: {moodreport.mood}</Text>
               <Text >Stress Level: {moodreport.stresslevel}</Text>
