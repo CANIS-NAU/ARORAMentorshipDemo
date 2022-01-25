@@ -86,7 +86,6 @@ function NavigationBar() {
   return(
         <Tab.Navigator initialRouteName="Home"
           tabBarOptions = {{
-            tabStyle: {justifyContent: 'center'},
             labelStyle: {marginBottom: 5, fontsize: 8},
             style: {padding: 5, height: 70}
           }}
