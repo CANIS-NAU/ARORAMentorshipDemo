@@ -9,7 +9,7 @@ export function FindMRButterfly( mood, stress ) {
 
   var risk = ( moodDict[ mood ] + stressDict[ stress ] ) / 2;
 
-  return butterflyArr[ risk-1 ];
+  return butterflyArr[ Math.floor(risk-1) ];
 }
 
 export function FindAVGHelper( mood1, str1, mood2, str2, mood3, str3 ) {
@@ -24,7 +24,7 @@ export function FindAVGHelper( mood1, str1, mood2, str2, mood3, str3 ) {
 
   var risk = ( flyDict[flyOne] + flyDict[flyTwo] + flyDict[flyThree] ) / 3;
 
-  return butterflyArr[ risk-1 ];
+  return butterflyArr[ Math.floor(risk-1) ];
 }
 
 export function FindAVGButterfly( mentee ) {

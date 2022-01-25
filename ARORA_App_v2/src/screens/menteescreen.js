@@ -36,7 +36,7 @@ export function MenteeScreen( {route, navigation} )
 
       <View style={styles.menteecurrentrisk}>
         <Text>Current Risk:</Text>
-        <Image style={styles.menteeicons} source={require('../../assets/' + mentee.risk + 'butterflybuttonicon.png')}/>
+        <Image style={styles.menteeicons} source={require('../../assets/' + FindAVGButterfly(mentee) + 'butterflybuttonicon.png')}/>
       </View>
 
       <View style={styles.moodreportlist}>

@@ -12,7 +12,7 @@ export default function MenteeList( {navigation} ) {
                                   {date: '08/25/2001', mood: 'Neutral', stresslevel: 'Medium'},
                                   {date: '08/26/2001', mood: 'Neutral', stresslevel: 'Low'},
                                  ],
-                   risk: 'yellow',
+                   risk: FindAVGHelper('Happy', 'Low', 'Neutral', 'Medium', 'Neutral', 'Low'),
                    isFlagged: false
                   },
                   {
@@ -22,7 +22,7 @@ export default function MenteeList( {navigation} ) {
                                   {date: '08/25/2001',mood: 'Neutral',stresslevel: 'High'},
                                   {date: '08/26/2001',mood: 'Sad',stresslevel: 'Medium'},
                                  ],
-                   risk: 'yellow',
+                   risk: FindAVGHelper('Sad', 'Low', 'Neutral', 'High', 'Sad', 'Medium'),
                    isFlagged: true
                   }
                   ]
