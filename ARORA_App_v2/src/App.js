@@ -15,6 +15,8 @@ import {ChatScreen} from './screens/chatscreen';
 import {CalendarScreen} from './screens/calendarscreen';
 import {QuestionScreen} from './screens/questionscreen';
 import {MenteeScreen} from './screens/menteescreen';
+import {CreationScreen} from './screens/creationscreen';
+import {ResetScreen} from './screens/resetscreen';
 import {styles} from './stylesheet';
 
 import { StatusBar } from 'expo-status-bar';
@@ -57,6 +59,18 @@ function HomeScreenStack() {
   )};
 export {HomeScreenStack};
 
+function LoginScreenStack(){
+  return(
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Creation" component ={CreationScreen}
+                  options={({route}) => ({ title: route.params.screenname})}/>
+        <Stack.Screen name="Reset" component ={ResetScreen}
+                  options={({route}) => ({ title: route.params.screenname})}/>
+      </Stack.Navigator>
+  )};
+export {LoginScreenStack};
+
 function ProfileScreenStack() {
   return (
       <Stack.Navigator>
@@ -65,8 +79,8 @@ function ProfileScreenStack() {
                   options={({route}) => ({ title: route.params.screenname})}/>
       </Stack.Navigator>
   )};
-
 export {ProfileScreenStack};
+
 const Tab = createBottomTabNavigator();
 function NavigationBar() {
   return(
@@ -106,6 +120,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initalRouteName = "Login">
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Creation" component={CreationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Reset" component={ResetScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={NavigationBar} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
