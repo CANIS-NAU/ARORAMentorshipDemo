@@ -10,8 +10,7 @@ export function CalendarScreen( {route, navigation} )
       <View style={styles.moodreportlist}>
 
       </View>
-      <Pressable style={styles.menteebutton}
-                            onPress={alert('Added event')}>
+      <Pressable style={styles.menteebutton}>
         <Text style={styles.menteeicontext}>Add Event</Text>
       </Pressable>
     </View>
