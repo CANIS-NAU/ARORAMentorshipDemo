@@ -23,6 +23,10 @@ export default function CalendarList( {navigation} ) {
                       <Text>{event.date}</Text>
                       <Text>{event.time}</Text>
                       <Text>{event.desc}</Text>
+                      <Pressable style={styles.menteebutton}
+                                            onPress={alert('Deleted')}>
+                        <Text style={styles.menteeicontext}>Delete</Text>
+                      </Pressable>
                     </View>))}
     </View>)
 }
