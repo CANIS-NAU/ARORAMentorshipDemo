@@ -4,7 +4,7 @@ import {NavigationBar} from './navigationbar';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 
 
-export default function CalendarList( {navigation} ) {
+export function CalendarList( {navigation} ) {
   const events = [{
                     date: '05/10/2022',
                     time: '12:30 PM',
