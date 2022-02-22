@@ -17,6 +17,7 @@ import {QuestionScreen} from './screens/questionscreen';
 import {MenteeScreen} from './screens/menteescreen';
 import {CreationScreen} from './screens/creationscreen';
 import {ResetScreen} from './screens/resetscreen';
+import {CreateMentorScreen} from './screens/creatementorscreen';
 import {styles} from './stylesheet';
 
 import { StatusBar } from 'expo-status-bar';
@@ -77,6 +78,7 @@ function ProfileScreenStack() {
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Login" component ={LoginScreen}
                   options={({route}) => ({ title: route.params.screenname})}/>
+        <Stack.Screen name="CreateMentor" component={CreateMentorScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
   )};
 export {ProfileScreenStack};
