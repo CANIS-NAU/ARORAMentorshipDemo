@@ -8,6 +8,12 @@ export function ProfileScreen({ navigation }) {
 
       <View style={styles.screencontent}>
 
+      {/* IF THEY ARE A SUPERVISOR */}
+            <Pressable style={styles.loginoption}
+                        onPress={() => navigation.navigate('CreateMentor')}>
+              <Text style={styles.loginoptiontext}>Create New Mentor</Text>
+            </Pressable>
+            
       </View>
     </View>
   );
