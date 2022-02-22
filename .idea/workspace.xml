@@ -4,14 +4,82 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2387a655-dadf-4ec4-a543-b9d2b7fcc5c4" name="Default Changelist" comment="" />
+    <list default="true" id="2387a655-dadf-4ec4-a543-b9d2b7fcc5c4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/.buckconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/.buckconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/__tests__/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/__tests__/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/BUCK" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/BUCK" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/build_defs.bzl" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/build_defs.bzl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/debug/java/com/aroraappv2/ReactNativeFlipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/debug/java/com/aroraappv2/ReactNativeFlipper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/java/com/aroraappv2/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/java/com/aroraappv2/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/java/com/aroraappv2/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/java/com/aroraappv2/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/res/drawable/splashscreen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/res/drawable/splashscreen.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/functions/butterflyfuncts.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/functions/butterflyfuncts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/functions/encryption.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/functions/encryption.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2.xcodeproj/xcshareddata/xcschemes/ARORAAppv2.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2.xcodeproj/xcshareddata/xcschemes/ARORAAppv2.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/AppDelegate.h" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/AppDelegate.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/AppDelegate.m" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/AppDelegate.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Images.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Images.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Images.xcassets/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Images.xcassets/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Images.xcassets/SplashScreen.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Images.xcassets/SplashScreen.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Images.xcassets/SplashScreenBackground.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Images.xcassets/SplashScreenBackground.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/SplashScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/SplashScreen.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Supporting/Expo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/Supporting/Expo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/main.m" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/ARORAAppv2/main.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/ios/Podfile.properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/ios/Podfile.properties.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/metro.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/metro.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/components/menteelist.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/menteelist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/components/navigationbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/navigationbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/calendarscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/calendarscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/homescreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/homescreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/loginscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/loginscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/menteescreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/menteescreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/profilescreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/profilescreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/questionscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/questionscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/stylesheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/stylesheet.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="24AsplxBXaFiSEMzDBOML5r8VWO" />
   <component name="ProjectViewState">
@@ -21,11 +89,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rosze\IdeaProjects\ARORAMentorshipDemo\ARORA_App_v2\src\screens" />
+      <recent name="C:\Users\Rosze\IdeaProjects\ARORAMentorshipDemo\ARORA_App_v2" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -35,8 +111,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643084912805</updated>
+      <workItem from="1644301640128" duration="136000" />
+      <workItem from="1644301940288" duration="21000" />
+      <workItem from="1644302014793" duration="34000" />
+      <workItem from="1644302425612" duration="456000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

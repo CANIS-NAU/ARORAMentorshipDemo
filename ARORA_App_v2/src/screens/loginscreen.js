@@ -1,12 +1,37 @@
 import * as React from 'react';
-import {styles} from '../stylesheet';
-import {NavigationBar} from '../components/navigationbar';
+import {styles} from '../../../../../Desktop/Colleg/Spring 2022/CS486C/Testing/2-7/ARORAMentorshipDemo-main/ARORA_App_v2/src/stylesheet';
+import {NavigationBar} from '../../../../../Desktop/Colleg/Spring 2022/CS486C/Testing/2-7/ARORAMentorshipDemo-main/ARORA_App_v2/src/components/navigationbar';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
+import { openDatabase } from 'react-native-sqlite-storage';
+
+//Connection to database
+//const database = openDatabase({name: 'database.db', createFromLocation: 1});
+
+/*
+//runs an SQL query and if there is a row that has this username and password, allow login
+let confirmLogin = () => {
+    database.transaction((trans) => {
+        trans.executeSql(
+            'SELECT * FROM loginCredentials where username = ? AND password = ?', [username], [password],
+            (trans, results) => {
+                var length = results.rows.length;
+                //add logging here maybe?
+                if(length > 0) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        )
+    })
+}
+*/
 
 export function LoginScreen({ navigation }) {
   const [username, userText] = React.useState('');
   const [password, pswdText] = React.useState('');
-  
+
 
   return (
     <View style={styles.screen}>
@@ -40,7 +65,7 @@ export function LoginScreen({ navigation }) {
           
           {/* Obviously need to change to be from database */}
           <Pressable style={styles.loginbutton} 
-                     onPress={(username == 'Username' && password == 'Password') ? () => navigation.navigate('Home') : null}>
+                     onPress={confirmLogin() ? () => navigation.navigate('Home') : null}>
               <Text style={styles.loginbuttontext}> Login </Text>
           </Pressable>
 
