@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {styles} from '../stylesheet';
 import {NavigationBar} from './navigationbar';
-import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
-
+import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider, Alert } from 'react-native';
 
 export function CalendarList( {navigation} ) {
 
@@ -43,12 +42,12 @@ export function CalendarList( {navigation} ) {
 
                       <TextInput style={styles.logininput}
                                placeholder="Time"
-                               onChangeText = {eventTime => dateText(eventTime)}
+                               onChangeText = {eventTime => timeText(eventTime)}
                                defaultValue = {eventTime}/>
 
                       <TextInput style={styles.logininput}
                                placeholder="Description"
-                               onChangeText = {eventDesc => dateText(eventDesc)}
+                               onChangeText = {eventDesc => descText(eventDesc)}
                                defaultValue = {eventDesc}/>
 
                       <Pressable style={styles.menteebutton}
