@@ -33,13 +33,10 @@ export function CalendarScreen( {route, navigation} )
                  onChangeText = {eventDesc => descText(eventDesc)}
                  defaultValue = {eventDesc}/>
 
-        <Pressable style={styles.menteebutton}
-           onPress= {() => {
-                            navigation.navigate('Calendar Screen')
-                           }
-                    }>
-          <Text style={styles.menteeicontext}>Submit</Text>
-        </Pressable>
+        <Button
+                 onPress={() => window.location.reload(false)}
+                 title="Submit"
+        />
 
       </View>
 
