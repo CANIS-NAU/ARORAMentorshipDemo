@@ -2,9 +2,8 @@ import * as React from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
-import CompleteFlatList from 'react-native-complete-flatlist';
 
-export default function MenteeList( {navigation} ) {
+export default function SupervisorMenteeList( {navigation} ) {
   const mentees = [{
                     name: 'John Smith',
                     moodreports: [
@@ -30,7 +29,7 @@ export default function MenteeList( {navigation} ) {
   return (<View style={styles.homescreenmenteelist}>
       {mentees.map(mentee =>
                   (<Pressable style={styles.homescreenmentee}
-                                      onPress={() => navigation.navigate("Mentee Screen", {screenname: mentee.name, mentee: mentee})}>
+                                      onPress={() => navigation.navigate("Supervisor Mentee Screen", {screenname: mentee.name, mentee: mentee})}>
                     <View style={styles.homescreenmentee}>
                       <Image style={styles.homescreenmenteeicons} source={require('../../assets/' + mentee.risk + 'butterflyicon.png')}/>
                       <Text>{mentee.name}</Text>

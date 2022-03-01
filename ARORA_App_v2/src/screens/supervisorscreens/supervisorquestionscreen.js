@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {styles} from '../stylesheet';
+import {styles} from '../../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, ScrollView} from 'react-native';
 
 const anonQuestions = [
@@ -54,13 +54,13 @@ const anonQuestions = [
   }
 ]
 
-export function QuestionScreen({ navigation }) {
+export function SupervisorQuestionScreen({ navigation }) {
 
   const AnonQuestionItem = ({question}) => (
     <View style={styles.question}>
       <View style={{flexDirection: "row"}}>
         <Text>{question.questiontext}</Text>
-        <Image style={{width: 20, height: 20}} source={require('../../assets/redbutterflybuttonicon.png')}/>
+        <Image style={{width: 20, height: 20}} source={require('../../../assets/redbutterflybuttonicon.png')}/>
       </View>
       <TextInput
           multiline={true}

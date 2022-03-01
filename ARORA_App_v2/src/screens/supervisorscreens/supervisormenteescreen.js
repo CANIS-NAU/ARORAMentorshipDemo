@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {styles} from '../stylesheet';
+import {styles} from '../../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
-import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
+import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../../functions/butterflyfuncts.js';
 
-export function MenteeScreen( {route, navigation} )
+export function SupervisorMenteeScreen( {route, navigation} )
 {
   const {menteename, mentee} = route.params;
   var isIncluded = {'Happy' : true,
@@ -12,15 +12,15 @@ export function MenteeScreen( {route, navigation} )
   const filteredList = mentee.moodreports.filter(moodreport => isIncluded[moodreport.mood]);
 
   var butterflyColor = FindAVGButterfly(mentee)
-  var riskButterflyLoc = require('../../assets/yellowbutterflybuttonicon.png')
+  var riskButterflyLoc = require('../../../assets/yellowbutterflybuttonicon.png')
   if (butterflyColor == "yellow"){
-    riskButterflyLoc = require('../../assets/yellowbutterflybuttonicon.png')
+    riskButterflyLoc = require('../../../assets/yellowbutterflybuttonicon.png')
   }
   else if (butterflyColor == "red"){
-    riskButterflyLoc = require('../../assets/redbutterflybuttonicon.png')
+    riskButterflyLoc = require('../../../assets/redbutterflybuttonicon.png')
   }
   else {
-    riskButterflyLoc = require('../../assets/greenbutterflybuttonicon.png')
+    riskButterflyLoc = require('../../../assets/greenbutterflybuttonicon.png')
   }
 
 
@@ -31,14 +31,14 @@ export function MenteeScreen( {route, navigation} )
 
         <View style={styles.menteebuttonsection}>
           <Pressable style={styles.menteebutton}
-                                onPress={() => navigation.navigate('Chat')}>
-            <Image style={styles.menteeicons} source={require('../../assets/chaticon.png')}/>
+                                onPress={() => navigation.navigate('Supervisor Chat')}>
+            <Image style={styles.menteeicons} source={require('../../../assets/chaticon.png')}/>
             <Text style={styles.menteeicontext}>Chat</Text>
           </Pressable>
 
           <Pressable style={styles.menteebutton}
-                                  onPress={() => navigation.navigate('Calendar')}>
-            <Image style={styles.menteeicons} source={require('../../assets/calendaricon.png')}/>
+                                  onPress={() => navigation.navigate('Supervisor Calendar')}>
+            <Image style={styles.menteeicons} source={require('../../../assets/calendaricon.png')}/>
             <Text style={styles.menteeicontext}>Calendar</Text>
           </Pressable>
         </View>
@@ -46,7 +46,7 @@ export function MenteeScreen( {route, navigation} )
         <View style={styles.menteebuttonsection}>
           <Pressable style={styles.menteebutton}
                                   onPress={() => mentee.isFlagged = true}>
-            <Image style={styles.menteeicons} source={require('../../assets/flagoff.png')}/>
+            <Image style={styles.menteeicons} source={require('../../../assets/flagoff.png')}/>
             <Text style={styles.menteeicontext}>Add Flag</Text>
           </Pressable>
         </View>

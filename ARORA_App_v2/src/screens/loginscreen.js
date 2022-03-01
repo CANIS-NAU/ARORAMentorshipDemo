@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {styles} from '../stylesheet';
-import {NavigationBar} from '../components/navigationbar';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
 
 export function LoginScreen({ navigation }) {
   const [username, userText] = React.useState('');
   const [password, pswdText] = React.useState('');
   
+  const supervisor = true;
 
   return (
     <View style={styles.screen}>
@@ -40,7 +40,15 @@ export function LoginScreen({ navigation }) {
           
           {/* Obviously need to change to be from database */}
           <Pressable style={styles.loginbutton} 
-                     onPress={(username == 'Username' && password == 'Password') ? () => navigation.navigate('Home') : null}>
+                     onPress={(username == 'Username' && password == 'Password') ? () => 
+                                {
+                                  if (supervisor == false){
+                                    navigation.navigate('Home')
+                                  }
+                                  else{
+                                    navigation.navigate('Supervisor Home')
+                                  }
+                                }: null}>
               <Text style={styles.loginbuttontext}> Login </Text>
           </Pressable>
 
