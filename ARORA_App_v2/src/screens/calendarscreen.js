@@ -14,8 +14,6 @@ export function CalendarScreen( {route, navigation} )
 
     <View style={styles.screen}>
 
-      <CalendarList navigation={navigation}/>
-
       {/* Form for adding to calendar array */}
       <View>
         <TextInput style={styles.logininput}
@@ -34,11 +32,13 @@ export function CalendarScreen( {route, navigation} )
                  defaultValue = {eventDesc}/>
 
         <Button
-                 onPress={() => window.location.reload(false)}
+                 
                  title="Submit"
         />
 
       </View>
+
+      <CalendarList navigation={navigation}/>
 
     </View>
   );

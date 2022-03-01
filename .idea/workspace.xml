@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2387a655-dadf-4ec4-a543-b9d2b7fcc5c4" name="Default Changelist" comment="" />
+    <list default="true" id="2387a655-dadf-4ec4-a543-b9d2b7fcc5c4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/components/calendarlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/calendarlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/components/menteelist.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/menteelist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/components/mentorlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/mentorlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/components/moodreportlist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/components/supervisormenteelist.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/supervisormenteelist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/menteescreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/menteescreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/profilescreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/profilescreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/questionscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/questionscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorcalendarscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorcalendarscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisormenteescreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisormenteescreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorprofilescreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorprofilescreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorquestionscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorquestionscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/stylesheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/stylesheet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,5 +67,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

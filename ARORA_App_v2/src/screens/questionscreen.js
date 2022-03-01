@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {styles} from '../stylesheet';
-import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, ScrollView} from 'react-native';
+import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl, ScrollView} from 'react-native';
 
 const anonQuestions = [
   {
@@ -75,6 +75,17 @@ export function QuestionScreen({ navigation }) {
     <AnonQuestionItem question = {anonQuestion} />
   )
 
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+
   return (
     <View style={styles.screen}>
 
@@ -84,7 +95,7 @@ export function QuestionScreen({ navigation }) {
           <View>
             <TextInput
               multiline={false}
-              style={{ textAlignVertical: 'top', backgroundColor: "#ffffff", justifyContent: "stretch", marginBottom: 20}}
+              style={{ textAlignVertical: 'top', backgroundColor: "#ffffff", marginBottom: 20}}
             />
           </View>
 
@@ -94,7 +105,12 @@ export function QuestionScreen({ navigation }) {
                 data={anonQuestions}
                 keyExtractor={(item) => item.id}
                 renderItem={renderQuestion}
-                />
+                refreshControl={
+                  <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                  />
+                }/>
           </View>
 
         </View>

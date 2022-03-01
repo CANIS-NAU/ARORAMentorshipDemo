@@ -105,11 +105,8 @@ function ProfileScreenStack() {
   return (
       <Stack.Navigator>
         <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Login" component ={LoginScreen}
-                  options={({route}) => ({ title: route.params.screenname})}/>
         <Stack.Screen name="Change Email" component={ChangeEmailScreen} />
         <Stack.Screen name="Change Password" component={ChangePasswordScreen} />
-        <Stack.Screen name="Mentor Access Code" component={MentorAccessCodeScreen} />
       </Stack.Navigator>
   )};
 export {ProfileScreenStack};
@@ -118,8 +115,6 @@ function SupervisorProfileScreenStack() {
   return (
       <Stack.Navigator>
         <Stack.Screen name="Supervisor Profile" component={SupervisorProfileScreen} />
-        <Stack.Screen name="Login" component ={LoginScreen}
-                  options={({route}) => ({ title: route.params.screenname})}/>
         <Stack.Screen name="Change Email" component={SupervisorChangeEmailScreen} />
         <Stack.Screen name="Change Password" component={SupervisorChangePasswordScreen} />
         <Stack.Screen name="Supervisor Mentor Access Code" component={SupervisorMentorAccessCodeScreen} />
@@ -131,11 +126,20 @@ const Tab = createBottomTabNavigator();
 function NavigationBar() {
   return(
         <Tab.Navigator initialRouteName="Home"
-          tabBarOptions = {{
-            labelStyle: {marginBottom: 5, fontsize: 8},
-            style: {padding: 5, height: 70},
-            showLabel: false
-          }}
+        screenOptions = {{
+          "tabBarShowLabel": false,
+          "tabBarLabelStyle": {
+            "marginBottom": 30,
+          },
+          "tabBarStyle": [
+            {
+              "display": "flex",
+              "height": '10%'
+            },
+            null
+          ],
+          tabBarHideOnKeyboard: true
+        }}
         >
           <Tab.Screen name="Profile" component={ProfileScreenStack}
               options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
@@ -166,16 +170,17 @@ function SupervisorNavigationBar() {
         <Tab.Navigator initialRouteName="Supervisor Home"
           screenOptions = {{
             "tabBarShowLabel": false,
-            "tabBarLabelStyle": {
-              "marginBottom": 5,
-              "fontsize": 8
+          "tabBarLabelStyle": {
+            "marginBottom": 30,
+          },
+          "tabBarStyle": [
+            {
+              "display": "flex",
+              "height": '10%'
             },
-            "tabBarStyle": [
-              {
-                "display": "flex"
-              },
-              null
-            ]
+            null
+          ],
+          tabBarHideOnKeyboard: true
           }}
         >
           <Tab.Screen name="Supervisor Profile" component={SupervisorProfileScreenStack}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {styles} from '../stylesheet';
-import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl } from 'react-native';
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
 
 export function MenteeScreen( {route, navigation} )
@@ -23,7 +23,28 @@ export function MenteeScreen( {route, navigation} )
     riskButterflyLoc = require('../../assets/greenbutterflybuttonicon.png')
   }
 
+  const MoodReportItem = ({moodreport}) => (
+      <View style={styles.moodreport}>
+              <Text style={styles.moodreporttext}>Mood: {moodreport.mood}</Text>
+              <Text style={styles.moodreporttext}>Stress Level: {moodreport.stresslevel}</Text>
+      </View>
+  )
 
+  const renderMoodReport = ({ item: moodreportitem }) => (
+    <MoodReportItem moodreport = {moodreportitem} />
+  )
+
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+  
   return (
     <View style={styles.menteescreen}>
 
@@ -57,13 +78,17 @@ export function MenteeScreen( {route, navigation} )
         <Image style={styles.menteeicons} source={riskButterflyLoc}/>
       </View>
 
-      <View style={styles.moodreportlist}>
-      {filteredList.map(moodreport =>
-            (<View style={styles.moodreport}>
-              <Text >Mood: {moodreport.mood}</Text>
-              <Text >Stress Level: {moodreport.stresslevel}</Text>
-            </View>))}
-      </View>
+      <FlatList 
+        contentContainerStyle={{flexGrow:1}}
+        data={filteredList}
+        keyExtractor={(item) => item.id}
+        renderItem={renderMoodReport}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }/>
 
     </View>
   );

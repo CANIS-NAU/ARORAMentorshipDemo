@@ -6,13 +6,15 @@ const styles = StyleSheet.create({
     flexDirection: "column",
 
   },
+
   screencontent: {
     flex: 8,
   },
+
   navbaricons: {
-    paddingTop: 10,
-    width: 25,
-    height: 25,
+    paddingTop: 30,
+    width: '60%',
+    height: '60%',
   },
 
   loginoptions: {
@@ -43,14 +45,24 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
 
+  homescreenmenteelist: {
+    alignItems: "stretch"
+  },
+
   homescreenmentee: {
     flexDirection: "row",
     alignItems: "center",
   },
 
   homescreenmenteeicons: {
-    width: 15,
+    width: 40,
     height: 15,
+    padding: 20
+  },
+
+  menteeicontext: {
+    width: 15,
+    height: 15
   },
 
   menteescreen: {
@@ -58,17 +70,18 @@ const styles = StyleSheet.create({
   },
 
   moodreportlist: {
+    flex: 1,
     justifyContent: "flex-start",
     alignItems: "stretch",
   },
 
   moodreport: {
-    flex: 1,
     backgroundColor: "grey",
     marginTop: 5,
     marginBottom: 5,
     padding: 10,
   },
+
 
   menteescreencontact: {
     flexDirection: "row",
@@ -77,8 +90,8 @@ const styles = StyleSheet.create({
   },
 
   menteeicons: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
   },
 
   menteescreenbuttons: {
@@ -89,16 +102,21 @@ const styles = StyleSheet.create({
   menteebuttonsection:
   {
     flexDirection: "row",
-    alignItems: "flex-start",
+    justifyContent: "space-between",
+    padding: 10
+  },
+
+  menteeicontext: {
+    height: 20,
   },
 
   menteebutton: {
-    flex: 1,
     margin: 5,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
+
 
   menteecurrentrisk: {
     flexDirection: "row",
@@ -110,7 +128,6 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     flexDirection: "column",
-    justifyContent: "left",
     alignItems: "center",
     backgroundColor: "#dddddd"
   }

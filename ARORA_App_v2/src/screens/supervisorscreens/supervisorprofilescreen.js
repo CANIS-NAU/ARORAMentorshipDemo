@@ -5,7 +5,6 @@ import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'rea
 export function SupervisorProfileScreen({ navigation }) {
   return (
     <View style={styles.screen}>
-
       <View style={styles.screencontent}>
 
         <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Y/N's Profile</Text>
@@ -32,6 +31,11 @@ export function SupervisorProfileScreen({ navigation }) {
                 <Text style={styles.profilebuttontext}>Create Mentor Access Code</Text>
           </Pressable>
         </View>
+
+        <Pressable style={styles.loginbutton} 
+                     onPress={() => navigation.navigate("Login")}>
+              <Text style={styles.loginbuttontext}>Log out</Text>
+        </Pressable>
       
       </View>
     </View>
