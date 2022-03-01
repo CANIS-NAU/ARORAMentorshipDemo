@@ -2,7 +2,7 @@ import * as React from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
-import CompleteFlatList from 'react-native-complete-flatlist';
+//import CompleteFlatList from 'react-native-complete-flatlist';
 
 export default function MenteeList( {navigation} ) {
   const mentees = [{

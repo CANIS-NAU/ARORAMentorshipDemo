@@ -22,7 +22,7 @@ export function CalendarList( {navigation} ) {
 
   return (<View style={styles.homescreenmenteelist}>
     {events.map(event =>
-                  (<View style={styles.homescreenmentee}>
+                  (<View style={styles.moodreport}>
                       <Text>{event.date}</Text>
                       <Text>{event.time}</Text>
                       <Text>{event.desc}</Text>

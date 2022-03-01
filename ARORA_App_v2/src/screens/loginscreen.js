@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'rea
 export function LoginScreen({ navigation }) {
   const [username, userText] = React.useState('');
   const [password, pswdText] = React.useState('');
-  
+
   const supervisor = true;
 
   return (
@@ -13,14 +13,14 @@ export function LoginScreen({ navigation }) {
       <View style={styles.screencontent}>
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
 
-          <TextInput style={styles.logininput} 
+          <TextInput style={styles.logininput}
                      placeholder="Username"
-                     onChangeText = {username => userText(username)} 
+                     onChangeText = {username => userText(username)}
                      defaultValue = {username}/>
 
-          <TextInput style={styles.logininput} 
+          <TextInput style={styles.logininput}
                      placeholder="Password"
-                     onChangeText = {password => pswdText(password)} 
+                     onChangeText = {password => pswdText(password)}
                      defaultValue = {password}
                      secureTextEntry/>
 
@@ -37,10 +37,10 @@ export function LoginScreen({ navigation }) {
             </Pressable>
 
           </View>
-          
+
           {/* Obviously need to change to be from database */}
-          <Pressable style={styles.loginbutton} 
-                     onPress={(username == 'Username' && password == 'Password') ? () => 
+          <Pressable style={styles.loginbutton}
+                     onPress={(username == 'Username' && password == 'Password') ? () =>
                                 {
                                   if (supervisor == false){
                                     navigation.navigate('Home')
