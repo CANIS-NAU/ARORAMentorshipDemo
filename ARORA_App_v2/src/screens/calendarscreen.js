@@ -31,7 +31,6 @@ export function CalendarScreen( {route, navigation} )
                  defaultValue = {eventDesc}/>
 
         <Button
-                 
                  title="Submit"
         />
 
