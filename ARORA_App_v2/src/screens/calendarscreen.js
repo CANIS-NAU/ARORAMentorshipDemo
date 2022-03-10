@@ -1,7 +1,19 @@
 import * as React from 'react';
 import {styles} from '../stylesheet';
-import { StyleSheet, View, Text, Button, Pressable, Image, Alert, TextInput } from 'react-native';
-import { CalendarList } from '../components/calendarlist.js';
+import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl, TextInput } from 'react-native';
+
+let eventslist = [{
+  activity: "active",
+  date: '05/10/2022',
+  time: '12:30 PM',
+  desc: 'Meeting with John Smith'
+},
+{
+  activity: "active",
+  date: '05/12/2022',
+  time: '6:00 PM',
+  desc: 'Jane Doe\'s birthday'
+}]
 
 export function CalendarScreen( {route, navigation} )
 {
@@ -9,6 +21,40 @@ export function CalendarScreen( {route, navigation} )
   const [eventDate, dateText] = React.useState('');
   const [eventTime, timeText] = React.useState('');
   const [eventDesc, descText] = React.useState('');
+  const [events, setEvents] = React.useState([...eventslist]);
+
+  const EventItem = ({event}) => (
+    <View style={styles.homescreenmenteelist}>
+      <View style={styles.moodreport}>
+        <Text>{event.date}</Text>
+        <Text>{event.time}</Text>
+        <Text>{event.desc}</Text>
+        <Button title="Delete" 
+            onPress={() => {
+                    event.activity = "inactive"
+                    setEvents(events.filter(eventitem => eventitem.activity != "inactive"))
+                }
+            }/>
+      </View>
+    </View>
+  )
+
+  const renderEvent = ({ item: eventItem }) => (
+      <EventItem event = {eventItem} />
+  )
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+
+  const onRefresh = React.useCallback(() => {
+      setRefreshing(true);
+      wait(2000).then(() => setRefreshing(false));
+  }, []);
+
+
 
   return (
 
@@ -32,11 +78,27 @@ export function CalendarScreen( {route, navigation} )
 
         <Button
                  title="Submit"
-        />
+                 onPress={() => {
+                  console.log("clicked")
+                  setEvents([...events, {activity: "active", date: eventDate, time: eventTime, desc: eventDesc}])
+              }}/>
 
       </View>
 
-      <CalendarList navigation={navigation}/>
+      <View>
+            <FlatList 
+                keyboardShouldPersistTaps="always"
+                contentContainerStyle={{flexGrow:1}}
+                data={events}
+                keyExtractor={(item, index) => index.id}
+                renderItem={renderEvent}
+                refreshControl={
+                  <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                  />
+                }/>
+        </View>
 
     </View>
   );

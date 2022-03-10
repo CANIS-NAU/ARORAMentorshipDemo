@@ -1,6 +1,7 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {styles} from '../../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl, ScrollView} from 'react-native';
+import Question from '../../components/question.js'
 
 const anonQuestions = [
   {
@@ -56,25 +57,6 @@ const anonQuestions = [
 
 export function SupervisorQuestionScreen({ navigation }) {
 
-  const AnonQuestionItem = ({question}) => (
-    <View style={styles.question}>
-      <View style={{flexDirection: "row"}}>
-        <Text>{question.questiontext}</Text>
-        <Image style={{width: 20, height: 20}} source={require('../../../assets/redbutterflybuttonicon.png')}/>
-      </View>
-      <TextInput
-          multiline={true}
-          numberOfLines={2}
-          style={{height:100, width:150, margin: 20, textAlignVertical: 'top', backgroundColor: "#ffffff"}}
-      />
-      <Button title="Submit"/>
-  </View>
-  )
-
-  const renderQuestion = ({ item: anonQuestion }) => (
-    <AnonQuestionItem question = {anonQuestion} />
-  )
-
   const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   }
@@ -91,7 +73,6 @@ export function SupervisorQuestionScreen({ navigation }) {
 
       <View style={styles.screencontent}>
         <View style={{margin: 10}}>
-
           <View>
             <TextInput
               multiline={false}
@@ -101,10 +82,11 @@ export function SupervisorQuestionScreen({ navigation }) {
 
           <View>
               <FlatList 
+                keyboardShouldPersistTaps="always"
                 contentContainerStyle={{flexGrow:1}}
                 data={anonQuestions}
-                keyExtractor={(item) => item.id}
-                renderItem={renderQuestion}
+                keyExtractor={(item, index) => index}
+                renderItem={(item) => <Question question={item.item}/>}
                 refreshControl={
                   <RefreshControl
                     refreshing={refreshing}
