@@ -1,12 +1,69 @@
 import * as React from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+console.log(AsyncStorage.getAllKeys());
 
 export function LoginScreen({ navigation }) {
-  const [username, userText] = React.useState('');
-  const [password, pswdText] = React.useState('');
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [retrievedUsername, setRUsername] = React.useState('test');
+  const [retrievedPassword, setRPassword] = React.useState('test');
 
   const supervisor = true;
+
+   //This will place the retrieved username to retrievedUsername const
+  const getUsername = async(value) => {
+      try{
+        var value = await AsyncStorage.getItem(value);
+        setRUsername(value);
+        console.log(value);
+        return value;
+      }
+
+      catch(err){
+        console.log(err);
+      }
+    }
+
+  //This will place the retrieved password to retrievedpassword const
+  const getPassword = async(value) => {
+      try{
+        var pass = await AsyncStorage.getItem(value);
+        setRPassword(pass);
+        console.log(pass);
+        return pass;
+      }
+
+      catch(err){
+        console.log(err);
+        return;
+      }
+    }
+
+
+  const onSubmission = async() => {
+    // console.log("We're in onSubmission");
+    let herpderp = await getUsername("userName");
+    herpderp = await getPassword("userPass");
+
+    if((username == retrievedUsername) && (password == retrievedPassword)) {
+      
+      if (supervisor == false){
+        navigation.navigate('Home')
+      }
+
+      else{
+        navigation.navigate('Supervisor Home')
+      }
+
+      return true;
+    }
+    
+    return false;
+  }
+  
 
   return (
     <View style={styles.screen}>
@@ -15,12 +72,12 @@ export function LoginScreen({ navigation }) {
 
           <TextInput style={styles.logininput}
                      placeholder="Username"
-                     onChangeText = {username => userText(username)}
+                     onChangeText = {username => setUsername(username)}
                      defaultValue = {username}/>
 
           <TextInput style={styles.logininput}
                      placeholder="Password"
-                     onChangeText = {password => pswdText(password)}
+                     onChangeText = {password => setPassword(password)}
                      defaultValue = {password}
                      secureTextEntry/>
 
@@ -38,17 +95,8 @@ export function LoginScreen({ navigation }) {
 
           </View>
 
-          {/* Obviously need to change to be from database */}
           <Pressable style={styles.loginbutton}
-                     onPress={(username == 'Username' && password == 'Password') ? () =>
-                                {
-                                  if (supervisor == false){
-                                    navigation.navigate('Home')
-                                  }
-                                  else{
-                                    navigation.navigate('Supervisor Home')
-                                  }
-                                }: null}>
+                     onPress={() => onSubmission()}>
               <Text style={styles.loginbuttontext}> Login </Text>
           </Pressable>
 
