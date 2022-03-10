@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "ARORA_App_v2",
+    "slug": "ARORA_App_v2",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "ARORA_App_v2"
+}
