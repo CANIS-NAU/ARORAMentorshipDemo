@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {styles} from '../stylesheet';
+import {styles} from '../../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl, TextInput } from 'react-native';
-import { getAsyncItem, setAsyncItem, removeAsyncItem, getEvents, getUser } from '../databasehelpers/asyncstoragecalls';
+import { getAsyncItem, setAsyncItem, removeAsyncItem, getEvents, getUser } from '../../databasehelpers/asyncstoragecalls';
 
-export function CalendarScreen( {route, navigation} )
+export function SupervisorCalendarScreenshortcut( {route, navigation} )
 {
-  const username = navigation.getParent().getState().routes[1].params.params.params.username
+  const {username} = route.params;
 
   const [eventDate, dateText] = useState('');
   const [eventTime, timeText] = useState('');

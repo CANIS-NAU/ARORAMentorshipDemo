@@ -1,27 +1,22 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {styles} from '../../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl, TextInput } from 'react-native';
-
-let eventslist = [{
-  activity: "active",
-  date: '05/10/2022',
-  time: '12:30 PM',
-  desc: 'Meeting with John Smith'
-},
-{
-  activity: "active",
-  date: '05/12/2022',
-  time: '6:00 PM',
-  desc: 'Jane Doe\'s birthday'
-}]
+import { getAsyncItem, setAsyncItem, removeAsyncItem, getEvents, getUser } from '../../databasehelpers/asyncstoragecalls';
 
 export function SupervisorCalendarScreen( {route, navigation} )
 {
+  const username = navigation.getParent().getState().routes[1].params.params.params.username
 
-  const [eventDate, dateText] = React.useState('');
-  const [eventTime, timeText] = React.useState('');
-  const [eventDesc, descText] = React.useState('');
-  const [events, setEvents] = React.useState([...eventslist]);
+  const [eventDate, dateText] = useState('');
+  const [eventTime, timeText] = useState('');
+  const [eventDesc, descText] = useState('');
+  const [events, setEvents] = useState('');
+
+  useEffect(() => {
+    //setAsyncItem("events", JSON.stringify(eventsExample))
+    //console.log(navigation.getParent().getState().routes[1].params.params.params.username)
+    getEvents(username).then(eventsList => setEvents(eventsList))
+  }, []);
 
   const EventItem = ({event}) => (
     <View style={styles.homescreenmenteelist}>
@@ -37,14 +32,64 @@ export function SupervisorCalendarScreen( {route, navigation} )
                     
                     event.activity = "inactive";
                     setEvents(events.filter(eventitem => eventitem.activity != "inactive"));
+
+                    getAsyncItem("users").then(users => {
+                      getUser(username).then( user => {
+                        getEvents(username).then (eventsList => {
+                          for (var index = 0; index < eventsList.length; index++){
+                            if (eventsList[index].date == event.date
+                                  && eventsList[index].time == event.time
+                                  && eventsList[index].desc == event.desc){
+    
+                              eventsList.splice(index, 1);
+                            }
+                          }
+                          let userIndex = -1;
+                          for (let index = 0; index < users.length; index++){
+                            if (users[index].username == user.username){
+                              userIndex = index;
+                              break;
+                            }
+                          }
+                          user.events = eventsList;
+                          users[userIndex] = user;
+                          setAsyncItem("users", users)
+
+                        })
+                      })
+                    })
                 }
             }/>
         <Button title="Delete" 
             onPress={() => {
-                    event.activity = "inactive";
-                    console.log(events);
-                    setEvents(events.filter(eventitem => eventitem.activity != "inactive"));
-                    console.log(events);
+                    event.activity = "inactive"
+                    setEvents(events.filter(eventitem => eventitem.activity != "inactive"))
+
+                    getAsyncItem("users").then(users => {
+                      getUser(username).then(user => {
+                        getEvents(username).then (eventsList => {
+                          for (var index = 0; index < eventsList.length; index++){
+                            if (eventsList[index].date == event.date
+                                  && eventsList[index].time == event.time
+                                  && eventsList[index].desc == event.desc){
+    
+                              eventsList.splice(index, 1);
+                            }
+                          }
+                          let userIndex = -1;
+                          for (let index = 0; index < users.length; index++){
+                            if (users[index].username == user.username){
+                              userIndex = index;
+                              break;
+                            }
+                          }
+                          user.events = eventsList;
+                          users[userIndex] = user;
+                          setAsyncItem("users", users)
+
+                        })
+                      })
+                    })
                 }
             }/>
       </View>
@@ -91,11 +136,35 @@ export function SupervisorCalendarScreen( {route, navigation} )
         <Button
                  title="Submit"
                  onPress={() => {
-                  dateText('');
-                  timeText('');
-                  descText('');
-                  console.log("clicked")
                   setEvents([...events, {activity: "active", date: eventDate, time: eventTime, desc: eventDesc}])
+
+                  getAsyncItem("users").then(users => {
+                    getUser(username).then( user => {
+                      getEvents(username).then (eventsList => {
+                        
+                        eventsList.push(
+                          {
+                          activity: "active",
+                          date: eventDate,
+                          time: eventTime,
+                          desc: eventDesc
+                          }
+                        )
+
+                        let userIndex = -1;
+                          for (let index = 0; index < users.length; index++){
+                            if (users[index].username == user.username){
+                              userIndex = index;
+                              break;
+                            }
+                          }
+                        user.events = eventsList;
+                        users[userIndex] = user;
+                        setAsyncItem("users", users)
+
+                      })
+                    })
+                  })
               }}/>
 
       </View>
@@ -105,7 +174,7 @@ export function SupervisorCalendarScreen( {route, navigation} )
                 keyboardShouldPersistTaps="always"
                 contentContainerStyle={{flexGrow:1}}
                 data={events}
-                keyExtractor={(item, index) => index.id}
+                keyExtractor={(item, index) => index}
                 renderItem={renderEvent}
                 refreshControl={
                   <RefreshControl

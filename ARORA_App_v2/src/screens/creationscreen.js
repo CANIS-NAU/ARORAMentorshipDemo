@@ -1,13 +1,16 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAsyncItem, setAsyncItem, removeAsyncItem, getUser } from '../databasehelpers/asyncstoragecalls';
+import { menteesExample } from '../databasehelpers/exampledata';
 
 export function CreationScreen({ navigation }) {
-  const [accessCode, setCode] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [accessCode, setCode] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const storeUsername = async(value) => {
     try {
@@ -66,6 +69,11 @@ export function CreationScreen({ navigation }) {
                      defaultValue = {accessCode}/>
 
           <TextInput style={styles.logininput} 
+                     placeholder = "Name"
+                     onChangeText = {name => setName(name)} 
+                     defaultValue = {name}/>
+
+          <TextInput style={styles.logininput} 
                      placeholder = "Recovery Email"
                      onChangeText = {email => setEmail(email)} 
                      defaultValue = {email}/>
@@ -88,7 +96,61 @@ export function CreationScreen({ navigation }) {
 
         {/* Need to add what happens to other data, preferebly a record in database */}
         <Pressable style={styles.loginbutton} 
-                     onPress={() => onSubmission()}>
+                     onPress={() => {
+                        getAsyncItem("accesscodes").then(codes => {
+                          if (codes.includes(accessCode) && email.includes("@") && email.includes(".") && username != '' && password != ''){
+                            console.log("in")
+                            getAsyncItem("users").then(users => {
+                              
+                              users.push(
+                                {
+                                  name: name,
+                                  username: username,
+                                  password: password,
+                                  email: email,
+                                  authority: "mentor",
+                                  mentors: null,
+                                  mentees: [1, 2],
+                                  messages: [
+                                      /**
+                                       * Mock message data
+                                       */
+                                      // example of system message
+                                      {
+                                        _id: 0,
+                                        text: 'New room created.',
+                                        createdAt: new Date().getTime(),
+                                        system: true
+                                      }
+                                  ],
+                                  events: [{
+                                      activity: "active",
+                                      date: '05/10/2022',
+                                      time: '12:30 PM',
+                                      desc: 'Meeting with John Smith'
+                                    },
+                                    {
+                                      activity: "active",
+                                      date: '05/12/2022',
+                                      time: '6:00 PM',
+                                      desc: 'Jane Doe\'s birthday'
+                                    }],
+                                })
+
+                              setAsyncItem("users", users);
+
+                              const indexToDelete = codes.indexOf(accessCode);
+                              console.log(indexToDelete)
+                              codes.splice(indexToDelete, 1);
+                              setAsyncItem("accesscodes", codes);
+
+                              navigation.navigate("Login");
+
+                            })
+
+                          }
+                        })
+                     }}>
               <Text style={styles.loginbuttontext}> Submit </Text>
           </Pressable>
 

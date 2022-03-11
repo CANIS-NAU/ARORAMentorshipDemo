@@ -1,45 +1,59 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {styles} from '../../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl } from 'react-native';
-import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../../functions/butterflyfuncts.js';
-import { GiftedChat } from 'react-native-gifted-chat';
+import { getAsyncItem, setAsyncItem, removeAsyncItem, getAsyncKeys, clearAsyncStorage, getMentors, questionsExample, getMentees} from '../../databasehelpers/asyncstoragecalls';
+import { loginsExample, mentorsExample, menteesExample, accessCodesExample} from '../../databasehelpers/exampledata';
 
 export function SupervisorChatroomScreen( {route, navigation} )
 {
-  const {menteename, mentee} = route.params;
-  const [messages, setMessages] = useState([
-    /**
-     * Mock message data
-     */
-    // example of system message
-    {
-      _id: 0,
-      text: 'New room created.',
-      createdAt: new Date().getTime(),
-      system: true
-    },
-    // example of chat message
-    {
-      _id: 1,
-      text: 'Henlo!',
-      createdAt: new Date().getTime(),
-      user: {
-        _id: 2,
-        name: 'Test User'
-      }
-    }
-  ]);
+  const {username, mentor} = route.params;
+  const [mentees, setMentees] = useState('');
 
-  // helper method that is sends a message
-  function handleSend(newMessage = []) {
-    setMessages(GiftedChat.append(messages, newMessage));
+  useEffect(() => {
+    //makeQuestions("questions", JSON.stringify(questionsExample))
+    getMentees(mentor.username).then(mentees => {
+      setMentees(mentees)
+    })
+    
+  }, []);
+
+  const LogItem = ({mentee}) => (
+    <View style={styles.homescreenmenteelist}>
+      <Pressable style={styles.homescreenmentee}
+                 onPress={() => navigation.navigate("Supervisor Chat Log", {screenname: mentor.name, mentor: mentor, mentee: mentee})}>
+        <View style={styles.homescreenmentee}>
+          <Text>{mentee.name}</Text>
+        </View>
+      </Pressable>
+    </View>
+  )
+
+  const renderMentees = ({ item: menteeItem }) => (
+    <LogItem mentee = {menteeItem} />
+  )
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
   }
 
-  return (
-    <GiftedChat
-      messages={messages}
-      onSend={newMessage => handleSend(newMessage)}
-      user={{ _id: 1 }}
-    />
-  );
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+
+
+
+  return (<FlatList
+    contentContainerStyle={{flexGrow:1}}
+    data={mentees}
+    keyExtractor={(item, index) => index}
+    renderItem={renderMentees}
+    refreshControl={
+      <RefreshControl
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      />
+    }/>)
 }

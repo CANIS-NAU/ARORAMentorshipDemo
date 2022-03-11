@@ -1,61 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl, ScrollView} from 'react-native';
 import Question from '../components/question.js'
-
-const anonQuestions = [
-  {
-    id: 1,
-    askerid: 27984, 
-    date: "1/23/2022",
-    questiontext: "How do I eliminate stress in my life?",
-    flagged: false
-  },
-  {
-    id: 2,
-    askerid: 27985, 
-    date: "1/24/2022",
-    questiontext: "How do I improve my moods?",
-    flagged: false
-  },
-  {
-    id: 3,
-    askerid: 27986, 
-    date: "1/25/2022",
-    questiontext: "How I keep my depression from taking over my life?",
-    flagged: false
-  },
-  {
-    id: 4,
-    askerid: 27986, 
-    date: "1/25/2022",
-    questiontext: "How I keep my depression from taking over my life?",
-    flagged: false
-  },
-  {
-    id: 5,
-    askerid: 27986, 
-    date: "1/25/2022",
-    questiontext: "How I keep my depression from taking over my life?",
-    flagged: false
-  },
-  {
-    id: 6,
-    askerid: 27986, 
-    date: "1/25/2022",
-    questiontext: "How I keep my depression from taking over my life?",
-    flagged: false
-  },
-  {
-    id: 7,
-    askerid: 27986, 
-    date: "1/25/2022",
-    questiontext: "How I keep my depression from taking over my life?",
-    flagged: false
-  }
-]
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAsyncItem, setAsyncItem, removeAsyncItem, getAsyncKeys, clearAsyncStorage, getLogin, questionsExample } from '../databasehelpers/asyncstoragecalls';
+import { loginsExample, mentorsExample, menteesExample, accessCodesExample} from '../databasehelpers/exampledata';
 
 export function QuestionScreen({ navigation }) {
+  const username = navigation.getParent().getState().routes[1].params.params.params.username
+
+  const [anonQuestions, setQuestions] = useState('');
+
+  useEffect(() => {
+    //makeQuestions("questions", JSON.stringify(questionsExample))
+    //console.log(navigation.getParent().getState().routes[1].params.params.params.username)
+    getAsyncItem("questions").then(results => {
+      setQuestions(results)
+    
+    })}, []);
 
   const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -86,7 +48,7 @@ export function QuestionScreen({ navigation }) {
                 contentContainerStyle={{flexGrow:1}}
                 data={anonQuestions}
                 keyExtractor={(item, index) => index}
-                renderItem={(item) => <Question question={item.item}/>}
+                renderItem={(item) => <Question question={item.item} username={username}/>}
                 refreshControl={
                   <RefreshControl
                     refreshing={refreshing}

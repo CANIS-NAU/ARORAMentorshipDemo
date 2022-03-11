@@ -3,7 +3,8 @@ import {styles} from '../stylesheet';
 import MenteeList from '../components/menteelist';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 
-export function HomeScreen ( {navigation} ) {
+export function HomeScreen ( {route, navigation} ) {
+  const {username} = route.params;
   return(
     <View style={styles.screen}>
       <View style={styles.screencontent}>
@@ -13,7 +14,7 @@ export function HomeScreen ( {navigation} ) {
           <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Welcome, Y/N</Text>
 
           <Text>Your Mentees</Text>
-          <MenteeList navigation={navigation}/>
+          <MenteeList navigation={navigation} username={username}/>
 
         </View>
 

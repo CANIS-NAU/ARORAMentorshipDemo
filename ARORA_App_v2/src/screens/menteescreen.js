@@ -2,13 +2,14 @@ import * as React from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl } from 'react-native';
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
+import { getAsyncItem, setAsyncItem, removeAsyncItem } from '../databasehelpers/asyncstoragecalls';
 
 export function MenteeScreen( {route, navigation} )
 {
-  const {menteename, mentee} = route.params;
+  const {menteename, username, mentee} = route.params;
   var isIncluded = {'Happy' : true,
-  'Neutral' : true,
-  'Sad' : true };
+                    'Neutral' : true,
+                    'Sad' : true };
   const filteredList = mentee.moodreports.filter(moodreport => isIncluded[moodreport.mood]);
 
   var butterflyColor = FindAVGButterfly(mentee)
@@ -39,7 +40,21 @@ export function MenteeScreen( {route, navigation} )
         mentee.flagIcon = require('../../assets/flag1.png')
       }
       console.log(mentee.flag);
-    }
+
+      getAsyncItem("mentees").then( menteesList => {
+        for (var index = 0; index < menteesList.length; index++){
+          if (menteesList[index].name == mentee.name){
+
+            menteesList[index].flag = mentee.flag;
+            menteesList[index].flagIcon = mentee.flagIcon;
+            break;
+          }
+
+        }
+        setAsyncItem("mentees", menteesList)
+      })
+
+  }
 
   const renderMoodReport = ({ item: moodreportitem }) => (
     <MoodReportItem moodreport = {moodreportitem} />
@@ -63,13 +78,13 @@ export function MenteeScreen( {route, navigation} )
 
         <View style={styles.menteebuttonsection}>
           <Pressable style={styles.menteebutton}
-                                onPress={() => navigation.navigate('Chat')}>
+                                onPress={() => navigation.navigate("Chat Room", {screenname: mentee.name, mentee: mentee})}>
             <Image style={styles.menteeicons} source={require('../../assets/chaticon.png')}/>
             <Text style={styles.menteeicontext}>Chat</Text>
           </Pressable>
 
           <Pressable style={styles.menteebutton}
-                                  onPress={() => navigation.navigate('Calendar')}>
+                                  onPress={() => navigation.navigate('Calendar Shortcut', {username: username})}>
             <Image style={styles.menteeicons} source={require('../../assets/calendaricon.png')}/>
             <Text style={styles.menteeicontext}>Calendar</Text>
           </Pressable>
@@ -92,7 +107,7 @@ export function MenteeScreen( {route, navigation} )
       <FlatList
         contentContainerStyle={{flexGrow:1}}
         data={filteredList}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => index}
         renderItem={renderMoodReport}
         refreshControl={
           <RefreshControl
