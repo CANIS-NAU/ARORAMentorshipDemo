@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     flexDirection: "column",
-
+    backgroundColor: "#CE8CC0",
   },
 
   screencontent: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
   logininput: {
     margin: 3,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#f5cbed",
   },
 
   loginoption: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 
   loginbutton: {
     padding: 3,
-    backgroundColor: "#dddddd"
+    backgroundColor: "#f5cbed"
   },
 
   homescreen: {
