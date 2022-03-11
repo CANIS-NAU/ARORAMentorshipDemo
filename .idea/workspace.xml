@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2387a655-dadf-4ec4-a543-b9d2b7fcc5c4" name="Default Changelist" comment="Partial code because I need to make sure I can commit properly">
-      <change afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/supervisorchatlist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatroomscreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorchatroomscreen.js" afterDir="false" />
+    <list default="true" id="2387a655-dadf-4ec4-a543-b9d2b7fcc5c4" name="Default Changelist" comment="Chat completed, just needs some tweaks to add more interesting test messages.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/components/chatlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/chatlist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatscreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/loginscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/loginscreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorchatscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorchatscreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatroomscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatroomscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorchatroomscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorchatroomscreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +55,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643084912805</updated>
-      <workItem from="1646937055740" duration="13583000" />
+      <workItem from="1646937055740" duration="15315000" />
+      <workItem from="1647016070919" duration="1320000" />
     </task>
     <task id="LOCAL-00001" summary="Partial code because I need to make sure I can commit properly">
       <created>1646959379482</created>
@@ -73,7 +65,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646959379482</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Chat completed, just needs some tweaks to add more interesting test messages.">
+      <created>1646969531740</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1646969531740</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +103,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Partial code because I need to make sure I can commit properly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Partial code because I need to make sure I can commit properly" />
+    <MESSAGE value="Chat completed, just needs some tweaks to add more interesting test messages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Chat completed, just needs some tweaks to add more interesting test messages." />
   </component>
 </project>

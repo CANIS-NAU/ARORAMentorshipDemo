@@ -8,20 +8,35 @@ export function ChatroomScreen( {route, navigation} )
 {
   const {menteename, mentee} = route.params;
   const [messages, setMessages] = useState([
-    /**
-     * Mock message data
-     */
-    // example of system message
+    //system message
     {
       _id: 0,
-      text: 'New room created.',
+      text: 'New messages.',
       createdAt: new Date().getTime(),
       system: true
     },
-    // example of chat message
+    //chat message
     {
       _id: 1,
-      text: 'Henlo!',
+      text: 'Thanks for all your help.',
+      createdAt: new Date().getTime(),
+      user: {
+        _id: 2,
+        name: 'Test User'
+      }
+    },
+    {
+      _id: 3,
+      text: 'I am feeling good today!',
+      createdAt: new Date().getTime(),
+      user: {
+        _id: 2,
+        name: 'Test User'
+      }
+    },
+    {
+      _id: 4,
+      text: 'Hello!',
       createdAt: new Date().getTime(),
       user: {
         _id: 2,
