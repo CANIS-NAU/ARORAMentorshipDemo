@@ -6,7 +6,7 @@ export function LoginScreen({ navigation }) {
   const [username, userText] = React.useState('');
   const [password, pswdText] = React.useState('');
 
-  const supervisor = false;
+  const supervisor = true;
 
   return (
     <View style={styles.screen}>

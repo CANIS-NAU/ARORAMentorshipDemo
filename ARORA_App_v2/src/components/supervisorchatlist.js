@@ -3,7 +3,7 @@ import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl } from 'react-native';
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
 
-export default function ChatList( {navigation} ) {
+export default function SupervisorChatList( {navigation} ) {
   const mentees = [
     {
     name: 'John Smith'
@@ -16,7 +16,7 @@ export default function ChatList( {navigation} ) {
   const ChatItem = ({mentee}) => (
     <View style={styles.homescreenmenteelist}>
       <Pressable style={styles.homescreenmentee}
-                 onPress={() => navigation.navigate("Chat Room", {screenname: mentee.name, mentee: mentee})}>
+                 onPress={() => navigation.navigate("Supervisor Chat Room", {screenname: mentee.name, mentee: mentee})}>
         <View style={styles.homescreenmentee}>
           <Text>{mentee.name}</Text>
         </View>

@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2387a655-dadf-4ec4-a543-b9d2b7fcc5c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/chatlist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ARORAMentorshipDemo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ARORAMentorshipDemo.iml" afterDir="false" />
+    <list default="true" id="2387a655-dadf-4ec4-a543-b9d2b7fcc5c4" name="Default Changelist" comment="Partial code because I need to make sure I can commit properly">
+      <change afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/supervisorchatlist.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatroomscreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorchatroomscreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ARORA_App_v2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/components/chatlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/components/chatlist.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/chatscreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/loginscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/loginscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorchatscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/src/screens/supervisorscreens/supervisorchatscreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ARORA_App_v2/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ARORA_App_v2/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,11 +43,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ARORA_App_v2/src/components" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Rosze\IdeaProjects\ARORA\ARORAMentorshipDemo\ARORA_App_v2\src\components" />
+      <recent name="C:\Users\Rosze\IdeaProjects\ARORA\ARORAMentorshipDemo\ARORA_App_v2\src\screens\supervisorscreens" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -53,8 +64,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643084912805</updated>
-      <workItem from="1646937055740" duration="8417000" />
+      <workItem from="1646937055740" duration="13583000" />
     </task>
+    <task id="LOCAL-00001" summary="Partial code because I need to make sure I can commit properly">
+      <created>1646959379482</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1646959379482</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,7 +90,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/chat" />
+                        <option value="chat" />
                       </list>
                     </value>
                   </entry>
@@ -82,5 +101,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Partial code because I need to make sure I can commit properly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Partial code because I need to make sure I can commit properly" />
   </component>
 </project>

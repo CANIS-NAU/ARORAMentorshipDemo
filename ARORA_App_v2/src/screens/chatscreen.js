@@ -4,9 +4,7 @@ import MenteeList from '../components/menteelist';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 import ChatList from '../components/chatlist'
 
-export function ChatScreen( {route, navigation} ) {
-  const {menteename, mentee} = route.params;
-
+export function ChatScreen( {navigation} ) {
   return(
     <View style={styles.screen}>
       <View style={styles.screencontent}>
