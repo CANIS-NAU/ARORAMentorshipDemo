@@ -20,7 +20,6 @@ import {ResetScreen} from './screens/resetscreen';
 import {styles} from './stylesheet';
 import {ChangeEmailScreen} from './screens/changeemailscreen';
 import {ChangePasswordScreen} from './screens/changepasswordscreen';
-import {ChatroomScreen} from './screens/chatroomscreen';
 
 
 // supervisor
@@ -34,7 +33,6 @@ import {SupervisorCalendarScreen} from './screens/supervisorscreens/supervisorca
 import {SupervisorMentorAccessCodeScreen} from './screens/supervisorscreens/supervisormentoraccesscodescreen';
 import {SupervisorChangeEmailScreen} from './screens/supervisorscreens/supervisorchangeemailscreen';
 import {SupervisorChangePasswordScreen} from './screens/supervisorscreens/supervisorchangepasswordscreen';
-import { SupervisorChatroomScreen } from './screens/supervisorscreens/supervisorchatroomscreen'
 
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
@@ -42,7 +40,6 @@ import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'rea
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 
 const images = {
   'calendarbuttonicon.png': require("../assets/calendarbuttonicon.png"),
@@ -87,7 +84,6 @@ function SupervisorHomeScreenStack() {
         <Stack.Screen name="Supervisor Mentee Screen" component ={SupervisorMenteeScreen}
                   options={({route}) => ({ title: route.params.screenname})}/>
         <Stack.Screen name="Supervisor Chat" component = {SupervisorChatScreen} />
-        <Stack.Screen name="Supervisor Chat Screen" component = {SupervisorChatScreen} />
         <Stack.Screen name="Supervisor Calendar" component ={SupervisorCalendarScreen} />
       </Stack.Navigator>
   )};
@@ -115,26 +111,6 @@ function ProfileScreenStack() {
   )};
 export {ProfileScreenStack};
 
-function ChatScreenStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Chat" component={ChatScreen} />
-      <Stack.Screen name="Chat Room" component ={ChatroomScreen}
-                    options={({route}) => ({ title: route.params.screenname})}/>
-    </Stack.Navigator>
-  )};
-export {ChatScreenStack};
-
-function SupervisorChatScreenStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Supervisor Chat" component={SupervisorChatScreen} />
-      <Stack.Screen name="Supervisor Chat Room" component ={SupervisorChatroomScreen}
-                    options={({route}) => ({ title: route.params.screenname})}/>
-    </Stack.Navigator>
-  )};
-export {SupervisorChatScreenStack};
-
 function SupervisorProfileScreenStack() {
   return (
       <Stack.Navigator>
@@ -151,14 +127,15 @@ function NavigationBar() {
   return(
         <Tab.Navigator initialRouteName="Home"
         screenOptions = {{
-          "tabBarShowLabel": false,
-          "tabBarLabelStyle": {
+            "tabBarShowLabel": false,
+            "tabBarLabelStyle": {
             "marginBottom": 30,
           },
           "tabBarStyle": [
             {
               "display": "flex",
-              "height": '10%'
+              "height": '10%',
+              "backgroundColor": "#f5cbed",
             },
             null
           ],
@@ -177,8 +154,8 @@ function NavigationBar() {
               options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
               return (<Image style={styles.navbaricons} source={require('../assets/homebuttonicon.png')}/>)}}}/>
 
-          <Tab.Screen name="Chat" component = {ChatScreenStack}
-                      options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+          <Tab.Screen name="Chat" component = {ChatScreen}
+              options={{ tabBarIcon: ({size, focused, color}) => {
               return (<Image style={styles.navbaricons} source={require('../assets/chatbuttonicon.png')}/>)}}}/>
 
           <Tab.Screen name="Calendar" component ={CalendarScreen}
@@ -194,13 +171,16 @@ function SupervisorNavigationBar() {
         <Tab.Navigator initialRouteName="Supervisor Home"
           screenOptions = {{
             "tabBarShowLabel": false,
-          "tabBarLabelStyle": {
+            "tabBarLabelStyle": {
             "marginBottom": 30,
+            "color": "#f5cbed",
           },
           "tabBarStyle": [
             {
               "display": "flex",
-              "height": '10%'
+              "height": '10%',
+              "color": "#f5cbed",              
+              "color": "#f5cbed",
             },
             null
           ],
@@ -219,8 +199,8 @@ function SupervisorNavigationBar() {
               options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
               return (<Image style={styles.navbaricons} source={require('../assets/homebuttonicon.png')}/>)}}}/>
 
-          <Tab.Screen name="Supervisor Chat" component = {SupervisorChatScreenStack}
-                      options={{ headerShown: false, tabBarIcon: ({size, focused, color}) => {
+          <Tab.Screen name="Supervisor Chat" component = {SupervisorChatScreen}
+              options={{ tabBarIcon: ({size, focused, color}) => {
               return (<Image style={styles.navbaricons} source={require('../assets/chatbuttonicon.png')}/>)}}}/>
 
           <Tab.Screen name="Supervisor Calendar" component ={SupervisorCalendarScreen}
