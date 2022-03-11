@@ -8,10 +8,10 @@ console.log(AsyncStorage.getAllKeys());
 export function LoginScreen({ navigation }) {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [retrievedUsername, setRUsername] = React.useState('test');
-  const [retrievedPassword, setRPassword] = React.useState('test');
+  const [retrievedUsername, setRUsername] = React.useState('');
+  const [retrievedPassword, setRPassword] = React.useState('');
 
-  const supervisor = true;
+  const supervisor = false;
 
    //This will place the retrieved username to retrievedUsername const
   const getUsername = async(value) => {
@@ -63,13 +63,18 @@ export function LoginScreen({ navigation }) {
     
     return false;
   }
-  
+
 
   return (
     <View style={styles.screen}>
       <View style={styles.screencontent}>
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-
+          
+          <View style={{flex: .1, justifyContent: "center", alignItems: "center", flexDirection: "row"}}>
+          <Image style={{width: 30, height: 30}} source={require('../../assets/teamshiningskyicon.png')}/>
+          <Text style = {{marginLeft: 15, fontSize: 30, fontFamily:'arial', color: "#f5cbed"}}>ARORA</Text>
+          </View>
+          
           <TextInput style={styles.logininput}
                      placeholder="Username"
                      onChangeText = {username => setUsername(username)}
