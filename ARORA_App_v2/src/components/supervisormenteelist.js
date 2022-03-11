@@ -13,8 +13,8 @@ export default function SupervisorMenteeList( {navigation} ) {
                                 ],
                     risk: FindAVGHelper('Happy', 'Low', 'Neutral', 'Medium', 'Neutral', 'Low'),
                     riskIcon: require('../../assets/greenbutterflyicon.png'),
-                    flag: "",
-                    flagIcon: require('../../assets/flagoff.png'),
+                    flag: 0,
+                    flagIcon: require('../../assets/flag0.png'),
                     },
                     {
                     name: 'Jane Doe',
@@ -25,8 +25,8 @@ export default function SupervisorMenteeList( {navigation} ) {
                                 ],
                     risk: FindAVGHelper('Sad', 'Low', 'Neutral', 'High', 'Sad', 'Medium'),
                     riskIcon: require('../../assets/yellowbutterflyicon.png'),
-                    flag: "on",
-                    flagIcon: require('../../assets/flagon.png'),
+                    flag: 0,
+                    flagIcon: require('../../assets/flag0.png'),
                     }
                     ]
 
@@ -56,7 +56,7 @@ export default function SupervisorMenteeList( {navigation} ) {
 
 
 
-  return (<FlatList 
+  return (<FlatList
                 contentContainerStyle={{flexGrow:1}}
                 data={mentees}
                 keyExtractor={(item) => item.id}
