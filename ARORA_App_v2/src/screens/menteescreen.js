@@ -30,6 +30,17 @@ export function MenteeScreen( {route, navigation} )
       </View>
   )
 
+  const toggleFlag = () => {
+      mentee.flag = (mentee.flag + 1) % 2;
+      if( mentee.flag == 0 ) {
+          mentee.flagIcon = require('../../assets/flag0.png')
+        }
+      else {
+        mentee.flagIcon = require('../../assets/flag1.png')
+      }
+      console.log(mentee.flag);
+    }
+
   const renderMoodReport = ({ item: moodreportitem }) => (
     <MoodReportItem moodreport = {moodreportitem} />
   )
@@ -44,7 +55,7 @@ export function MenteeScreen( {route, navigation} )
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
   }, []);
-  
+
   return (
     <View style={styles.menteescreen}>
 
@@ -66,8 +77,8 @@ export function MenteeScreen( {route, navigation} )
 
         <View style={styles.menteebuttonsection}>
           <Pressable style={styles.menteebutton}
-                                  onPress={() => mentee.isFlagged = true}>
-            <Image style={styles.menteeicons} source={require('../../assets/flagoff.png')}/>
+                                  onPress={() => toggleFlag()}>
+            <Image style={styles.menteeicons} source={require('../../assets/flag0.png')}/>
             <Text style={styles.menteeicontext}>Add Flag</Text>
           </Pressable>
         </View>
@@ -78,7 +89,7 @@ export function MenteeScreen( {route, navigation} )
         <Image style={styles.menteeicons} source={riskButterflyLoc}/>
       </View>
 
-      <FlatList 
+      <FlatList
         contentContainerStyle={{flexGrow:1}}
         data={filteredList}
         keyExtractor={(item) => item.id}

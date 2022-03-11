@@ -3,29 +3,28 @@ import {styles} from '../../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, Divider } from 'react-native';
 
 export function SupervisorMentorAccessCodeScreen({ navigation }) {
-  const [email, emailText] = React.useState('');
+  const [accessCode, setCode] = React.useState('');
 
   return (
     <View style={styles.screen}>
-
       <View style={styles.screencontent}>
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
 
-            <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Enter your recovery account email to recieve a change of email request.</Text>
+          {/* Supervisor only needs to make new blanks with a set access code*/}
+          <TextInput style={styles.logininput} 
+                     placeholder = "Access Code"
+                     onChangeText = {accessCode => setCode(accessCode)} 
+                     defaultValue = {accessCode}/>
 
-          <TextInput style={styles.changeemailinput} 
-                     placeholder = "Recovery Email"
-                     onChangeText = {email => emailText(email)} 
-                     defaultValue = {email}/>
+        <Pressable style={styles.loginoption}
+                              onPress={() => navigation.navigate('Profile')}>
+              <Text style={styles.loginoptiontext}>Return to Login</Text>
+        </Pressable>
 
-          <Pressable style={styles.changeemailoption}
-                              onPress={() => navigation.navigate('Supervisor Profile')}>
-                <Text style={styles.changeemailtext}>Return to Profile</Text>
-          </Pressable>
-        
-          <Pressable style={styles.changeemailbutton}
-                   onPress={email == 'hello@nau.edu' ? () => navigation.navigate('Supervisor Profile') : null}>
-              <Text style={styles.changeemailbuttontext}>Submit</Text>
+        {/* Need to add what happens to other data, preferebly a record in database */}
+        <Pressable style={styles.loginbutton} 
+                     onPress={(accessCode != null) ? () => navigation.navigate('Profile') : null}>
+              <Text style={styles.loginbuttontext}> Submit </Text>
           </Pressable>
 
         </View>
