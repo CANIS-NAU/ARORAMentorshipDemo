@@ -68,7 +68,8 @@ function HomeScreenStack() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Mentee Screen" component ={MenteeScreen}
                   options={({route}) => ({ title: route.params.screenname})}/>
-        <Stack.Screen name="Chat" component = {ChatScreen} />
+        <Stack.Screen name="Chat" component = {ChatScreen}
+                  options={({route}) => ({ title: route.params.screenname})}/>
         <Stack.Screen name="Calendar" component ={CalendarScreen} />
       </Stack.Navigator>
   )};
@@ -84,6 +85,7 @@ function SupervisorHomeScreenStack() {
         <Stack.Screen name="Supervisor Mentee Screen" component ={SupervisorMenteeScreen}
                   options={({route}) => ({ title: route.params.screenname})}/>
         <Stack.Screen name="Supervisor Chat" component = {SupervisorChatScreen} />
+        <Stack.Screen name="Supervisor Chat Screen" component = {SupervisorChatScreen} />
         <Stack.Screen name="Supervisor Calendar" component ={SupervisorCalendarScreen} />
       </Stack.Navigator>
   )};
