@@ -11,21 +11,21 @@ export function ChangeEmailScreen({ navigation }) {
       <View style={styles.screencontent}>
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
 
-            <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Enter your recovery account email to recieve a change of email request.</Text>
+          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Enter your recovery account email to recieve a change of email request.</Text>
 
-          <TextInput style={styles.changeemailinput} 
+          <TextInput style={styles.changeemailinput}
                      placeholder = "Recovery Email"
-                     onChangeText = {email => emailText(email)} 
+                     onChangeText = {email => emailText(email)}
                      defaultValue = {email}/>
 
           <Pressable style={styles.changeemailoption}
-                              onPress={() => navigation.navigate('Profile')}>
-                <Text style={styles.changeemailtext}>Return to Profile</Text>
+                     onPress={() => navigation.navigate('Profile')}>
+            <Text style={styles.changeemailtext}>Return to Profile</Text>
           </Pressable>
-        
+
           <Pressable style={styles.changeemailbutton}
-                   onPress={email == '@nau.edu' ? () => navigation.navigate('Profile') : null}>
-              <Text style={styles.changeemailbuttontext}>Submit</Text>
+                     onPress={email == '@nau.edu' ? () => navigation.navigate('Profile') : null}>
+            <Text style={styles.changeemailbuttontext}>Submit</Text>
           </Pressable>
 
         </View>

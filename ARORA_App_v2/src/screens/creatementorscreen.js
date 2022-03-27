@@ -11,20 +11,20 @@ export function CreateMentorScreen({ navigation }) {
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
 
           {/* Supervisor only needs to make new blanks with a set access code*/}
-          <TextInput style={styles.logininput} 
+          <TextInput style={styles.logininput}
                      placeholder = "Access Code"
-                     onChangeText = {accessCode => setCode(accessCode)} 
+                     onChangeText = {accessCode => setCode(accessCode)}
                      defaultValue = {accessCode}/>
 
-        <Pressable style={styles.loginoption}
-                              onPress={() => navigation.navigate('Profile')}>
-              <Text style={styles.loginoptiontext}>Return to Login</Text>
-        </Pressable>
+          <Pressable style={styles.loginoption}
+                   onPress={() => navigation.navigate('Profile')}>
+            <Text style={styles.loginoptiontext}>Return to Login</Text>
+          </Pressable>
 
-        {/* Need to add what happens to other data, preferebly a record in database */}
-        <Pressable style={styles.loginbutton} 
-                     onPress={(accessCode != null) ? () => navigation.navigate('Profile') : null}>
-              <Text style={styles.loginbuttontext}> Submit </Text>
+          {/* Need to add what happens to other data, preferebly a record in database */}
+          <Pressable style={styles.loginbutton}
+                    onPress={(accessCode != null) ? () => navigation.navigate('Profile') : null}>
+            <Text style={styles.loginbuttontext}> Submit </Text>
           </Pressable>
 
         </View>

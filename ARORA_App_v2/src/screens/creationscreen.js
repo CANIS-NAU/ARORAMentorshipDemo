@@ -14,7 +14,7 @@ export function CreationScreen({ navigation }) {
       var value = await AsyncStorage.setItem("userName", value);
       setUsername(value);
       return value;
-    } 
+    }
 
     catch (err) {
       console.log(err);
@@ -26,7 +26,7 @@ export function CreationScreen({ navigation }) {
       var value = await AsyncStorage.setItem("userPass", value)
       setPassword(value);
       return value;
-    } 
+    }
 
     catch (err) {
       console.log(err);
@@ -41,7 +41,7 @@ export function CreationScreen({ navigation }) {
         var placePassword = await storePassword(password);
         navigation.navigate('Login')
         return true;
-      } 
+      }
 
       catch (err) {
         console.log(err);
@@ -60,36 +60,36 @@ export function CreationScreen({ navigation }) {
       <View style={styles.screencontent}>
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
 
-          <TextInput style={styles.logininput} 
+          <TextInput style={styles.logininput}
                      placeholder = "Access Code"
-                     onChangeText = {accessCode => setCode(accessCode)} 
+                     onChangeText = {accessCode => setCode(accessCode)}
                      defaultValue = {accessCode}/>
 
-          <TextInput style={styles.logininput} 
+          <TextInput style={styles.logininput}
                      placeholder = "Recovery Email"
-                     onChangeText = {email => setEmail(email)} 
+                     onChangeText = {email => setEmail(email)}
                      defaultValue = {email}/>
 
-          <TextInput style={styles.logininput} 
+          <TextInput style={styles.logininput}
                      placeholder = "Username"
-                     onChangeText = {username => setUsername(username)} 
+                     onChangeText = {username => setUsername(username)}
                      defaultValue = {username}/>
 
-          <TextInput style={styles.logininput} 
+          <TextInput style={styles.logininput}
                      placeholder = "Password"
-                     onChangeText = {password => setPassword(password)} 
+                     onChangeText = {password => setPassword(password)}
                      defaultValue = {password}
                      secureTextEntry/>
 
-        <Pressable style={styles.loginoption}
-                              onPress={() => navigation.navigate('Login')}>
-              <Text style={styles.loginoptiontext}>Return to Login</Text>
-        </Pressable>
+          <Pressable style={styles.loginoption}
+                     onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.loginoptiontext}>Return to Login</Text>
+          </Pressable>
 
-        {/* Need to add what happens to other data, preferebly a record in database */}
-        <Pressable style={styles.loginbutton} 
+          {/* Need to add what happens to other data, preferebly a record in database */}
+          <Pressable style={styles.loginbutton}
                      onPress={() => onSubmission()}>
-              <Text style={styles.loginbuttontext}> Submit </Text>
+            <Text style={styles.loginbuttontext}> Submit </Text>
           </Pressable>
 
         </View>

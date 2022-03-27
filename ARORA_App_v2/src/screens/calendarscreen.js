@@ -2,6 +2,7 @@ import * as React from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl, TextInput } from 'react-native';
 
+{/*Sample list of events*/}
 let eventslist = [{
   activity: "active",
   date: '05/10/2022',
@@ -29,7 +30,9 @@ export function CalendarScreen( {route, navigation} )
         <Text>{event.date}</Text>
         <Text>{event.time}</Text>
         <Text>{event.desc}</Text>
-        <Button title="Delete" 
+
+        {/*Button for removing a given event*/}
+        <Button title="Delete"
             onPress={() => {
                     event.activity = "inactive"
                     setEvents(events.filter(eventitem => eventitem.activity != "inactive"))
@@ -59,23 +62,24 @@ export function CalendarScreen( {route, navigation} )
   return (
 
     <View style={styles.screen}>
-      
+
       <View>
         <TextInput style={styles.logininput}
-                 placeholder="Date"
-                 onChangeText = {eventDate => dateText(eventDate)}
-                 defaultValue = {eventDate}/>
+                   placeholder="Date"
+                   onChangeText = {eventDate => dateText(eventDate)}
+                   defaultValue = {eventDate}/>
 
         <TextInput style={styles.logininput}
-                 placeholder="Time"
-                 onChangeText = {eventTime => timeText(eventTime)}
-                 defaultValue = {eventTime}/>
+                   placeholder="Time"
+                   onChangeText = {eventTime => timeText(eventTime)}
+                   defaultValue = {eventTime}/>
 
         <TextInput style={styles.logininput}
-                 placeholder="Description"
-                 onChangeText = {eventDesc => descText(eventDesc)}
-                 defaultValue = {eventDesc}/>
+                   placeholder="Description"
+                   onChangeText = {eventDesc => descText(eventDesc)}
+                   defaultValue = {eventDesc}/>
 
+        {/*Button for adding a described event to the list*/}
         <Button
                  title="Submit"
                  onPress={() => {
@@ -86,13 +90,13 @@ export function CalendarScreen( {route, navigation} )
       </View>
 
       <View>
-            <FlatList 
-                keyboardShouldPersistTaps="always"
-                contentContainerStyle={{flexGrow:1}}
-                data={events}
-                keyExtractor={(item, index) => index.id}
-                renderItem={renderEvent}
-                refreshControl={
+        <FlatList
+                  keyboardShouldPersistTaps="always"
+                  contentContainerStyle={{flexGrow:1}}
+                  data={events}
+                  keyExtractor={(item, index) => index.id}
+                  renderItem={renderEvent}
+                  refreshControl={
                   <RefreshControl
                     refreshing={refreshing}
                     onRefresh={onRefresh}

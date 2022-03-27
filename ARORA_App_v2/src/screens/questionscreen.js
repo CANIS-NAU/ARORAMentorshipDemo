@@ -3,52 +3,53 @@ import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl, ScrollView} from 'react-native';
 import Question from '../components/question.js'
 
+{/*Sample list of anonymous questions*/}
 const anonQuestions = [
   {
     id: 1,
-    askerid: 27984, 
+    askerid: 27984,
     date: "1/23/2022",
     questiontext: "How do I eliminate stress in my life?",
     flagged: false
   },
   {
     id: 2,
-    askerid: 27985, 
+    askerid: 27985,
     date: "1/24/2022",
     questiontext: "How do I improve my moods?",
     flagged: false
   },
   {
     id: 3,
-    askerid: 27986, 
+    askerid: 27986,
     date: "1/25/2022",
     questiontext: "How I keep my depression from taking over my life?",
     flagged: false
   },
   {
     id: 4,
-    askerid: 27986, 
+    askerid: 27986,
     date: "1/25/2022",
     questiontext: "How I keep my depression from taking over my life?",
     flagged: false
   },
   {
     id: 5,
-    askerid: 27986, 
+    askerid: 27986,
     date: "1/25/2022",
     questiontext: "How I keep my depression from taking over my life?",
     flagged: false
   },
   {
     id: 6,
-    askerid: 27986, 
+    askerid: 27986,
     date: "1/25/2022",
     questiontext: "How I keep my depression from taking over my life?",
     flagged: false
   },
   {
     id: 7,
-    askerid: 27986, 
+    askerid: 27986,
     date: "1/25/2022",
     questiontext: "How I keep my depression from taking over my life?",
     flagged: false
@@ -81,7 +82,7 @@ export function QuestionScreen({ navigation }) {
           </View>
 
           <View>
-              <FlatList 
+              <FlatList
                 keyboardShouldPersistTaps="always"
                 contentContainerStyle={{flexGrow:1}}
                 data={anonQuestions}

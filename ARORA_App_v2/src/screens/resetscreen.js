@@ -13,20 +13,20 @@ export function ResetScreen({ navigation }) {
       <View style={styles.screencontent}>
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
 
-          <TextInput style={styles.logininput} 
+          <TextInput style={styles.logininput}
                      placeholder="Recovery Email"
-                     onChangeText = {email => emailText(email)} 
+                     onChangeText = {email => emailText(email)}
                      defaultValue = {email}/>
 
           <Pressable style={styles.loginoption}
-                              onPress={() => navigation.navigate('Login')}>
-                <Text style={styles.loginoptiontext}>Return to Login</Text>
+                     onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.loginoptiontext}>Return to Login</Text>
           </Pressable>
-        
+
         {/* Need to add actual password sendback */}
           <Pressable style={styles.loginbutton}
-                   onPress={email == '@nau.edu' ? () => navigation.navigate('Login') : null}>
-              <Text style={styles.loginbuttontext}>Submit</Text>
+                     onPress={email == '@nau.edu' ? () => navigation.navigate('Login') : null}>
+            <Text style={styles.loginbuttontext}>Submit</Text>
           </Pressable>
 
         </View>

@@ -24,10 +24,10 @@ export function MenteeScreen( {route, navigation} )
   }
 
   const MoodReportItem = ({moodreport}) => (
-      <View style={styles.moodreport}>
-              <Text style={styles.moodreporttext}>Mood: {moodreport.mood}</Text>
-              <Text style={styles.moodreporttext}>Stress Level: {moodreport.stresslevel}</Text>
-      </View>
+    <View style={styles.moodreport}>
+      <Text style={styles.moodreporttext}>Mood: {moodreport.mood}</Text>
+      <Text style={styles.moodreporttext}>Stress Level: {moodreport.stresslevel}</Text>
+    </View>
   )
 
   const toggleFlag = () => {
@@ -63,13 +63,13 @@ export function MenteeScreen( {route, navigation} )
 
         <View style={styles.menteebuttonsection}>
           <Pressable style={styles.menteebutton}
-                                onPress={() => navigation.navigate('Chat')}>
+                     onPress={() => navigation.navigate('Chat')}>
             <Image style={styles.menteeicons} source={require('../../assets/chaticon.png')}/>
             <Text style={styles.menteeicontext}>Chat</Text>
           </Pressable>
 
           <Pressable style={styles.menteebutton}
-                                  onPress={() => navigation.navigate('Calendar')}>
+                     onPress={() => navigation.navigate('Calendar')}>
             <Image style={styles.menteeicons} source={require('../../assets/calendaricon.png')}/>
             <Text style={styles.menteeicontext}>Calendar</Text>
           </Pressable>
@@ -77,7 +77,7 @@ export function MenteeScreen( {route, navigation} )
 
         <View style={styles.menteebuttonsection}>
           <Pressable style={styles.menteebutton}
-                                  onPress={() => toggleFlag()}>
+                     onPress={() => toggleFlag()}>
             <Image style={styles.menteeicons} source={require('../../assets/flag0.png')}/>
             <Text style={styles.menteeicontext}>Add Flag</Text>
           </Pressable>
