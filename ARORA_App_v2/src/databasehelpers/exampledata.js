@@ -187,7 +187,7 @@ export const questionsExample = [
     askerid: 27984, 
     date: "1/23/2022",
     questiontext: "How do I eliminate stress in my life?",
-    responsetext: "Currently no response.",
+    responses: [],
     flagged: false
   },
   {
@@ -195,7 +195,7 @@ export const questionsExample = [
     askerid: 27985, 
     date: "1/24/2022",
     questiontext: "How do I improve my moods?",
-    responsetext: "Currently no response.",
+    responses: [],
     flagged: false
   },
   {
@@ -203,7 +203,7 @@ export const questionsExample = [
     askerid: 27986, 
     date: "1/25/2022",
     questiontext: "How I keep my depression from taking over my life?",
-    responsetext: "Currently no response.",
+    responses: [],
     flagged: false
   },
   {
@@ -211,7 +211,7 @@ export const questionsExample = [
     askerid: 27986, 
     date: "1/25/2022",
     questiontext: "How I manage my anxiety?",
-    responsetext: "Currently no response.",
+    responses: [],
     flagged: false
   },
   {
@@ -219,7 +219,7 @@ export const questionsExample = [
     askerid: 27986, 
     date: "1/25/2022",
     questiontext: "What should I do if I am experiencing bullying?",
-    responsetext: "Currently no response.",
+    responses: [],
     flagged: false
   },
   {
@@ -227,7 +227,7 @@ export const questionsExample = [
     askerid: 27986, 
     date: "1/25/2022",
     questiontext: "What should I do if I am experiencing sucidial thoughts?",
-    responsetext: "Currently no response.",
+    responses: [],
     flagged: false
   },
   {
@@ -235,8 +235,13 @@ export const questionsExample = [
     askerid: 27986, 
     date: "1/25/2022",
     questiontext: "How do I effectively meditate?",
-    responsetext: "Currently no response.",
+    responses: [],
     flagged: false
   }
 ]
 
+
+// responses : [
+//   username: ? 
+//   text: ?
+// ]

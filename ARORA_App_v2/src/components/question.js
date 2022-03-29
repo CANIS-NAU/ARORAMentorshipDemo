@@ -8,9 +8,9 @@ export default function Question( {question, username} ) {
     const [text, setText] = useState("");
     const [textsave, setTextSave] = useState("");
     const [flagged, setFlagged] = useState('');
+    const [responses, setResponses] = useState([]);
 
     useEffect(() => {
-      console.log(question)
       setText(question.responsetext)
       if (question.flagged == true){
         setFlagged("Flagged!")
@@ -18,6 +18,30 @@ export default function Question( {question, username} ) {
       else{
         setFlagged("")
       }
+    }, []);
+
+    const ResponseItem = ({response}) => (
+      <View style={styles.homescreenmenteelist}>
+          <View style={styles.homescreenmentee}>
+            <Text>{response.username}:  </Text>
+            <Text>{response.text}</Text>
+          </View>
+      </View>
+    )
+  
+    const renderResponse = ({ item: responseItem }) => (
+      <ResponseItem response = {responseItem} />
+    )
+  
+    const [refreshing, setRefreshing] = React.useState(false);
+  
+    const wait = (timeout) => {
+      return new Promise(resolve => setTimeout(resolve, timeout));
+    }
+  
+    const onRefresh = React.useCallback(() => {
+      setRefreshing(true);
+      wait(2000).then(() => setRefreshing(false));
     }, []);
 
     return(
@@ -52,6 +76,17 @@ export default function Question( {question, username} ) {
       </View>
       <Text>{flagged}</Text>
       <Text>Responses:</Text>
+      <FlatList 
+            contentContainerStyle={{flexGrow:1}}
+            data={question.responses}
+            keyExtractor={(item, index) => index}
+            renderItem={renderResponse}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+              />
+      }/>
       <Text>{text}</Text>
       <TextInput
           multiline={false}
@@ -69,7 +104,8 @@ export default function Question( {question, username} ) {
                               && questionsList[index].date == question.date
                               && questionsList[index].id == question.id){
       
-                          questionsList[index].responsetext = textsave;
+                          questionsList[index].username = username;
+                          questionsList[index].responses.push({username: username, text: textsave});
                           break;
                         }
       
