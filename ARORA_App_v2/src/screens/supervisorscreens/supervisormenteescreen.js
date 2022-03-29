@@ -1,11 +1,15 @@
 import * as React from 'react';
 import {styles} from '../../stylesheet';
-import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl } from 'react-native';
+import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl } from 'react-native';
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../../functions/butterflyfuncts.js';
+import { getAsyncItem, setAsyncItem, removeAsyncItem, getMentees } from '../../databasehelpers/asyncstoragecalls';
+import { menteesExample } from '../../databasehelpers/exampledata';
 
-export function SupervisorMenteeScreen( {route, navigation} )
+
+export function SupervisorMenteeScreen( {navigation, route} )
 {
-  const {menteename, mentee} = route.params;
+  const {username, mentor, mentee} = route.params;
+
   var isIncluded = {'Happy' : true,
   'Neutral' : true,
   'Sad' : true };
@@ -39,7 +43,21 @@ export function SupervisorMenteeScreen( {route, navigation} )
         mentee.flagIcon = require('../../../assets/flag1.png')
       }
       console.log(mentee.flag);
-    }
+
+      getAsyncItem("mentees").then( menteesList => {
+        for (var index = 0; index < menteesList.length; index++){
+          if (menteesList[index].name == mentee.name){
+
+            menteesList[index].flag = mentee.flag;
+            menteesList[index].flagIcon = mentee.flagIcon;
+            break;
+          }
+
+        }
+        setAsyncItem("mentees", menteesList)
+      })
+
+  }
 
   const renderMoodReport = ({ item: moodreportitem }) => (
     <MoodReportItem moodreport = {moodreportitem} />
@@ -63,13 +81,13 @@ export function SupervisorMenteeScreen( {route, navigation} )
 
         <View style={styles.menteebuttonsection}>
           <Pressable style={styles.menteebutton}
-                                onPress={() => navigation.navigate('Chat')}>
+                                onPress={() => navigation.navigate("Supervisor Chat Log", {screenname: mentee.name, mentor: mentor, mentee: mentee})}>
             <Image style={styles.menteeicons} source={require('../../../assets/chaticon.png')}/>
             <Text style={styles.menteeicontext}>Chat</Text>
           </Pressable>
 
           <Pressable style={styles.menteebutton}
-                                  onPress={() => navigation.navigate('Calendar')}>
+                                  onPress={() => navigation.navigate('Supervisor Calendar', {username: username})}>
             <Image style={styles.menteeicons} source={require('../../../assets/calendaricon.png')}/>
             <Text style={styles.menteeicontext}>Calendar</Text>
           </Pressable>

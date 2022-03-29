@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl, TextInput } from 'react-native';
 import { getAsyncItem, setAsyncItem, removeAsyncItem, getEvents, getUser } from '../databasehelpers/asyncstoragecalls';
-import { DateTimePicker } from '@react-native-community/datetimepicker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 
 export function CalendarScreen( {route, navigation} )
@@ -34,8 +34,8 @@ export function CalendarScreen( {route, navigation} )
   const EventItem = ({event}) => (
     <View style={styles.homescreenmenteelist}>
       <View style={styles.moodreport}>
-        <Text>{new Date(event.date).toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric"})}</Text>
-        <Text>{new Date(event.time).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12: true})}</Text>
+        <Text>{new Date(event.date).toDateString()}</Text>
+        <Text>{moment(event.time.toISOString()).format("hh:mm A")}</Text>
         <Text>{event.desc}</Text>
         <Button title="Edit" 
             onPress={() => {
@@ -127,15 +127,14 @@ export function CalendarScreen( {route, navigation} )
   const onChange = (event, selectedDate) => {
     console.log(selectedDate)
     console.log(mode)
-    const currentDate = selectedDate;
 
     if (mode == "date"){
-      dateText(currentDate);
+      dateText(selectedDate);
       console.log("changed date")
       setDateShow(false);
     }
     else if (mode == "time"){
-      timeText(currentDate)
+      timeText(selectedDate)
       console.log("changed time")
       setTimeShow(false);
     }
@@ -147,19 +146,21 @@ export function CalendarScreen( {route, navigation} )
 
     if (currentMode == 'time'){
       setTimeShow(true);
-      setMode(currentMode);
+      setMode(currentMode)
     }
     else if (currentMode == 'date'){
       setDateShow(true);
-      setMode(currentMode);
+      setMode(currentMode)
     }
   };
 
   const showDatepicker = () => {
+    setMode('date');
     showMode('date');
   };
 
   const showTimepicker = () => {
+    setMode('time');
     showMode('time');
   };
 
@@ -184,7 +185,7 @@ export function CalendarScreen( {route, navigation} )
 
         <Text>Time</Text>
         <Pressable onPress={showTimepicker}>
-          <Text>{moment(eventTime).format('hh:mm A')}</Text>
+          <Text>{moment(new Date(eventTime)).format('hh:mm A')}</Text>
           {timeShow && (
             <DateTimePicker
               testID="timePicker"

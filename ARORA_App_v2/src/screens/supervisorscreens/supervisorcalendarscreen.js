@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {styles} from '../../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl, TextInput } from 'react-native';
 import { getAsyncItem, setAsyncItem, removeAsyncItem, getEvents, getUser } from '../../databasehelpers/asyncstoragecalls';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import moment from 'moment';
 
 export function SupervisorCalendarScreen( {route, navigation} )
 {
@@ -13,12 +15,17 @@ export function SupervisorCalendarScreen( {route, navigation} )
     username = navigation.getParent().getState().routes[1].params.params.params.username
   }
 
-  const [eventDate, dateText] = useState('');
-  const [eventTime, timeText] = useState('');
+  const [mode, setMode] = useState(new Date());
+  const [timeShow, setTimeShow] = useState(false);
+  const [dateShow, setDateShow] = useState(false);
+  const [eventDate, dateText] = useState(new Date());
+  const [eventTime, timeText] = useState(new Date());
   const [eventDesc, descText] = useState('');
   const [events, setEvents] = useState('');
 
   useEffect(() => {
+    console.log(route.params)
+    console.log(username)
     //setAsyncItem("events", JSON.stringify(eventsExample))
     //console.log(navigation.getParent().getState().routes[1].params.params.params.username)
     getEvents(username).then(eventsList => setEvents(eventsList))
@@ -27,8 +34,8 @@ export function SupervisorCalendarScreen( {route, navigation} )
   const EventItem = ({event}) => (
     <View style={styles.homescreenmenteelist}>
       <View style={styles.moodreport}>
-        <Text>{event.date}</Text>
-        <Text>{event.time}</Text>
+        <Text>{new Date(event.date).toDateString()}</Text>
+        <Text>{moment(event.time).format("hh:mm a")}</Text>
         <Text>{event.desc}</Text>
         <Button title="Edit" 
             onPress={() => {
@@ -117,22 +124,78 @@ export function SupervisorCalendarScreen( {route, navigation} )
       wait(2000).then(() => setRefreshing(false));
   }, []);
 
+  const onChange = (event, selectedDate) => {
+    console.log(selectedDate)
+    console.log(mode)
 
+    if (mode == "date"){
+      dateText(selectedDate);
+      console.log("changed date")
+      setDateShow(false);
+    }
+    else if (mode == "time"){
+      timeText(selectedDate)
+      console.log("changed time")
+      setTimeShow(false);
+    }
+    setMode('')
+  };
+
+
+  const showMode = (currentMode) => {
+
+    if (currentMode == 'time'){
+      setTimeShow(true);
+      setMode(currentMode)
+    }
+    else if (currentMode == 'date'){
+      setDateShow(true);
+      setMode(currentMode)
+    }
+  };
+
+  const showDatepicker = () => {
+    setMode('date');
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    setMode('time');
+    showMode('time');
+  };
 
   return (
 
     <View style={styles.screen}>
       
       <View>
-        <TextInput style={styles.logininput}
-                 placeholder="Date"
-                 onChangeText = {eventDate => dateText(eventDate)}
-                 defaultValue = {eventDate}/>
+        <Text>Date</Text>
+        <Pressable onPress={showDatepicker}>
+          <Text>{eventDate.toDateString()}</Text>
+          {dateShow && (
+            <DateTimePicker
+              testID="datePicker"
+              value={eventDate}
+              mode="date"
+              is24Hour={true}
+              onChange={onChange}
+            />
+          )}
+        </Pressable>
 
-        <TextInput style={styles.logininput}
-                 placeholder="Time"
-                 onChangeText = {eventTime => timeText(eventTime)}
-                 defaultValue = {eventTime}/>
+        <Text>Time</Text>
+        <Pressable onPress={showTimepicker}>
+          <Text>{moment(eventTime).format('hh:mm A')}</Text>
+          {timeShow && (
+            <DateTimePicker
+              testID="timePicker"
+              value={eventTime}
+              mode="time"
+              is24Hour={true}
+              onChange={onChange}
+            />
+          )}
+        </Pressable>
 
         <TextInput style={styles.logininput}
                  placeholder="Description"

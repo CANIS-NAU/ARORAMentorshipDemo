@@ -13,7 +13,7 @@ import {LoginScreen} from './screens/loginscreen';
 import {ProfileScreen} from './screens/profilescreen';
 import {ChatScreen} from './screens/chatscreen';
 import {CalendarScreen} from './screens/calendarscreen';
-import {CalendarScreenshortcut} from './screens/calendarscreenshortcut';
+//import {CalendarScreenshortcut} from './screens/calendarscreenshortcut';
 import {QuestionScreen} from './screens/questionscreen';
 import {MenteeScreen} from './screens/menteescreen';
 import {CreationScreen} from './screens/creationscreen';
@@ -32,7 +32,7 @@ import {SupervisorChatScreen} from './screens/supervisorscreens/supervisorchatsc
 import {SupervisorProfileScreen} from './screens/supervisorscreens/supervisorprofilescreen';
 import {SupervisorQuestionScreen} from './screens/supervisorscreens/supervisorquestionscreen';
 import {SupervisorCalendarScreen} from './screens/supervisorscreens/supervisorcalendarscreen';
-import {SupervisorCalendarScreenshortcut} from './screens/supervisorscreens/supervisorcalendarscreenshortcut';
+//import {SupervisorCalendarScreenshortcut} from './screens/supervisorscreens/supervisorcalendarscreenshortcut';
 import {SupervisorMentorAccessCodeScreen} from './screens/supervisorscreens/supervisormentoraccesscodescreen';
 import {SupervisorChangeEmailScreen} from './screens/supervisorscreens/supervisorchangeemailscreen';
 import {SupervisorChangePasswordScreen} from './screens/supervisorscreens/supervisorchangepasswordscreen';
@@ -77,7 +77,7 @@ function HomeScreenStack(props) {
                   options={({route}) => ({ title: route.params.screenname})}initalParams={{username: usernameParam}}/>
         <Stack.Screen name="Chat Room" component = {ChatroomScreen} options={({route}) => ({ title: route.params.screenname})}initalParams={{username: usernameParam}}/>
         <Stack.Screen name="Calendar" component ={CalendarScreen} initalParams={{username: usernameParam}}/>
-        <Stack.Screen name="Calendar Shortcut" component ={CalendarScreenshortcut} initalParams={{username: usernameParam}}/>
+
       </Stack.Navigator>
   )};
 export {HomeScreenStack};
@@ -96,7 +96,7 @@ function SupervisorHomeScreenStack(props) {
         <Stack.Screen name="Supervisor Chat Logs" component = {SupervisorChatroomScreen} initalParams={{username: usernameParam}}/>
         <Stack.Screen name="Supervisor Chat Log" component = {SupervisorChatlogScreen} initalParams={{username: usernameParam}} options={({route}) => ({ title: route.params.screenname})}/>
         <Stack.Screen name="Supervisor Calendar" component ={SupervisorCalendarScreen} initalParams={{username: usernameParam}}/>
-        <Stack.Screen name="Supervisor Calendar Shortcut" component ={SupervisorCalendarScreenshortcut} initalParams={{username: usernameParam}}/>
+
       </Stack.Navigator>
   )};
 export {SupervisorHomeScreenStack};
