@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#7897AB"
   },
 
   screencontent: {
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
   },
 
   moodreport: {
-    backgroundColor: "grey",
+    backgroundColor: "#655D8A",
     marginTop: 5,
     marginBottom: 5,
     padding: 10,

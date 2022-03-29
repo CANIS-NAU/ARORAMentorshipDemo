@@ -157,7 +157,7 @@ function NavigationBar() {
           },
           "tabBarStyle": [
             {
-              "backgroundColor": "#476273",
+              "backgroundColor": "#7897AB",
               "display": "flex",
               "height": '10%'
             },
@@ -200,7 +200,7 @@ function SupervisorNavigationBar() {
           },
           "tabBarStyle": [
             {
-              "backgroundColor": "#476273",
+              "backgroundColor": "#7897AB",
               "display": "flex",
               "height": '10%'
             },
