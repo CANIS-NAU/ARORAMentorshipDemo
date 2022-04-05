@@ -21,7 +21,7 @@ export default function MenteeList( {navigation, username} ) {
             <View style={styles.homescreenmentee}>
                 <Image style={styles.homescreenmenteeicons} source={mentee.riskIcon}/>
                 <Text>{mentee.name}</Text>
-                <Image style={styles.homescreenmenteeicons} source={mentee.flagIcon}/>
+                <Image style={styles.homescreenmenteeflags} source={mentee.flagIcon}/>
             </View>
         </Pressable>
     </View>

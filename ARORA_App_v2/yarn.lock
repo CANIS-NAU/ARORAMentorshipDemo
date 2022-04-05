@@ -4944,17 +4944,15 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
-<<<<<<< Updated upstream
 "react-moment@^1.1.1":
   "integrity" "sha512-WjwvxBSnmLMRcU33do0KixDB+9vP3e84eCse+rd+HNklAMNWyRgZTDEQlay/qK6lcXFPRuEIASJTpEt6pyK7Ww=="
   "resolved" "https://registry.npmjs.org/react-moment/-/react-moment-1.1.1.tgz"
   "version" "1.1.1"
-=======
+
 "react-native-async-storage@^0.0.1":
   "integrity" "sha1-Xy71/zDq5ktCSOJltTTnLqQc3Gk="
   "resolved" "https://registry.npmjs.org/react-native-async-storage/-/react-native-async-storage-0.0.1.tgz"
   "version" "0.0.1"
->>>>>>> Stashed changes
 
 "react-native-codegen@^0.0.6":
   "integrity" "sha512-cMvrUelD81wiPitEPiwE/TCNscIVauXxmt4NTGcy18HrUd0WRWXfYzAQGXm0eI87u3NMudNhqFj2NISJenxQHg=="
@@ -5125,11 +5123,7 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
-<<<<<<< Updated upstream
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.67 || 1000.0.0", "react-native@>=0.14.0", "react-native@>=0.42.0", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
-=======
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.67 || 1000.0.0", "react-native@>=0.14.0", "react-native@>=0.5.0", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
->>>>>>> Stashed changes
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.67 || 1000.0.0", "react-native@>=0.14.0", "react-native@>=0.42.0", "react-native@>=0.5.0", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
   "integrity" "sha512-2OEU74U0Ek1/WeBzPbg6XDsCfjF/9fhrNX/5TFgEiBKd5mNc9LOZ/OlMmkb7iues/ZZ/oc51SbEfLRQdcW0fVw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.64.3.tgz"
   "version" "0.64.3"
