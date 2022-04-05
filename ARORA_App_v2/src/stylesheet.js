@@ -52,12 +52,27 @@ const styles = StyleSheet.create({
   homescreenmentee: {
     flexDirection: "row",
     alignItems: "center",
+    width: "100%",
+    height: 50,
+    marginBottom: 3,
+    marginTop: 3,
+    backgroundColor: "#7897AB"
   },
 
   homescreenmenteeicons: {
     width: 40,
     height: 15,
-    padding: 20
+    padding: 20,
+    marginLeft: 3,
+    marginRight: 3
+  },
+
+  homescreenmenteeflags: {
+    width: 40,
+    height: 15,
+    padding: 20,
+    position: "absolute",
+    right: 10
   },
 
   menteeicontext: {

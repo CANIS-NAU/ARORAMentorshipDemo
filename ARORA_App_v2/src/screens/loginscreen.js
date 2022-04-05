@@ -23,7 +23,7 @@ export function LoginScreen({ navigation }) {
     //removeAsyncItem("userName")
     //removeAsyncItem("userPass")
     //removeAsyncItem("accesscodes")
-    
+
     // clear all
     //clearAsyncStorage()
 
@@ -38,7 +38,7 @@ export function LoginScreen({ navigation }) {
     //setAsyncItem("accesscodes", accessCodesExample)
 
     //getAsyncItem("accesscodes").then(result => console.log(result))
-    //getAsyncItem("users").then(result => console.log(result))
+    getAsyncItem("users").then(result => console.log(result))
     //getAsyncItem("questions").then(result => console.log(result))
     getAsyncKeys()
   }, []);
@@ -81,15 +81,15 @@ export function LoginScreen({ navigation }) {
         var authority = loggedin[1];
         var username = loggedin[2];
         if (authority == "supervisor"){
-          navigation.navigate("Supervisor Navigation Bar", 
-                  {screen: "Supervisor Home Stack", 
-                   params: {screen: "Supervisor Home", 
+          navigation.navigate("Supervisor Navigation Bar",
+                  {screen: "Supervisor Home Stack",
+                   params: {screen: "Supervisor Home",
                             params: {username: username}}})
         }
         else{
-          navigation.navigate("Home Navigation Bar", 
-                  {screen: "Home Stack", 
-                   params: {screen: "Home", 
+          navigation.navigate("Home Navigation Bar",
+                  {screen: "Home Stack",
+                   params: {screen: "Home",
                             params: {username: username}}})
         }
 
@@ -99,7 +99,7 @@ export function LoginScreen({ navigation }) {
       return false;
     })
   }
-  
+
 
   return (
     <View style={styles.screen}>
