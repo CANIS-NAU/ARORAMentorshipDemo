@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {styles} from '../../stylesheet';
-import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl, ScrollView} from 'react-native';
+import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, SectionList, RefreshControl, ScrollView} from 'react-native';
 import Question from '../../components/question.js'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getAsyncItem, setAsyncItem, removeAsyncItem, getAsyncKeys, clearAsyncStorage, getLogin, questionsExample } from '../../databasehelpers/asyncstoragecalls';
@@ -10,7 +10,40 @@ import { loginsExample, mentorsExample, menteesExample, accessCodesExample} from
 export function SupervisorQuestionScreen({ navigation }) {
   const username = navigation.getParent().getState().routes[1].params.params.params.username
 
-  const [anonQuestions, setQuestions] = useState('');
+  const [questions, setQuestions] = React.useState([])
+  const [searchQuestions, setSearchQuestions] = React.useState([])
+
+  useEffect(() => {
+    //setAsyncItem("mentees", menteesExample)
+    getAsyncItem("questions").then(results => {
+      setQuestions(results)
+      setSearchQuestions(results)
+    })}, []);
+
+  const searchQueryQuestions = (query) => {
+    if (query == ''){
+      setSearchQuestions(questions)
+    }
+    else{
+      let queryQuestions = []
+      for (let question of questions ){
+        if (question.questiontext.toLowerCase().includes(query.toLowerCase())
+            || question.date.includes(query)){
+          queryQuestions.push(question)
+        }
+      }
+      setSearchQuestions(queryQuestions)
+
+    }
+  }
+
+
+  const getQuestionItem = (item) => {
+    console.log(questions.length)
+    return (
+      <Question question={item} username ={username}/>
+    );
+  }
 
   const getFlaggedQuestions = async(value) => {
     try{
@@ -42,6 +75,15 @@ export function SupervisorQuestionScreen({ navigation }) {
     getFlaggedQuestions("questions")
   }, []);
 
+  const responseItem = ({response}) => (
+    <View style={styles.homescreenmenteelist}>
+        <View style={styles.homescreenmentee}>
+          <Text>{response.username}:  </Text>
+          <Text>{response.text}</Text>
+        </View>
+    </View>
+  )
+
 
   const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -50,6 +92,7 @@ export function SupervisorQuestionScreen({ navigation }) {
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {
+    getFlaggedQuestions("questions")
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
   }, []);
@@ -60,19 +103,19 @@ export function SupervisorQuestionScreen({ navigation }) {
       <View style={styles.screencontent}>
         <View style={{margin: 10}}>
           <View>
-            <TextInput
-              multiline={false}
-              style={{ textAlignVertical: 'top', backgroundColor: "#ffffff", marginBottom: 20}}
-            />
+            <TextInput style={styles.logininput}
+              placeholder="Search"
+              onChangeText = {searchQuery => searchQueryQuestions(searchQuery)}
+              />
           </View>
 
           <View>
               <FlatList 
                 keyboardShouldPersistTaps="always"
                 contentContainerStyle={{flexGrow:1}}
-                data={anonQuestions}
+                data={searchQuestions}
                 keyExtractor={(item, index) => index}
-                renderItem={(item) => <Question question={item.item} username ={username}/>}
+                renderItem={(item) => getQuestionItem(item.item)}
                 refreshControl={
                   <RefreshControl
                     refreshing={refreshing}

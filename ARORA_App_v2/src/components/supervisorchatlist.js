@@ -1,11 +1,36 @@
 import React, {useState, useEffect} from 'react';
 import {styles} from '../stylesheet';
-import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, Pressable, Image, FlatList, RefreshControl } from 'react-native';
 import { getAsyncItem, setAsyncItem, removeAsyncItem, getAsyncKeys, clearAsyncStorage, getMentors, getMentees } from '../databasehelpers/asyncstoragecalls';
 import { loginsExample, mentorsExample, menteesExample, accessCodesExample} from '../databasehelpers/exampledata';
 
 export default function SupervisorChatList( {navigation, username} ) {
   const [mentorList, setMentors] = useState('');
+  const [searchMentors, setSearchMentors] = React.useState([])
+
+  useEffect(() => {
+    //setAsyncItem("mentees", menteesExample)
+    getMentors(username).then(mentors => {
+      setMentors(mentors)
+      setSearchMentors(mentors)
+    })}, []);
+
+  const searchQueryMentors = (query) => {
+    if (query == ''){
+      setSearchMentors(mentorList)
+    }
+    else{
+      getMentors(username).then(mentors => {
+        let queryMentors = []
+        for (let mentor of mentors ){
+          if (mentor.name.toLowerCase().includes(query.toLowerCase())){
+            queryMentors.push(mentor)
+          }
+        }
+        setSearchMentors(queryMentors)
+      })
+    }
+  }
 
   useEffect(() => {
     //makeQuestions("questions", JSON.stringify(questionsExample))
@@ -43,15 +68,22 @@ export default function SupervisorChatList( {navigation, username} ) {
 
 
 
-  return (<FlatList
-    contentContainerStyle={{flexGrow:1}}
-    data={mentorList}
-    keyExtractor={(item, index) => index}
-    renderItem={renderChat}
-    refreshControl={
-      <RefreshControl
-        refreshing={refreshing}
-        onRefresh={onRefresh}
-      />
-    }/>)
+  return (
+    <View>
+      <TextInput style={styles.logininput}
+          placeholder="Search"
+          onChangeText = {searchQuery => searchQueryMentors(searchQuery)}
+          />
+      <FlatList
+      contentContainerStyle={{flexGrow:1}}
+      data={searchMentors}
+      keyExtractor={(item, index) => index}
+      renderItem={renderChat}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+        />
+      }/>
+    </View>)
 }

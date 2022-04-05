@@ -33,14 +33,14 @@ export function LoginScreen({ navigation }) {
     //setAsyncItem("accesscodes", accessCodesExample)
     //setAsyncItem("questions", questionsExample)
 
-    //setAsyncItem("mentees", menteesExample)
+    //setAsyncItem("mentees", menteesExample) 
     //setAsyncItem("messages", messagesExample)
     //setAsyncItem("accesscodes", accessCodesExample)
 
     //getAsyncItem("accesscodes").then(result => console.log(result))
-    getAsyncItem("users").then(result => console.log(result))
+    //getAsyncItem("users").then(result => console.log(result))
     //getAsyncItem("questions").then(result => console.log(result))
-    getAsyncKeys()
+    //getAsyncKeys()
   }, []);
 
    //This will place the retrieved username to retrievedUsername const
@@ -85,6 +85,9 @@ export function LoginScreen({ navigation }) {
                   {screen: "Supervisor Home Stack",
                    params: {screen: "Supervisor Home",
                             params: {username: username}}})
+        }
+        else if (authority == "ADMIN"){
+          navigation.navigate("Admin Navigation")
         }
         else{
           navigation.navigate("Home Navigation Bar",

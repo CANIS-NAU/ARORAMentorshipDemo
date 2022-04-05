@@ -1,18 +1,39 @@
 import React, {useState, useEffect} from 'react';
 import {styles} from '../stylesheet';
-import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, Pressable, Image, FlatList, RefreshControl } from 'react-native';
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
 
-import { getAsyncItem, setAsyncItem, removeAsyncItem } from '../databasehelpers/asyncstoragecalls';
+import { getAsyncItem, setAsyncItem, removeAsyncItem, getMentees } from '../databasehelpers/asyncstoragecalls';
 import { menteesExample } from '../databasehelpers/exampledata';
 
 export default function MenteeList( {navigation, username} ) {
   const [mentees, setMentees] = React.useState([])
+  const [searchMentees, setSearchMentees] = React.useState([])
 
   useEffect(() => {
     //setAsyncItem("mentees", menteesExample)
-    getAsyncItem("mentees").then(menteesList => setMentees(menteesList))
+    getMentees(username).then(menteesList => {
+      setMentees(menteesList);
+      setSearchMentees(menteesList);
+    })
   }, []);
+
+  const searchQueryMentees = (query) => {
+    if (query == ''){
+      setSearchMentees(mentees)
+    }
+    else{
+      getMentees(username).then(mentees => {
+        let queryMentees = []
+        for (let mentee of mentees ){
+          if (mentee.name.toLowerCase().includes(query.toLowerCase())){
+            queryMentees.push(mentee)
+          }
+        }
+        setSearchMentees(queryMentees)
+      })
+    }
+  }
 
   const MenteeItem = ({mentee}) => (
     <View style={styles.homescreenmenteelist}>
@@ -44,15 +65,23 @@ export default function MenteeList( {navigation, username} ) {
 
 
 
-  return (<FlatList
-                contentContainerStyle={{flexGrow:1}}
-                data={mentees}
-                keyExtractor={(item, index) => index}
-                renderItem={renderMentee}
-                refreshControl={
-                  <RefreshControl
-                    refreshing={refreshing}
-                    onRefresh={onRefresh}
-                  />
-                }/>)
+  return (
+    <View>
+      <TextInput style={styles.logininput}
+      placeholder="Search"
+      onChangeText = {searchQuery => searchQueryMentees(searchQuery)}
+      />
+
+      <FlatList
+                  contentContainerStyle={{flexGrow:1}}
+                  data={searchMentees}
+                  keyExtractor={(item, index) => index}
+                  renderItem={renderMentee}
+                  refreshControl={
+                    <RefreshControl
+                      refreshing={refreshing}
+                      onRefresh={onRefresh}
+                    />
+                  }/>
+    </View>)
 }

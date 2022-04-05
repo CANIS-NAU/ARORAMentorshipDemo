@@ -23,6 +23,8 @@ import {ChangeEmailScreen} from './screens/changeemailscreen';
 import {ChangePasswordScreen} from './screens/changepasswordscreen';
 import {ChatroomScreen} from './screens/chatroomscreen';
 
+//admin
+import {AdminScreen} from './screens/adminscreens/adminscreen';
 
 // supervisor
 import {SupervisorMentorScreen} from './screens/supervisorscreens/supervisormentorscreen';
@@ -203,6 +205,14 @@ function NavigationBar() {
   )};
 export {NavigationBar};
 
+function AdminNavigation() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Admin Home" component={AdminScreen}  options={({route}) => ({ title: "ADMIN"})}/>
+    </Stack.Navigator>
+  )};
+export {AdminNavigation};
+
 function SupervisorNavigationBar(props) {
   const usernameParam = props.route.params.username
   return(
@@ -257,6 +267,7 @@ export default function App() {
         <Stack.Screen name="Reset" component={ResetScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home Navigation Bar" component={NavigationBar} options={{ headerShown: false }} />
         <Stack.Screen name="Supervisor Navigation Bar" component={SupervisorNavigationBar} options={{ headerShown: false }} />
+        <Stack.Screen name="Admin Navigation" component={AdminNavigation} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )};

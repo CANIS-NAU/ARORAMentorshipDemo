@@ -9,7 +9,32 @@ import { loginsExample, mentorsExample, menteesExample, accessCodesExample} from
 export function QuestionScreen({ navigation }) {
   const username = navigation.getParent().getState().routes[1].params.params.params.username
 
-  const [anonQuestions, setQuestions] = useState('');
+  const [questions, setQuestions] = React.useState([])
+  const [searchQuestions, setSearchQuestions] = React.useState([])
+
+  useEffect(() => {
+    //setAsyncItem("mentees", menteesExample)
+    getAsyncItem("questions").then(results => {
+      setQuestions(results)
+      setSearchQuestions(results)
+    })}, []);
+
+  const searchQueryQuestions = (query) => {
+    if (query == ''){
+      setSearchQuestions(questions)
+    }
+    else{
+      let queryQuestions = []
+      for (let question of questions ){
+        if (question.questiontext.toLowerCase().includes(query.toLowerCase())
+            || question.date.includes(query)){
+          queryQuestions.push(question)
+        }
+      }
+      setSearchQuestions(queryQuestions)
+
+    }
+  }
 
   useEffect(() => {
     //makeQuestions("questions", JSON.stringify(questionsExample))
@@ -19,6 +44,12 @@ export function QuestionScreen({ navigation }) {
     
     })}, []);
 
+  const getQuestionItem = (item) => {
+      return (
+        <Question question={item} username ={username}/>
+      );
+  }
+
   const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   }
@@ -26,6 +57,10 @@ export function QuestionScreen({ navigation }) {
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {
+    getAsyncItem("questions").then(results => {
+      setQuestions(results)
+    })
+
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
   }, []);
@@ -36,19 +71,19 @@ export function QuestionScreen({ navigation }) {
       <View style={styles.screencontent}>
         <View style={{margin: 10}}>
           <View>
-            <TextInput
-              multiline={false}
-              style={{ textAlignVertical: 'top', backgroundColor: "#ffffff", marginBottom: 20}}
-            />
+            <TextInput style={styles.logininput}
+              placeholder="Search"
+              onChangeText = {searchQuery => searchQueryQuestions(searchQuery)}
+              />
           </View>
 
           <View>
               <FlatList 
                 keyboardShouldPersistTaps="always"
                 contentContainerStyle={{flexGrow:1}}
-                data={anonQuestions}
+                data={searchQuestions}
                 keyExtractor={(item, index) => index}
-                renderItem={(item) => <Question question={item.item} username={username}/>}
+                renderItem={(item) => getQuestionItem(item.item)}
                 refreshControl={
                   <RefreshControl
                     refreshing={refreshing}

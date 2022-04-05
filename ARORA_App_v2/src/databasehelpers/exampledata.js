@@ -1,8 +1,25 @@
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
 
-export const accessCodesExample = [-1]
+export const accessCodesExample = [
+  {
+    code: 12345,
+    authority: "mentor"
+  }
+]
 
 export const loginsExample = [
+    {
+      name: "ADMIN",
+      username: "ADMIN",
+      password: "ADMIN",
+      email: "ADMIN",
+      authority: "ADMIN",
+      mentors: null,
+      mentees: null,
+      messages: null,
+      events: null
+    },
+
     {
       name: "Andy Jenkins",
       username: "supervisor",
@@ -144,9 +161,9 @@ export const menteesExample = [{
     id: 2,
     name: 'Jane Doe',
     moodreports: [
-                  {date: '08/24/2001',mood: 'Sad',stresslevel: 'Low'},
-                  {date: '08/25/2001',mood: 'Neutral',stresslevel: 'High'},
-                  {date: '08/26/2001',mood: 'Sad',stresslevel: 'Medium'},
+                  {date: '08/24/2001',mood: 'Sad', stresslevel: 'Low'},
+                  {date: '08/25/2001',mood: 'Neutral', stresslevel: 'High'},
+                  {date: '08/26/2001',mood: 'Sad', stresslevel: 'Medium'},
                  ],
    risk: FindAVGHelper('Sad', 'Low', 'Neutral', 'High', 'Sad', 'Medium'),
    riskIcon: require('../../assets/yellowbutterflyicon.png'),

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {styles} from '../stylesheet';
-import { StyleSheet, View, Text, Button, Pressable, Image, FlatList, RefreshControl } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, Pressable, Image, FlatList, RefreshControl } from 'react-native';
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
 
 import { getAsyncItem, setAsyncItem, removeAsyncItem, getMentees } from '../databasehelpers/asyncstoragecalls';
@@ -9,11 +9,32 @@ import { menteesExample } from '../databasehelpers/exampledata';
 export default function SupervisorMenteeList( {navigation, username, mentor} ) {
 
   const [mentees, setMentees] = React.useState([])
+  const [searchMentees, setSearchMentees] = React.useState([])
 
   useEffect(() => {
     //setAsyncItem("mentees", menteesExample)
-    getMentees(mentor.username).then(menteesList => setMentees(menteesList))
+    getAsyncItem("mentees").then(menteesList => {
+      setMentees(menteesList);
+      setSearchMentees(menteesList);
+    })
   }, []);
+
+  const searchQueryMentees = (query) => {
+    if (query == ''){
+      setSearchMentees(mentees)
+    }
+    else{
+      getAsyncItem("mentees").then(mentees => {
+        let queryMentees = []
+        for (let mentee of mentees ){
+          if (mentee.name.toLowerCase().includes(query.toLowerCase())){
+            queryMentees.push(mentee)
+          }
+        }
+        setSearchMentees(queryMentees)
+      })
+    }
+  }
 
   const MenteeItem = ({mentee}) => (
     <View style={styles.homescreenmenteelist}>
@@ -45,9 +66,16 @@ export default function SupervisorMenteeList( {navigation, username, mentor} ) {
 
 
 
-  return (<FlatList
+  return (
+    <View>
+      <TextInput style={styles.logininput}
+      placeholder="Search"
+      onChangeText = {searchQuery => searchQueryMentees(searchQuery)}
+      />
+
+      <FlatList
                 contentContainerStyle={{flexGrow:1}}
-                data={mentees}
+                data={searchMentees}
                 keyExtractor={(item, index) => index}
                 renderItem={renderMentee}
                 refreshControl={
@@ -55,5 +83,6 @@ export default function SupervisorMenteeList( {navigation, username, mentor} ) {
                     refreshing={refreshing}
                     onRefresh={onRefresh}
                   />
-                }/>)
+                }/>
+    </View>)
 }

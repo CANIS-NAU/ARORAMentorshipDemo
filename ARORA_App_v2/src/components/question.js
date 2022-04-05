@@ -11,14 +11,15 @@ export default function Question( {question, username} ) {
     const [responses, setResponses] = useState([]);
 
     useEffect(() => {
-      setText(question.responsetext)
       if (question.flagged == true){
         setFlagged("Flagged!")
       }
       else{
         setFlagged("")
       }
-    }, []);
+
+      setResponses(question.responses)
+    }, [question]);
 
     const ResponseItem = ({response}) => (
       <View style={styles.homescreenmenteelist}>
@@ -40,12 +41,15 @@ export default function Question( {question, username} ) {
     }
   
     const onRefresh = React.useCallback(() => {
+      setResponses(question.responses)
       setRefreshing(true);
       wait(2000).then(() => setRefreshing(false));
     }, []);
 
     return(
     <View style={styles.question}>
+      <Text>{question.date}</Text>
+
       <View style={{flexDirection: "row"}}>
         <Text>{question.questiontext}</Text>
         <Pressable onPress={() => {
@@ -58,7 +62,6 @@ export default function Question( {question, username} ) {
                     if (flagged == ""){
                       setFlagged("Flagged!");
                       questionsList[index].flagged = true;
-                      console.log(questionsList[index].flagged)
                     }
                     else{
                       setFlagged("");
@@ -68,6 +71,7 @@ export default function Question( {question, username} ) {
                   }
 
                 }
+                setResponses(questionsList[index].responses)
                 setAsyncItem("questions", questionsList)
               })
           }}>
@@ -78,7 +82,7 @@ export default function Question( {question, username} ) {
       <Text>Responses:</Text>
       <FlatList 
             contentContainerStyle={{flexGrow:1}}
-            data={question.responses}
+            data = {responses}
             keyExtractor={(item, index) => index}
             renderItem={renderResponse}
             refreshControl={
@@ -87,7 +91,6 @@ export default function Question( {question, username} ) {
                 onRefresh={onRefresh}
               />
       }/>
-      <Text>{text}</Text>
       <TextInput
           multiline={false}
           placeholder="Type a response..."
@@ -96,7 +99,7 @@ export default function Question( {question, username} ) {
           style={styles.textEdit}
       />
       <Button title="Submit" 
-            onPress={() => {
+            onPress={async () => {
                     console.log("clicked")
                     getAsyncItem("questions").then( questionsList => {
                       for (var index = 0; index < questionsList.length; index++){
@@ -105,7 +108,9 @@ export default function Question( {question, username} ) {
                               && questionsList[index].id == question.id){
       
                           questionsList[index].username = username;
-                          questionsList[index].responses.push({username: username, text: textsave});
+                          questionsList[index].responses.push({username: username, text: textsave})
+                          
+                          setResponses(questionsList[index].responses)
                           break;
                         }
       
@@ -114,6 +119,7 @@ export default function Question( {question, username} ) {
                       setText(textsave)
                       setTextSave('')
                     })
+
                 }
             }/>
   </View>

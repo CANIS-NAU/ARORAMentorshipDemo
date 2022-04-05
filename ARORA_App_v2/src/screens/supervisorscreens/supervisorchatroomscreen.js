@@ -8,6 +8,32 @@ export function SupervisorChatroomScreen( {route, navigation} )
 {
   const {username, mentor} = route.params;
   const [mentees, setMentees] = useState('');
+  const [searchMentees, setSearchMentees] = React.useState([])
+
+  useEffect(() => {
+    //setAsyncItem("mentees", menteesExample)
+    getMentees(mentor.username).then(mentees => {
+      setMentees(mentees)
+      setSearchMentees(mentees)
+    })
+  }, []);
+
+  const searchQueryMentees = (query) => {
+    if (query == ''){
+      setSearchMentees(mentees)
+    }
+    else{
+      getMentees(mentor.username).then(mentees => {
+        let queryMentees = []
+        for (let mentee of mentees ){
+          if (mentee.name.toLowerCase().includes(query.toLowerCase())){
+            queryMentees.push(mentee)
+          }
+        }
+        setSearchMentees(queryMentees)
+      })
+    }
+  }
 
   useEffect(() => {
     //makeQuestions("questions", JSON.stringify(questionsExample))
@@ -45,9 +71,15 @@ export function SupervisorChatroomScreen( {route, navigation} )
 
 
 
-  return (<FlatList
+  return (
+  <View>
+    <TextInput style={styles.logininput}
+        placeholder="Search"
+        onChangeText = {searchQuery => searchQueryMentees(searchQuery)}
+        />
+    <FlatList
     contentContainerStyle={{flexGrow:1}}
-    data={mentees}
+    data={searchMentees}
     keyExtractor={(item, index) => index}
     renderItem={renderMentees}
     refreshControl={
@@ -55,5 +87,6 @@ export function SupervisorChatroomScreen( {route, navigation} )
         refreshing={refreshing}
         onRefresh={onRefresh}
       />
-    }/>)
+    }/>
+  </View>)
   }

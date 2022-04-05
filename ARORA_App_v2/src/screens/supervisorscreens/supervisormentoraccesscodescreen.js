@@ -31,7 +31,7 @@ export function SupervisorMentorAccessCodeScreen({ navigation }) {
 
                       if (accessCode != "" && parseInt(accessCode) > 0){
                         getAsyncItem("accesscodes").then(codesList => {
-                          codesList.push(accessCode)
+                          codesList.push({code: accessCode, authority: "mentor"})
                           console.log(codesList)
                           setAsyncItem("accesscodes", codesList)
                           navigation.navigate('Supervisor Profile')

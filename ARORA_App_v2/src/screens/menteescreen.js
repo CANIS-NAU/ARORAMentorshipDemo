@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput, FlatList, RefreshControl } from 'react-native';
 import { FindMRButterfly, FindAVGHelper, FindAVGButterfly } from '../../functions/butterflyfuncts.js';
@@ -7,6 +7,7 @@ import { getAsyncItem, setAsyncItem, removeAsyncItem } from '../databasehelpers/
 export function MenteeScreen( {route, navigation} )
 {
   const {menteename, username, mentee} = route.params;
+  
   var isIncluded = {'Happy' : true,
                     'Neutral' : true,
                     'Sad' : true };
@@ -24,37 +25,64 @@ export function MenteeScreen( {route, navigation} )
     riskButterflyLoc = require('../../assets/greenbutterflybuttonicon.png')
   }
 
-  const MoodReportItem = ({moodreport}) => (
-      <View style={styles.moodreport}>
-              <Text style={styles.moodreporttext}>Mood: {moodreport.mood}</Text>
-              <Text style={styles.moodreporttext}>Stress Level: {moodreport.stresslevel}</Text>
-      </View>
-  )
-
   const toggleFlag = () => {
-      mentee.flag = (mentee.flag + 1) % 2;
-      if( mentee.flag == 0 ) {
-          mentee.flagIcon = require('../../assets/flag0.png')
-        }
-      else {
-        mentee.flagIcon = require('../../assets/flag1.png')
+    mentee.flag = (mentee.flag + 1) % 2;
+    if( mentee.flag == 0 ) {
+        mentee.flagIcon = require('../../assets/flag0.png')
       }
-      console.log(mentee.flag);
+    else {
+      mentee.flagIcon = require('../../assets/flag1.png')
+    }
+    console.log(mentee.flag);
 
-      getAsyncItem("mentees").then( menteesList => {
-        for (var index = 0; index < menteesList.length; index++){
-          if (menteesList[index].name == mentee.name){
+    getAsyncItem("mentees").then( menteesList => {
+      for (var index = 0; index < menteesList.length; index++){
+        if (menteesList[index].name == mentee.name){
 
-            menteesList[index].flag = mentee.flag;
-            menteesList[index].flagIcon = mentee.flagIcon;
-            break;
-          }
-
+          menteesList[index].flag = mentee.flag;
+          menteesList[index].flagIcon = mentee.flagIcon;
+          break;
         }
-        setAsyncItem("mentees", menteesList)
-      })
 
+      }
+      setAsyncItem("mentees", menteesList)
+    })
   }
+
+
+  const [moodreports, setMoodReports] = React.useState([])
+  const [searchMoodReports, setSearchMoodReports] = React.useState([])
+
+  useEffect(() => {
+    //setAsyncItem("mentors", mentorsExample)
+    setMoodReports(mentee.moodreports)
+    setSearchMoodReports(mentee.moodreports)
+  }, []);
+
+  const searchQueryMoodReports = (query) => {
+    if (query == ''){
+      setSearchMoodReports(moodreports)
+    }
+    else{
+      let queryMoodReports = []
+      for (let moodreport of mentee.moodreports ){
+        if (moodreport.date.includes(query) 
+              || moodreport.mood.toLowerCase().includes(query.toLowerCase())
+              || moodreport.stresslevel.toLowerCase().includes(query.toLowerCase())){
+          queryMoodReports.push(moodreport)
+        }
+      }
+      setSearchMoodReports(queryMoodReports)
+    }
+  }
+
+  const MoodReportItem = ({moodreport}) => (
+    <View style={styles.moodreport}>
+            <Text style={styles.moodreporttext}>Date: {moodreport.date}</Text>
+            <Text style={styles.moodreporttext}>Mood: {moodreport.mood}</Text>
+            <Text style={styles.moodreporttext}>Stress Level: {moodreport.stresslevel}</Text>
+    </View>
+  )
 
   const renderMoodReport = ({ item: moodreportitem }) => (
     <MoodReportItem moodreport = {moodreportitem} />
@@ -104,9 +132,13 @@ export function MenteeScreen( {route, navigation} )
         <Image style={styles.menteeicons} source={riskButterflyLoc}/>
       </View>
 
+      <TextInput style={styles.logininput}
+        placeholder="Search"
+        onChangeText = {searchQuery => searchQueryMoodReports(searchQuery)}
+        />
       <FlatList
         contentContainerStyle={{flexGrow:1}}
-        data={filteredList}
+        data={searchMoodReports}
         keyExtractor={(item, index) => index}
         renderItem={renderMoodReport}
         refreshControl={

@@ -98,45 +98,64 @@ export function CreationScreen({ navigation }) {
         <Pressable style={styles.loginbutton} 
                      onPress={() => {
                         getAsyncItem("accesscodes").then(codes => {
-                          if (codes.includes(accessCode) && email.includes("@") && email.includes(".") && username != '' && password != ''){
-                            console.log("in")
-                            getAsyncItem("users").then(users => {
-                              
-                              users.push(
-                                {
-                                  name: name,
-                                  username: username,
-                                  password: password,
-                                  email: email,
-                                  authority: "mentor",
-                                  mentors: null,
-                                  mentees: [1, 2],
-                                  messages: [
-                                      /**
-                                       * Mock message data
-                                       */
-                                      // example of system message
-                                      {
-                                        _id: 0,
-                                        text: 'New room created.',
-                                        createdAt: new Date().getTime(),
-                                        system: true
-                                      }
-                                  ],
-                                  events: [],
-                                })
+                          for (let code of codes){
 
-                              setAsyncItem("users", users);
+                            if (code.code == accessCode && email.includes("@") && email.includes(".") && username != '' && password != ''){
+                              console.log("found code")
+                              getAsyncItem("users").then(users => {
+                                
+                                if (code.authority == "mentor"){
+                                  users.push(
+                                    {
+                                      name: name,
+                                      username: username,
+                                      password: password,
+                                      email: email,
+                                      authority: code.authority,
+                                      mentors: null,
+                                      mentees: [1, 2],
+                                      messages: [
+                                          /**
+                                           * Mock message data
+                                           */
+                                          // example of system message
+                                          {
+                                            _id: 0,
+                                            text: 'New room created.',
+                                            createdAt: new Date().getTime(),
+                                            system: true
+                                          }
+                                      ],
+                                      events: [],
+                                    })
+                                }
+                                else{
+                                  users.push(
+                                    {
+                                      name: name,
+                                      username: username,
+                                      password: password,
+                                      email: email,
+                                      authority: code.authority,
+                                      mentors: [ "mentor" ],
+                                      mentees: null,
+                                      messages: null,
+                                      events: [],
+                                    })
+                                }
 
-                              const indexToDelete = codes.indexOf(accessCode);
-                              console.log(indexToDelete)
-                              codes.splice(indexToDelete, 1);
-                              setAsyncItem("accesscodes", codes);
+                                setAsyncItem("users", users);
 
-                              navigation.navigate("Login");
+                                const indexToDelete = codes.indexOf(accessCode);
+                                console.log(indexToDelete)
+                                codes.splice(indexToDelete, 1);
+                                setAsyncItem("accesscodes", codes);
 
-                            })
+                                navigation.navigate("Login");
 
+                              })
+
+                            }
                           }
                         })
                      }}>

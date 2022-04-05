@@ -107,6 +107,15 @@ export async function getMentors(username){
   })
 }
 
+export async function getAllUsers(authority){
+  return getAsyncItem("users").then(async users => {
+
+    const authorityUsers = users.filter(user => user.authority == authority);
+    return authorityUsers;
+
+  })
+}
+
 export async function getMentees(username){
   return getAsyncItem("mentees").then(async mentees => {
 
