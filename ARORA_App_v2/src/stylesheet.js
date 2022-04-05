@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
 
   moodreport: {
-    backgroundColor: "#655D8A",
+    backgroundColor: "#7897AB",
     marginTop: 5,
     marginBottom: 5,
     padding: 10,
