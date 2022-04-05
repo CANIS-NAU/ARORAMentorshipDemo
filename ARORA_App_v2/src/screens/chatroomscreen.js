@@ -29,7 +29,7 @@ export function ChatroomScreen( {navigation, route} )
 
       getUser(username).then(user => {
 
-        user.messages[mentee.id] = GiftedChat.append(user.messages[mentee.id], newMessage)
+        user.messages[mentee.id - 1] = GiftedChat.append(user.messages[mentee.id], newMessage)
         GiftedChat.append(user.messages, newMessage)
 
         let userIndex = -1;
