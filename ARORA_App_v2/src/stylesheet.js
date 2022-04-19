@@ -11,6 +11,13 @@ const styles = StyleSheet.create({
     flex: 8,
   },
 
+  profilecontent: {
+    backgroundColor: "#655D8A",
+    margin: 10,
+    padding: 7,
+    height: 280,
+  },
+
   navbaricons: {
     paddingTop: 30,
     width: '60%',

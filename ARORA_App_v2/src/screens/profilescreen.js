@@ -24,25 +24,25 @@ export function ProfileScreen({ navigation }) {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.screencontent}>
+      <View style={styles.profilecontent}>
 
-        <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>{name}'s Profile</Text>
+        <Text style={{fontSize: 30, paddingBottom: 0, marginBottom: 20,}}>{name}'s Profile</Text>
 
         <View>
           <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Email: {email}</Text>
           <Pressable style={styles.profilebutton}
                      onPress={() => navigation.navigate('Change Email')}>
-            <Text style={styles.profilebuttontext}>Change Email</Text>
+            <Text style={{marginBottom: 10}}>Change Email</Text>
           </Pressable>
         </View>
 
         <View>
-          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Username: {username}</Text>
+          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 10,}}>Username: {username}</Text>
         </View>
 
         <View>
           <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Password: {password}</Text>
-          <Pressable style={styles.profilebutton}
+          <Pressable style={{paddingBottom: 10}}
                      onPress={() => navigation.navigate('Change Password')}>
             <Text style={styles.profilebuttontext}>Change Password</Text>
           </Pressable>
