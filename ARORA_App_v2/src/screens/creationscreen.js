@@ -37,7 +37,6 @@ export function CreationScreen({ navigation }) {
   }
 
   const onSubmission = async() => {
-    console.log("We're in onSubmission!");
     if((email == "fhe2@nau.edu") && (accessCode == "123456")) {
       try {
         var placeUsername = await storeUsername(username)
@@ -101,7 +100,6 @@ export function CreationScreen({ navigation }) {
                           for (let code of codes){
 
                             if (code.code == accessCode && email.includes("@") && email.includes(".") && username != '' && password != ''){
-                              console.log("found code")
                               getAsyncItem("users").then(users => {
                                 
                                 if (code.authority == "mentor"){
@@ -147,7 +145,6 @@ export function CreationScreen({ navigation }) {
                                 setAsyncItem("users", users);
 
                                 const indexToDelete = codes.indexOf(accessCode);
-                                console.log(indexToDelete)
                                 codes.splice(indexToDelete, 1);
                                 setAsyncItem("accesscodes", codes);
 

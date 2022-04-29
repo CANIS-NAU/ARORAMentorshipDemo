@@ -11,7 +11,6 @@ export function SupervisorProfileScreen({ navigation }) {
   const [password, updatePassword] = useState('');
 
   useEffect(() => {
-    console.log(username)
     //setAsyncItem("events", JSON.stringify(eventsExample))
     //console.log(navigation.getParent().getState().routes[1].params.params.params.username)
     getUser(username).then(user => {

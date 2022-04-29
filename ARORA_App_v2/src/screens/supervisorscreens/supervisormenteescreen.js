@@ -35,7 +35,6 @@ export function SupervisorMenteeScreen( {navigation, route} )
     else {
       mentee.flagIcon = require('../../../assets/flag1.png')
     }
-    console.log(mentee.flag);
 
     getAsyncItem("mentees").then( menteesList => {
       for (var index = 0; index < menteesList.length; index++){
@@ -143,7 +142,7 @@ export function SupervisorMenteeScreen( {navigation, route} )
       <FlatList
         contentContainerStyle={{flexGrow:1}}
         data={searchMoodReports}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => index}
         renderItem={renderMoodReport}
         refreshControl={
           <RefreshControl

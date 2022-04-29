@@ -24,10 +24,6 @@ export function SupervisorCalendarScreen( {route, navigation} )
   const [events, setEvents] = useState('');
 
   useEffect(() => {
-    console.log(route.params)
-    console.log(username)
-    //setAsyncItem("events", JSON.stringify(eventsExample))
-    //console.log(navigation.getParent().getState().routes[1].params.params.params.username)
     getEvents(username).then(eventsList => setEvents(eventsList))
   }, []);
 
@@ -35,12 +31,12 @@ export function SupervisorCalendarScreen( {route, navigation} )
     <View style={styles.homescreenmenteelist}>
       <View style={styles.moodreport}>
         <Text>{new Date(event.date).toDateString()}</Text>
-        <Text>{moment(event.time).format("hh:mm a")}</Text>
+        <Text>{moment(event.time).format("hh:mm A")}</Text>
         <Text>{event.desc}</Text>
         <Button title="Edit" 
             onPress={() => {
-                    dateText(event.date);
-                    timeText(event.time);
+                    dateText(new Date(event.date));
+                    timeText(new Date(event.time));
                     descText(event.desc);
                     
                     event.activity = "inactive";
@@ -125,17 +121,13 @@ export function SupervisorCalendarScreen( {route, navigation} )
   }, []);
 
   const onChange = (event, selectedDate) => {
-    console.log(selectedDate)
-    console.log(mode)
 
     if (mode == "date"){
       dateText(selectedDate);
-      console.log("changed date")
       setDateShow(false);
     }
     else if (mode == "time"){
       timeText(selectedDate)
-      console.log("changed time")
       setTimeShow(false);
     }
     setMode('')
@@ -185,7 +177,7 @@ export function SupervisorCalendarScreen( {route, navigation} )
 
         <Text>Time</Text>
         <Pressable onPress={showTimepicker}>
-          <Text>{moment(eventTime).format('hh:mm A')}</Text>
+          <Text>{moment(new Date(eventTime)).format('hh:mm A')}</Text>
           {timeShow && (
             <DateTimePicker
               testID="timePicker"

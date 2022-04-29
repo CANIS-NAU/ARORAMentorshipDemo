@@ -15,10 +15,8 @@ export function SupervisorQuestionScreen({ navigation }) {
 
   useEffect(() => {
     //setAsyncItem("mentees", menteesExample)
-    getAsyncItem("questions").then(results => {
-      setQuestions(results)
-      setSearchQuestions(results)
-    })}, []);
+    getFlaggedQuestions("questions")
+  }, []);
 
   const searchQueryQuestions = (query) => {
     if (query == ''){
@@ -39,7 +37,6 @@ export function SupervisorQuestionScreen({ navigation }) {
 
 
   const getQuestionItem = (item) => {
-    console.log(questions.length)
     return (
       <Question question={item} username ={username}/>
     );
@@ -61,6 +58,7 @@ export function SupervisorQuestionScreen({ navigation }) {
           //console.log(keys)
           //console.log("________________________")
           setQuestions(flaggedQuestions)
+          setSearchQuestions(flaggedQuestions)
           return flaggedQuestions;
       })
     }
@@ -70,10 +68,6 @@ export function SupervisorQuestionScreen({ navigation }) {
     }
   }
 
-  useEffect(() => {
-    //makeQuestions("questions", JSON.stringify(questionsExample))
-    getFlaggedQuestions("questions")
-  }, []);
 
   const responseItem = ({response}) => (
     <View style={styles.homescreenmenteelist}>

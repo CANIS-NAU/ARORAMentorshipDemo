@@ -13,7 +13,6 @@ export function ChatroomScreen( {navigation, route} )
   const [messages, setMessages] = useState([])
 
   useEffect(() => {
-    console.log(route.params)
     //setAsyncItem("messages", messagesExample)
     getUser(username).then(user => {
       setMessages(user.messages[mentee.id-1])
@@ -29,7 +28,7 @@ export function ChatroomScreen( {navigation, route} )
 
       getUser(username).then(user => {
 
-        user.messages[mentee.id - 1] = GiftedChat.append(user.messages[mentee.id], newMessage)
+        user.messages[mentee.id - 1] = GiftedChat.append(user.messages[mentee.id - 1], newMessage)
         GiftedChat.append(user.messages, newMessage)
 
         let userIndex = -1;

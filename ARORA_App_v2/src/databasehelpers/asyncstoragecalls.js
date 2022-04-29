@@ -19,7 +19,6 @@ export async function getAsyncItem(key) {
 export async function setAsyncItem(key, value){
     try{
       var value = await AsyncStorage.setItem(key, JSON.stringify(value));
-      console.log("set")
       //console.log("________________________")
       //var item = await AsyncStorage.getItem(key)
       //console.log(item)
@@ -49,7 +48,6 @@ export async function removeAsyncItem(key){
 export async function getAsyncKeys(){
   try{
     var result = await AsyncStorage.getAllKeys();
-    console.log(result)
     //console.log("________________________")
     //console.log(AsyncStorage.getAllKeys())
     //console.log("________________________")
@@ -69,7 +67,6 @@ export async function clearAsyncStorage(){
   }
 
   catch(err){
-    console.log(err);
   }
 }
 

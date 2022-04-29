@@ -100,7 +100,6 @@ export default function Question( {question, username} ) {
       />
       <Button title="Submit" 
             onPress={async () => {
-                    console.log("clicked")
                     getAsyncItem("questions").then( questionsList => {
                       for (var index = 0; index < questionsList.length; index++){
                         if (questionsList[index].askerid == question.askerid

@@ -11,8 +11,6 @@ export function SupervisorChatlogScreen( {route, navigation} )
   
     useEffect(() => {
       //makeQuestions("questions", JSON.stringify(questionsExample))
-      console.log(mentor)
-      console.log(mentee)
       getUser(mentor.username).then(mentor => {
         setMessages(mentor.messages[mentee.id - 1])
       })

@@ -100,7 +100,17 @@ export const loginsExample = [
               text: 'New room created.',
               createdAt: new Date().getTime(),
               system: true
-            }
+            },
+            {
+              _id: 1,
+              text: 'Henlo!',
+              text: 'Thanks for all your help.',
+              createdAt: new Date().getTime(),
+              user: {
+                _id: 2,
+                name: 'Test User'
+              }
+            },
           ],
           [
             /**

@@ -33,7 +33,6 @@ export function MenteeScreen( {route, navigation} )
     else {
       mentee.flagIcon = require('../../assets/flag1.png')
     }
-    console.log(mentee.flag);
 
     getAsyncItem("mentees").then( menteesList => {
       for (var index = 0; index < menteesList.length; index++){
