@@ -44,61 +44,68 @@ export function AdminScreen({ navigation }) {
   }, []);
 
   return (
-    <View>
-      <View>
-        <Text>Create Supervisor Access Code</Text>
-        {/* Supervisor only needs to make new blanks with a set access code*/}
-        <TextInput style={styles.logininput} 
-                     placeholder = "Access Code"
-                     onChangeText = {accessCode => setCode(accessCode)} 
-                     defaultValue = {accessCode}/>
+    <View style={styles.screen}>
+      <View style={styles.profilecontent}>
+    
+        <View>
+          <Text>Create Supervisor Access Code</Text>
+        </View>
+            {/* Supervisor only needs to make new blanks with a set access code*/}
+        <View>
+          <TextInput style={styles.logininput} 
+                        placeholder = "Access Code"
+                        onChangeText = {accessCode => setCode(accessCode)} 
+                        defaultValue = {accessCode}/>
+        </View>
+            {/* Need to add what happens to other data, preferebly a record in database */}
+        <View style={{marginBottom: 50}}>
+                <Button
+                  title="Submit"
+                  color="#7897AB"
+                        onPress={() => {
 
-        {/* Need to add what happens to other data, preferebly a record in database */}
-        <Pressable style={styles.loginbutton} 
-                     onPress={() => {
+                          if (accessCode != "" && parseInt(accessCode) >= 0){
+                            getAsyncItem("accesscodes").then(codesList => {
+                              codesList.push({code: accessCode, authority: "supervisor"})
+                              console.log(codesList)
+                              setAsyncItem("accesscodes", codesList)
+                            })
+                          }
 
-                      if (accessCode != "" && parseInt(accessCode) > 0){
-                        getAsyncItem("accesscodes").then(codesList => {
-                          codesList.push({code: accessCode, authority: "supervisor"})
-                          console.log(codesList)
-                          setAsyncItem("accesscodes", codesList)
-                        })
-                      }
+                        }}/>
+        </View>
 
-                    }}>
-              <Text style={styles.loginbuttontext}> Submit </Text>
-        </Pressable>
-      </View>
+          <View style={{marginBottom: 30}}>
+            <Button
+              title="Set Default Data"
+              color = "#7897AB"
+                        onPress={() => {
 
-      <View>
-        <Text>Set Default Data</Text>
-        <Pressable style={styles.loginbutton} 
-                     onPress={() => {
+                          setAsyncItem("users", loginsExample) // only has a supervisor
+                          setAsyncItem("mentees", menteesExample)
+                          setAsyncItem("accesscodes", accessCodesExample)
+                          setAsyncItem("questions", questionsExample)
 
-                      setAsyncItem("users", loginsExample) // only has a supervisor
-                      setAsyncItem("mentees", menteesExample)
-                      setAsyncItem("accesscodes", accessCodesExample)
-                      setAsyncItem("questions", questionsExample)
+                        }}/>
+          </View>
 
-                    }}>
-              <Text style={styles.loginbuttontext}> Set </Text>
-        </Pressable>
-      </View>
+          <View style={{marginBottom: 10}}>
+            <Button style={styles.loginbutton} 
+              title= "Clear Users"
+              color = "#7897AB"
+                        onPress={() => {
 
-      <View>
-        <Text>Clear All Data</Text>
-        <Pressable style={styles.loginbutton} 
-                     onPress={() => {
+                          clearAsyncStorage()
+                          setAsyncItem("users", adminDefault)
+                          setAsyncItem("accesscodes", [])
+                          setAsyncItem("questions", questionsExample)
+                          setAsyncItem("mentees", menteesExample)
 
-                      clearAsyncStorage()
-                      setAsyncItem("users", adminDefault)
-
-                    }}>
-              <Text style={styles.loginbuttontext}> Clear</Text>
-        </Pressable>
-      </View>
+                        }}/>
+          </View>
+            
         
-        
-    </View>
+      </View>
+  </View>
   );
 }

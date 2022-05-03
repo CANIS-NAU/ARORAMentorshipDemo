@@ -12,6 +12,7 @@ export default function ChatList( {navigation, username} ) {
   useEffect(() => {
     //setAsyncItem("mentees", menteesExample)
     getMentees(username).then(results => {
+      console.log(results)
       setMentees(results)
       setSearchMentees(results)
     })}, []);

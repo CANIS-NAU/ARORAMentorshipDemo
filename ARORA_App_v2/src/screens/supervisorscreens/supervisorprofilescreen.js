@@ -21,16 +21,12 @@ export function SupervisorProfileScreen({ navigation }) {
   }, []);
   return (
     <View style={styles.screen}>
-      <View style={styles.screencontent}>
+      <View style={styles.profilecontent}>
 
-        <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>{name}'s Profile</Text>
+        <Text style={{fontSize: 30, paddingBottom: 0, marginBottom: 20,}}>{name}'s Profile</Text>
 
         <View>
-          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Email:  {email}</Text>
-          <Pressable style={styles.profilebutton}
-                        onPress={() => navigation.navigate('Change Email')}>
-                <Text style={styles.profilebuttontext}>Change Email</Text>
-          </Pressable>
+          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Email: {email}</Text>
         </View>
 
         <View>
@@ -38,25 +34,21 @@ export function SupervisorProfileScreen({ navigation }) {
         </View>
 
         <View>
-          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Password:  {password}</Text>
-          <Pressable style={styles.profilebutton}
-                        onPress={() => navigation.navigate('Change Password')}>
-                <Text style={styles.profilebuttontext}>Change Password</Text>
-          </Pressable>
+          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 20,}}>Password: {password}</Text>
         </View>
 
-        <View>
-          <Pressable style={styles.profilebutton}
-                        onPress={() => navigation.navigate('Supervisor Mentor Access Code')}>
-                <Text style={styles.profilebuttontext}>Create Mentor Access Code</Text>
-          </Pressable>
+        <View style={{marginBottom: 10}}>
+          <Button
+            title = "Create Mentor Access Code"
+            color = "#7897AB"
+                        onPress={() => navigation.navigate('Supervisor Mentor Access Code')}/>
         </View>
-
-        <Pressable style={styles.loginbutton} 
-                     onPress={() => navigation.navigate("Login")}>
-              <Text style={styles.loginbuttontext}>Log out</Text>
-        </Pressable>
       
+        <Button
+          title = "Log Out"
+          color = "#7897AB"
+                   onPress={() => navigation.navigate("Login")}/>
+
       </View>
     </View>
   );

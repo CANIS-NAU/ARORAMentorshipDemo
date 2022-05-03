@@ -99,6 +99,7 @@ export default function Question( {question, username} ) {
           style={styles.textEdit}
       />
       <Button title="Submit" 
+        color = "#7897AB"
             onPress={async () => {
                     getAsyncItem("questions").then( questionsList => {
                       for (var index = 0; index < questionsList.length; index++){

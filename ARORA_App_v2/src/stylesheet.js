@@ -2,6 +2,11 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
 
+  buttons: {
+    height: '5%',
+    width: '10%'
+  },
+
   screen: {
     flex: 1,
     flexDirection: "column",
@@ -12,10 +17,10 @@ const styles = StyleSheet.create({
   },
 
   profilecontent: {
-    backgroundColor: "#655D8A",
+    backgroundColor: "#c6eaed",
     margin: 10,
     padding: 7,
-    height: 280,
+    height: '60%',
   },
 
   navbaricons: {
@@ -29,6 +34,12 @@ const styles = StyleSheet.create({
   },
 
   logininput: {
+    margin: 3,
+    backgroundColor: "#ffffff",
+  },
+
+  forminput: {
+    width: '60%',
     margin: 3,
     backgroundColor: "#ffffff",
   },

@@ -14,10 +14,10 @@ export const adminDefault = [
     password: "ADMIN",
     email: "ADMIN",
     authority: "ADMIN",
-    mentors: null,
-    mentees: null,
-    messages: null,
-    events: null
+    mentors: [],
+    mentees: [],
+    messages: [],
+    events: []
   }
 ]
 
@@ -28,10 +28,10 @@ export const loginsExample = [
       password: "ADMIN",
       email: "ADMIN",
       authority: "ADMIN",
-      mentors: null,
-      mentees: null,
-      messages: null,
-      events: null
+      mentors: [],
+      mentees: [],
+      messages: [],
+      events: []
     },
 
     {
@@ -41,7 +41,7 @@ export const loginsExample = [
       email: "supervisor@gmail.com",
       authority: "supervisor",
       mentors: [ "mentor" ],
-      mentees: null,
+      mentees: [],
       messages: [
         [
           /**
@@ -101,7 +101,7 @@ export const loginsExample = [
       password: "mentor",
       email: "mentor@gmail.com",
       authority: "mentor",
-      mentors: null,
+      mentors: [],
       mentees: [1, 2, 3, 4],
       messages: [
           [

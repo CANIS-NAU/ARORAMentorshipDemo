@@ -29,28 +29,20 @@ export function ProfileScreen({ navigation }) {
 
         <View>
           <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Email: {email}</Text>
-          <Pressable style={styles.profilebutton}
-                     onPress={() => navigation.navigate('Change Email')}>
-            <Text style={{marginBottom: 10}}>Change Email</Text>
-          </Pressable>
         </View>
 
         <View>
-          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 10,}}>Username: {username}</Text>
+          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Username: {username}</Text>
         </View>
 
         <View>
-          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Password: {password}</Text>
-          <Pressable style={{paddingBottom: 10}}
-                     onPress={() => navigation.navigate('Change Password')}>
-            <Text style={styles.profilebuttontext}>Change Password</Text>
-          </Pressable>
+          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 20,}}>Password: {password}</Text>
         </View>
 
-        <Pressable style={styles.loginbutton}
-                   onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.loginbuttontext}>Log out</Text>
-        </Pressable>
+        <Button
+          title = "Log Out"
+          color = "#7897AB"
+                   onPress={() => navigation.navigate("Login")}/>
 
       </View>
     </View>

@@ -229,6 +229,7 @@ export function CalendarScreen( {route, navigation} )
 
         <Button
                  title="Submit"
+                 color="#7897AB"
                  onPress={() => {
                   setEvents([...events, {activity: "active", date: eventDate, time: eventTime, desc: eventDesc}])
                   setSearchEvents([...searchEvents, {activity: "active", date: eventDate, time: eventTime, desc: eventDesc}])
@@ -264,7 +265,8 @@ export function CalendarScreen( {route, navigation} )
 
       </View>
 
-      <View>
+      <View styles={{flexDirection: "row"}}>
+        <Text>Search</Text>
         <TextInput style={styles.logininput}
         placeholder="Search"
         onChangeText = {searchQuery => {

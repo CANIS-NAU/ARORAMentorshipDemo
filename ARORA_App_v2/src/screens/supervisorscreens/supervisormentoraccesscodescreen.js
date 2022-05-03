@@ -26,10 +26,13 @@ export function SupervisorMentorAccessCodeScreen({ navigation }) {
         </Pressable>
 
         {/* Need to add what happens to other data, preferebly a record in database */}
-        <Pressable style={styles.loginbutton} 
+        <Button
+            title = "Submit"
+            color = "#7897AB"
+            
                      onPress={() => {
 
-                      if (accessCode != "" && parseInt(accessCode) > 0){
+                      if (accessCode != "" && parseInt(accessCode) >= 0){
                         getAsyncItem("accesscodes").then(codesList => {
                           codesList.push({code: accessCode, authority: "mentor"})
                           setAsyncItem("accesscodes", codesList)
@@ -37,9 +40,7 @@ export function SupervisorMentorAccessCodeScreen({ navigation }) {
                         })
                       }
 
-                    }}>
-              <Text style={styles.loginbuttontext}> Submit </Text>
-          </Pressable>
+                    }}/>
 
         </View>
       </View>
