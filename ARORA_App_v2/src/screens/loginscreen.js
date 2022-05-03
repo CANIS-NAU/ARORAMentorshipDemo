@@ -3,7 +3,7 @@ import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getAsyncItem, setAsyncItem, removeAsyncItem, getAsyncKeys, clearAsyncStorage, getLogin } from '../databasehelpers/asyncstoragecalls';
-import { loginsExample, mentorsExample, menteesExample, accessCodesExample, questionsExample} from '../databasehelpers/exampledata';
+import { loginsExample, adminDefault, mentorsExample, menteesExample, accessCodesExample, questionsExample} from '../databasehelpers/exampledata';
 
 export function LoginScreen({ navigation }) {
   const [usernameinput, setUsername] = React.useState('');
@@ -14,28 +14,12 @@ export function LoginScreen({ navigation }) {
   //const supervisor = false;
 
   useEffect(() => {
-    // manual clear
-    //removeAsyncItem("users")
-    //removeAsyncItem("logins")
-    //removeAsyncItem("messages")
-    //removeAsyncItem("mentees")
-    //removeAsyncItem("questions")
-    //removeAsyncItem("userName")
-    //removeAsyncItem("userPass")
-    //removeAsyncItem("accesscodes")
+    getAsyncItem("users").then(result => {
+      if (result == null){
+        setAsyncItem("users", adminDefault)
+      }
 
-    // clear all
-    //clearAsyncStorage()
-
-    // make single supervisor profile
-    //setAsyncItem("users", loginsExample) // only has a supervisor
-    //setAsyncItem("mentees", menteesExample)
-    //setAsyncItem("accesscodes", accessCodesExample)
-    //setAsyncItem("questions", questionsExample)
-
-    //setAsyncItem("mentees", menteesExample) 
-    //setAsyncItem("messages", messagesExample)
-    //setAsyncItem("accesscodes", accessCodesExample)
+    })
 
     //getAsyncItem("accesscodes").then(result => console.log(result))
     //getAsyncItem("users").then(result => console.log(result))

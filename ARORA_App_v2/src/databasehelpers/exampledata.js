@@ -7,6 +7,20 @@ export const accessCodesExample = [
   }
 ]
 
+export const adminDefault = [
+  {
+    name: "ADMIN",
+    username: "ADMIN",
+    password: "ADMIN",
+    email: "ADMIN",
+    authority: "ADMIN",
+    mentors: null,
+    mentees: null,
+    messages: null,
+    events: null
+  }
+]
+
 export const loginsExample = [
     {
       name: "ADMIN",

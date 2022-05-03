@@ -72,6 +72,7 @@ export async function clearAsyncStorage(){
 
 export async function getLogin(inputusername, inputpassword){
   return getAsyncItem("users").then(logins => {
+    if (logins == null) return [];
     let success = false;
     let authority = "";
     for (let index = 0; index < logins.length; index++){
@@ -87,14 +88,17 @@ export async function getLogin(inputusername, inputpassword){
 
 export async function getUser(username){
   return getAsyncItem("users").then(users => {
+    if (users == null) return [];
     return users.find(user => user.username == username)
   })
 }
 
 export async function getMentors(username){
   return getAsyncItem("users").then(async users => {
+    if (users == null) return [];
 
     return getUser(username).then(supervisor => {
+      if (supervisor == null) return null;
       const mentorUsernames = supervisor.mentors;
       const mentors = users.filter(user => mentorUsernames.includes(user.username));
       return mentors;
@@ -106,7 +110,7 @@ export async function getMentors(username){
 
 export async function getAllUsers(authority){
   return getAsyncItem("users").then(async users => {
-
+    if (users == null) return [];
     const authorityUsers = users.filter(user => user.authority == authority);
     return authorityUsers;
 
@@ -115,8 +119,9 @@ export async function getAllUsers(authority){
 
 export async function getMentees(username){
   return getAsyncItem("mentees").then(async mentees => {
-
+    if (mentees == null) return [];
     return getUser(username).then(user => {
+      if (user == null) return null;
       const menteeIds = user.mentees;
       const menteesList = mentees.filter(mentee => menteeIds.includes(mentee.id));
       return menteesList;
@@ -128,6 +133,7 @@ export async function getMentees(username){
 
 export async function getEvents(username){
   return getUser(username).then(async user => {
+    if (user == null) return [];
     return user.events;
   })
 }

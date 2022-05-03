@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {styles} from '../../stylesheet';
 import { StyleSheet, View, Text, Button, Pressable, Image, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getAsyncItem, setAsyncItem, getAllSupervisors, getAllUsers } from '../../databasehelpers/asyncstoragecalls';
-import { loginsExample, mentorsExample, menteesExample, accessCodesExample, questionsExample} from '../../databasehelpers/exampledata';
+import { getAsyncItem, setAsyncItem, getAllSupervisors, getAllUsers, removeAsyncItem, getAsyncKeys, clearAsyncStorage, getLogin } from '../../databasehelpers/asyncstoragecalls';
+import { loginsExample, adminDefault, mentorsExample, menteesExample, accessCodesExample, questionsExample} from '../../databasehelpers/exampledata';
 
 export function AdminScreen({ navigation }) {
   //const {username} = route.params;
@@ -45,6 +45,7 @@ export function AdminScreen({ navigation }) {
 
   return (
     <View>
+      <View>
         <Text>Create Supervisor Access Code</Text>
         {/* Supervisor only needs to make new blanks with a set access code*/}
         <TextInput style={styles.logininput} 
@@ -67,8 +68,35 @@ export function AdminScreen({ navigation }) {
                     }}>
               <Text style={styles.loginbuttontext}> Submit </Text>
         </Pressable>
-        
-        <Text>Assign Mentors to Supervisors</Text>
+      </View>
+
+      <View>
+        <Text>Set Default Data</Text>
+        <Pressable style={styles.loginbutton} 
+                     onPress={() => {
+
+                      setAsyncItem("users", loginsExample) // only has a supervisor
+                      setAsyncItem("mentees", menteesExample)
+                      setAsyncItem("accesscodes", accessCodesExample)
+                      setAsyncItem("questions", questionsExample)
+
+                    }}>
+              <Text style={styles.loginbuttontext}> Set </Text>
+        </Pressable>
+      </View>
+
+      <View>
+        <Text>Clear All Data</Text>
+        <Pressable style={styles.loginbutton} 
+                     onPress={() => {
+
+                      clearAsyncStorage()
+                      setAsyncItem("users", adminDefault)
+
+                    }}>
+              <Text style={styles.loginbuttontext}> Clear</Text>
+        </Pressable>
+      </View>
         
         
     </View>
