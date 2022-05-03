@@ -72,6 +72,7 @@ export function CalendarScreen( {route, navigation} )
                     
                     event.activity = "inactive";
                     setEvents(events.filter(eventitem => eventitem.activity != "inactive"));
+                    setSearchEvents(searchEvents.filter(eventitem => eventitem.activity != "inactive"));
 
                     getAsyncItem("users").then(users => {
                       getUser(username).then( user => {
@@ -104,6 +105,7 @@ export function CalendarScreen( {route, navigation} )
             onPress={() => {
                     event.activity = "inactive"
                     setEvents(events.filter(eventitem => eventitem.activity != "inactive"))
+                    setSearchEvents(searchEvents.filter(eventitem => eventitem.activity != "inactive"))
 
                     getAsyncItem("users").then(users => {
                       getUser(username).then(user => {
@@ -229,6 +231,7 @@ export function CalendarScreen( {route, navigation} )
                  title="Submit"
                  onPress={() => {
                   setEvents([...events, {activity: "active", date: eventDate, time: eventTime, desc: eventDesc}])
+                  setSearchEvents([...searchEvents, {activity: "active", date: eventDate, time: eventTime, desc: eventDesc}])
 
                   getAsyncItem("users").then(users => {
                     getUser(username).then( user => {
