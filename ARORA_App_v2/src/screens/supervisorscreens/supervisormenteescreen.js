@@ -111,14 +111,9 @@ export function SupervisorMenteeScreen( {navigation, route} )
           <Pressable style={styles.menteebutton}
                                 onPress={() => navigation.navigate("Supervisor Chat Log", {screenname: mentee.name, mentor: mentor, mentee: mentee})}>
             <Image style={styles.menteeicons} source={require('../../../assets/chaticon.png')}/>
-            <Text style={styles.menteeicontext}>Chat</Text>
+            <Text style={styles.menteeicontext}>Chat Logs</Text>
           </Pressable>
 
-          <Pressable style={styles.menteebutton}
-                                  onPress={() => navigation.navigate('Supervisor Calendar', {username: username})}>
-            <Image style={styles.menteeicons} source={require('../../../assets/calendaricon.png')}/>
-            <Text style={styles.menteeicontext}>Calendar</Text>
-          </Pressable>
         </View>
 
         <View style={styles.menteebuttonsection}>

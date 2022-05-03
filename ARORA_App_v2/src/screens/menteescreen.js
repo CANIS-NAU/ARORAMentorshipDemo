@@ -111,7 +111,7 @@ export function MenteeScreen( {route, navigation} )
           </Pressable>
 
           <Pressable style={styles.menteebutton}
-                                  onPress={() => navigation.navigate('Calendar', {username: username})}>
+                                  onPress={() => navigation.navigate('Calendar', {username: username, mentee: mentee})}>
             <Image style={styles.menteeicons} source={require('../../assets/calendaricon.png')}/>
             <Text style={styles.menteeicontext}>Calendar</Text>
           </Pressable>

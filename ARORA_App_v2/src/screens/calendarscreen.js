@@ -8,12 +8,17 @@ import moment from 'moment';
 export function CalendarScreen( {route, navigation} )
 {
   let username = null
+  let mentee = null
   if (route != null && route.params != null){
     username = route.params.username
+    mentee = route.params.mentee
   }
   else{
     username = navigation.getParent().getState().routes[1].params.params.params.username
   }
+
+  const [searchEvents, setSearchEvents] = React.useState([])
+  const [searchState, setSearchState] = React.useState('')
 
   const [mode, setMode] = useState(new Date());
   const [timeShow, setTimeShow] = useState(false);
@@ -24,8 +29,34 @@ export function CalendarScreen( {route, navigation} )
   const [events, setEvents] = useState('');
 
   useEffect(() => {
-    getEvents(username).then(eventsList => setEvents(eventsList))
+    getEvents(username).then(eventsList => {
+      setEvents(eventsList)
+      setSearchEvents(eventsList);
+    })
+    if (mentee != null){
+      setSearchState(mentee.name)
+      searchQueryEvents(mentee.name)
+    }
   }, []);
+
+  const searchQueryEvents = (query) => {
+    if (query == ''){
+      setSearchEvents(events)
+    }
+    else{
+      getEvents(username).then(eventsList => {
+        let queryEvents = []
+        for (let event of eventsList ){
+          if (event.desc.toLowerCase().includes(query.toLowerCase())
+              || new Date(event.date).toDateString().toLowerCase().includes(query.toLowerCase())
+              || moment(event.time).format("hh:mm A").toLowerCase().includes(query.toLowerCase())){
+            queryEvents.push(event)
+          }
+        }
+        setSearchEvents(queryEvents)
+      })
+    }
+  }
 
   const EventItem = ({event}) => (
     <View style={styles.homescreenmenteelist}>
@@ -231,10 +262,20 @@ export function CalendarScreen( {route, navigation} )
       </View>
 
       <View>
+        <TextInput style={styles.logininput}
+        placeholder="Search"
+        onChangeText = {searchQuery => {
+          setSearchState(searchQuery)
+          searchQueryEvents(searchQuery)
+        }}
+        value = {searchState}
+        />
+      </View>
+      <View>
             <FlatList 
                 keyboardShouldPersistTaps="always"
                 contentContainerStyle={{flexGrow:1}}
-                data={events}
+                data={searchEvents}
                 keyExtractor={(item, index) => index}
                 renderItem={renderEvent}
                 refreshControl={
