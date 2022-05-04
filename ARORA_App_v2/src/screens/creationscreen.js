@@ -60,12 +60,14 @@ export function CreationScreen({ navigation }) {
 
         {/* Need to add what happens to other data, preferebly a record in database */}
         <Pressable style={styles.loginbutton} 
-                     onPress={() => {
-                        getAsyncItem("accesscodes").then(codes => {
+                     onPress={async () => {
+                        getAsyncItem("accesscodes").then(async codes => {
                           for (let code of codes){
 
                             if (code.code == accessCode && email.includes("@") && email.includes(".") && username != '' && password != ''){
-                              if (getUser(username) == null){
+                              let checkUsername = await getUser(username)
+                              console.log(checkUsername)
+                              if (checkUsername === undefined){
                                 if (password == confirmPassword){
 
                                   setInputError('')
