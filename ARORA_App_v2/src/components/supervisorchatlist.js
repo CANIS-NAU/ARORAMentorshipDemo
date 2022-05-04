@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {styles} from '../stylesheet';
 import { StyleSheet, View, Text, TextInput, Button, Pressable, Image, FlatList, RefreshControl } from 'react-native';
-import { getAsyncItem, setAsyncItem, removeAsyncItem, getAsyncKeys, clearAsyncStorage, getMentors, getMentees } from '../databasehelpers/asyncstoragecalls';
+import { getAsyncItem, setAsyncItem, removeAsyncItem, getAsyncKeys, clearAsyncStorage, getMentors, getMentees, getAllUsers } from '../databasehelpers/asyncstoragecalls';
 import { loginsExample, mentorsExample, menteesExample, accessCodesExample} from '../databasehelpers/exampledata';
 
 export default function SupervisorChatList( {navigation, username} ) {
@@ -10,9 +10,13 @@ export default function SupervisorChatList( {navigation, username} ) {
 
   useEffect(() => {
     //setAsyncItem("mentees", menteesExample)
-    getMentors(username).then(mentors => {
-      setMentors(mentors)
-      setSearchMentors(mentors)
+    getAllUsers("mentor").then(mentorsList => {
+      setMentors(mentorsList);
+      setSearchMentors(mentorsList);
+
+    //getMentors(username).then(mentors => {
+    //  setMentors(mentors)
+    //  setSearchMentors(mentors)
     })}, []);
 
   const searchQueryMentors = (query) => {

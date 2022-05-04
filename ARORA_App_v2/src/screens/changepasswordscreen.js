@@ -11,10 +11,10 @@ export function ChangePasswordScreen({ navigation }) {
       <View style={styles.screencontent}>
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
 
-          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Enter your account email to recieve a password change request.</Text>
+          <Text style={{fontSize: 20, paddingBottom: 0, marginBottom: 0,}}>Enter your recovery account email to recieve a change of password request.</Text>
 
           <TextInput style={styles.changepasswordinput}
-                     placeholder="Recovery Email"
+                     placeholder="Current Password"
                      onChangeText = {email => emailText(email)}
                      defaultValue = {email}/>
 

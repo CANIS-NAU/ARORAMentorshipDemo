@@ -29,6 +29,10 @@ export function SupervisorCalendarScreen( {route, navigation} )
 
   useEffect(() => {
     getEvents(username).then(eventsList => {
+      eventsList.sort((eventa, eventb) => {
+
+        return new Date(eventa.date) - new Date(eventb.date)
+      })
       setEvents(eventsList)
       setSearchEvents(eventsList);
     })
@@ -48,6 +52,7 @@ export function SupervisorCalendarScreen( {route, navigation} )
             queryEvents.push(event)
           }
         }
+        queryEvents.sort((eventa, eventb) => new Date(eventa.date) - new Date(eventb.date))
         setSearchEvents(queryEvents)
       })
     }
@@ -144,6 +149,11 @@ export function SupervisorCalendarScreen( {route, navigation} )
   }
 
   const onRefresh = React.useCallback(() => {
+      getEvents(username).then(eventsList => {
+        eventsList.sort((eventa, eventb) => new Date(eventa.date) - new Date(eventb.date))
+        setEvents(eventsList)
+        setSearchEvents(eventsList);
+      })
       setRefreshing(true);
       wait(2000).then(() => setRefreshing(false));
   }, []);
@@ -151,12 +161,12 @@ export function SupervisorCalendarScreen( {route, navigation} )
   const onChange = (event, selectedDate) => {
 
     if (mode == "date"){
-      dateText(selectedDate);
       setDateShow(false);
+      dateText(selectedDate);
     }
     else if (mode == "time"){
-      timeText(selectedDate)
       setTimeShow(false);
+      timeText(selectedDate)
     }
     setMode('')
   };
@@ -226,8 +236,9 @@ export function SupervisorCalendarScreen( {route, navigation} )
                  title="Submit"
                  color="#7897AB"
                  onPress={() => {
-                  setEvents([...events, {activity: "active", date: eventDate, time: eventTime, desc: eventDesc}])
-                  setSearchEvents([...searchEvents, {activity: "active", date: eventDate, time: eventTime, desc: eventDesc}])
+                  let addedEvents = [...events, {activity: "active", date: eventDate, time: eventTime, desc: eventDesc}]
+                  setEvents(addedEvents.sort((eventa, eventb) => new Date(eventa.date) - new Date(eventb.date)))
+                  setSearchEvents(addedEvents.sort((eventa, eventb) => new Date(eventa.date) - new Date(eventb.date)))
 
                   getAsyncItem("users").then(users => {
                     getUser(username).then( user => {
@@ -271,7 +282,7 @@ export function SupervisorCalendarScreen( {route, navigation} )
         value = {searchState}
         />
       </View>
-      <View>
+      <View style={{marginBottom: 210}}>
             <FlatList 
                 keyboardShouldPersistTaps="always"
                 contentContainerStyle={{flexGrow:1}}
@@ -284,7 +295,7 @@ export function SupervisorCalendarScreen( {route, navigation} )
                     onRefresh={onRefresh}
                   />
                 }/>
-        </View>
+      </View>
 
     </View>
   );
